@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our History | Synergy Maritime</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Timeline specific styles */
+        .history-timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 20px 0;
+        }
+        
+        .history-timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: repeating-linear-gradient(
+                to bottom,
+                var(--primary),
+                var(--primary) 2px,
+                transparent 2px,
+                transparent 30px
+            );
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            opacity: 0.4;
+        }
+
+        .history-timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+            opacity: 0.1;
+        }
+
+        .timeline-wake {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(118, 149, 178, 0.2), transparent);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            pointer-events: none;
+            filter: blur(10px);
+        }
+        
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(100px);
+        }
+        
+        .timeline-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+            transform: translateX(-100px);
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+            transform: translateX(100px);
+        }
+
+        .timeline-item.active:nth-child(odd),
+        .timeline-item.active:nth-child(even) {
+            transform: translate(0, 0);
+        }
+        
+        /* Scrolling Compass Icon - Straight Arrow */
+        .scrolling-compass {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            left: 50%;
+            margin-left: -20px;
+            z-index: 10;
+            transition: top 0.2s ease-out;
+            pointer-events: none;
+        }
+
+        .scrolling-compass svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--accent);
+            filter: drop-shadow(0 0 10px rgba(13, 51, 92, 0.4));
+        }
+        
+        .timeline-card {
+            padding: 40px;
+            background: var(--bg-light);
+            border-radius: 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 1px solid rgba(13, 51, 92, 0.2);
+            transition: var(--transition);
+        }
+        
+        .timeline-item:hover .timeline-card {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-date {
+            font-family: 'PaulGrotesk', sans-serif;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-weight: 300;
+        }
+        
+        .timeline-title {
+            font-family: 'IvyMode', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+        
+        .timeline-list {
+            list-style: none;
+            padding: 0;
+            display: inline-block;
+            text-align: left;
+        }
+        
+        .timeline-list li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            opacity: 0.9;
+        }
+        
+        .timeline-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.5rem;
+            line-height: 1;
+            top: -2px;
+            opacity: 0.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .history-timeline::after {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 0;
+                text-align: left !important;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-dot {
+                left: 10px !important;
+                right: auto !important;
+            }
+            
+            .timeline-list {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="loading"> <div id="preloader"> <div class="preloader-gate-top"></div> <div class="preloader-gate-bottom"></div> <div class="preloader-content">
+<svg class="synergy-text-logo" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612.01 57.51">
+  <path fill="#fff" d="M76.96,40.73h0c0,9.27-7.51,16.78-16.77,16.78H0c0-2.13,3.96-9.48,12.92-9.48h38.91c4.02,0,7.29-3.27,7.29-7.29,0-2.01-.82-3.83-2.14-5.15-1.32-1.32-3.14-2.14-5.15-2.14H15.56c-8.59,0-15.56-6.97-15.56-15.56v-2.33C0,6.97,6.97,0,15.56,0h58.58c0,2.08-3.28,9.48-12.98,9.48H25.09c-4,0-7.24,3.24-7.24,7.24h0c0,4,3.24,7.24,7.24,7.24h35.1c9.26,0,16.77,7.51,16.77,16.77Z"/>
+  <path fill="#fff" d="M166.27,0l-32.67,35.23v22.28h-17.87v-22.28L83.06,0h14.78c4.34,0,8.48,1.81,11.43,4.99l19.68,21.22.72.78L154.7,0h11.57Z"/>
+  <path fill="#fff" d="M612.01,0l-32.67,35.23v22.28h-17.87v-22.28L528.8,0h14.78c4.34,0,8.48,1.81,11.43,4.99l19.68,21.22.72.78,25.03-26.99h11.57Z"/>
+  <path fill="#fff" d="M251.98,0v57.51h-18.64c-2.56,0-5.01-1.06-6.78-2.92l-40.96-43.3v46.22h-9.19V0h14.46c7.7,0,15.06,3.17,20.35,8.76l31.56,33.36V0h9.19Z"/>
+  <path fill="#fff" d="M332.7,32.89v-9.18h-34.68c-9.17,0-12.44,7.46-12.44,9.18h47.12Z"/>
+  <path fill="#fff" d="M292.29,48.74h49.32v8.36h-60.09c-7.43,0-13.46-6.03-13.46-13.46V0h74.64c0,1-3.83,9.18-11.86,9.18h-45.26v32.84c0,3.71,3.01,6.71,6.71,6.71Z"/>
+  <path fill="#fff" d="M415.83,34.37h-7.29l22.22,22.72h-16.13c-5.77,0-11.3-2.33-15.35-6.46l-15.9-16.26h-8.95c0-.94,1.59-9.18,12.35-9.18h18.46c2.21,0,4.21-.89,5.66-2.35,1.45-1.44,2.34-3.45,2.34-5.66,0-4.42-3.58-8.01-8.01-8.01h-32.85v47.92h-17.52V0h60.96c8.25,0,14.93,6.68,14.93,14.93v4.52c0,8.24-6.68,14.92-14.93,14.92Z"/>
+  <path fill="#fff" d="M461.67,17.49v22.12c0,4.59,3.72,8.3,8.3,8.3h26.88c3.47,0,6.28-2.81,6.28-6.28v-14.68h17.52v17.25c0,7.12-5.77,12.89-12.89,12.89h-47.49c-8.9,0-16.11-7.21-16.11-16.11v-24.87c0-8.9,7.21-16.11,16.11-16.11h60.38s-1.69,9.18-11.74,9.18h-38.93c-4.59,0-8.3,3.72-8.3,8.3Z"/>
+</svg>
+ </div> </div>
+    <nav id="navbar">
+        <a href="index.html" class="logo"><svg style="height: 20px; display: block;" viewBox="0 0 612.01 57.51">
+  <path fill="#fff" d="M76.96,40.73h0c0,9.27-7.51,16.78-16.77,16.78H0c0-2.13,3.96-9.48,12.92-9.48h38.91c4.02,0,7.29-3.27,7.29-7.29,0-2.01-.82-3.83-2.14-5.15-1.32-1.32-3.14-2.14-5.15-2.14H15.56c-8.59,0-15.56-6.97-15.56-15.56v-2.33C0,6.97,6.97,0,15.56,0h58.58c0,2.08-3.28,9.48-12.98,9.48H25.09c-4,0-7.24,3.24-7.24,7.24h0c0,4,3.24,7.24,7.24,7.24h35.1c9.26,0,16.77,7.51,16.77,16.77Z"/>
+  <path fill="#fff" d="M166.27,0l-32.67,35.23v22.28h-17.87v-22.28L83.06,0h14.78c4.34,0,8.48,1.81,11.43,4.99l19.68,21.22.72.78L154.7,0h11.57Z"/>
+  <path fill="#fff" d="M612.01,0l-32.67,35.23v22.28h-17.87v-22.28L528.8,0h14.78c4.34,0,8.48,1.81,11.43,4.99l19.68,21.22.72.78,25.03-26.99h11.57Z"/>
+  <path fill="#fff" d="M251.98,0v57.51h-18.64c-2.56,0-5.01-1.06-6.78-2.92l-40.96-43.3v46.22h-9.19V0h14.46c7.7,0,15.06,3.17,20.35,8.76l31.56,33.36V0h9.19Z"/>
+  <path fill="#fff" d="M332.7,32.89v-9.18h-34.68c-9.17,0-12.44,7.46-12.44,9.18h47.12Z"/>
+  <path fill="#fff" d="M292.29,48.74h49.32v8.36h-60.09c-7.43,0-13.46-6.03-13.46-13.46V0h74.64c0,1-3.83,9.18-11.86,9.18h-45.26v32.84c0,3.71,3.01,6.71,6.71,6.71Z"/>
+  <path fill="#fff" d="M415.83,34.37h-7.29l22.22,22.72h-16.13c-5.77,0-11.3-2.33-15.35-6.46l-15.9-16.26h-8.95c0-.94,1.59-9.18,12.35-9.18h18.46c2.21,0,4.21-.89,5.66-2.35,1.45-1.44,2.34-3.45,2.34-5.66,0-4.42-3.58-8.01-8.01-8.01h-32.85v47.92h-17.52V0h60.96c8.25,0,14.93,6.68,14.93,14.93v4.52c0,8.24-6.68,14.92-14.93,14.92Z"/>
+  <path fill="#fff" d="M461.67,17.49v22.12c0,4.59,3.72,8.3,8.3,8.3h26.88c3.47,0,6.28-2.81,6.28-6.28v-14.68h17.52v17.25c0,7.12-5.77,12.89-12.89,12.89h-47.49c-8.9,0-16.11-7.21-16.11-16.11v-24.87c0-8.9,7.21-16.11,16.11-16.11h60.38s-1.69,9.18-11.74,9.18h-38.93c-4.59,0-8.3,3.72-8.3,8.3Z"/>
+</svg></a>
+        <ul class="nav-links">
+            <li><a href="history.html" class="active">History</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero" style="height: 60vh; background: linear-gradient(rgba(13, 51, 92, 0.8), rgba(13, 51, 92, 0.9)), url('assets/hero.png'); background-size: cover; background-position: center; text-align: center;">
+        <h1 style="font-size: 3.5rem; color: var(--text-light); margin-bottom: 20px;">Our History</h1>
+        <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.3rem; font-weight: 300; line-height: 1.5; color: var(--text-light);">
+            Six decades of evolving a maritime platform through operational expertise, innovative structures, and counter-cyclical investing.
+        </p>
+    </header>
+
+    <section style="padding: 100px 5%; background-color: var(--bg-light); position: relative;">
+        <!-- Founding Year Highlight -->
+        <div class="reveal" style="text-align: center; margin-bottom: 100px;">
+            <div style="font-family: 'PaulGrotesk', sans-serif; font-size: 10rem; color: var(--primary); font-weight: 300; line-height: 1; letter-spacing: -5px; opacity: 0.08;">1963</div>
+            <div style="font-family: 'IvyMode'; font-size: 1.2rem; color: var(--primary); margin-top: -55px; letter-spacing: 8px; font-weight: 600; text-transform: uppercase; margin-bottom: 40px;">Established</div>
+            
+            <div style="max-width: 700px; margin: 0 auto;">
+                <h3 style="font-family: 'IvyMode'; font-size: 2.2rem; color: var(--primary); margin-bottom: 20px; font-weight: 400;">Operational Foundations</h3>
+                <p style="font-size: 1.2rem; color: var(--text-dark); opacity: 0.8; line-height: 1.7; font-weight: 300;">Established by the Papathomas family as shipowners and maritime operators, laying the groundwork for a platform built on deep operational expertise and long-term ownership values.</p>
+            </div>
+        </div>
+
+        <div class="history-timeline" style="position: relative; padding-top: 20px; padding-bottom: 50px;">
+            
+            <!-- Scrolling Timeline Icon -->
+            <div id="scrolling-compass" class="scrolling-compass" style="
+                width: 50px;
+                height: 50px;
+                margin-left: -25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            ">
+                <img src="assets/icon for timeline.png" style="width: 100%; height: 100%; object-fit: contain;" alt="Timeline Tracker">
+            </div>
+            
+            <div id="timeline-wake" class="timeline-wake"></div>
+
+
+            <!-- 2001 - 2009 -->
+            <div class="timeline-item reveal">
+                <div class="timeline-card">
+                    <div class="timeline-date">2001-2009</div>
+                    <img src="assets/hist_2001.png" alt="2001-2009" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin: 15px 0;">
+                    <div class="timeline-title">Institutional Expansion</div>
+                    <p style="font-size: 1rem; color: var(--text-dark); opacity: 0.8; line-height: 1.6; font-weight: 300;">
+                        Formed a container shipping joint venture with GE Capital and participated alongside them and Carlyle in the $1.8bn Hapag-Lloyd transaction. Expanded into institutional shipping investments and large-scale vessel transactions. Established Nautilus, an institutional container shipping investment platform, with Goldman Sachs, OCH-Ziff and Eton Park.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2010 - 2016 -->
+            <div class="timeline-item reveal">
+                <div class="timeline-card">
+                    <div class="timeline-date">2010–2016</div>
+                    <img src="assets/hist_2010.png" alt="2010-2016" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin: 15px 0;">
+                    <div class="timeline-title">Counter-Cyclical Investing</div>
+                    <p style="font-size: 1rem; color: var(--text-dark); opacity: 0.8; line-height: 1.6; font-weight: 300;">
+                        Successfully managed and restructured investments through the financial crisis. Launched Synergy Marine Chartering to pursue counter-cyclical chartering opportunities and partnered with Euroseas across shipping investments and asset transactions.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2017 - Present -->
+            <div class="timeline-item reveal">
+                <div class="timeline-card">
+                    <div class="timeline-date">2017–Present</div>
+                    <img src="assets/hist_present.png" alt="2017-Present" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin: 15px 0;">
+                    <div class="timeline-title">Modern Investment Platform</div>
+                    <p style="font-size: 1rem; color: var(--text-dark); opacity: 0.8; line-height: 1.6; font-weight: 300;">
+                        Developed and expanded the Aframax tanker investment platform and invested across tanker, LR2 and LPG shipping opportunities. Executed active portfolio rotation through vessel acquisitions and monetizations, expanding relationships with global charterers, traders and institutional investors.
+                    </p>
+                </div>
+            </div>
+            <!-- Conclusion Text embedded in timeline -->
+            <div id="timeline-conclusion" style="max-width: 900px; margin: 80px auto 0; text-align: center; position: relative; opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);">
+
+                <p style="font-size: 1.8rem; color: var(--primary); font-family: 'IvyMode', serif; font-weight: 300; line-height: 1.6;">
+                    A disciplined investment approach across multiple shipping cycles has enabled Synergy to scale, reposition assets, and capitalize on market inflection points, without being exposed to market risk.
+                </p>
+            </div>
+        </div>
+
+        <script>
+            window.addEventListener('scroll', function() {
+                const compass = document.getElementById('scrolling-compass');
+                const wake = document.getElementById('timeline-wake');
+                const timeline = document.querySelector('.history-timeline');
+                const items = document.querySelectorAll('.timeline-item');
+                const timelineRect = timeline.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                const offset = windowHeight / 2;
+                
+                let scrollPercent = (offset - timelineRect.top) / timelineRect.height;
+                scrollPercent = Math.max(0, Math.min(1, scrollPercent));
+                
+                const topPos = scrollPercent * timelineRect.height;
+                compass.style.top = (topPos - 20) + 'px';
+                wake.style.top = (topPos - 100) + 'px';
+                wake.style.opacity = scrollPercent > 0.05 ? 1 : 0;
+
+                // Parallax effect for items
+                items.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    const itemCenter = rect.top + rect.height / 2;
+                    const distanceFromCenter = (offset - itemCenter) / offset;
+                    
+                    if (Math.abs(distanceFromCenter) < 1) {
+                        const shift = distanceFromCenter * 20;
+                        item.style.transform = `translateY(${shift}px)`;
+                    }
+                });
+
+                // Conclusion Load Effect
+                const conclusion = document.getElementById('timeline-conclusion');
+                if (conclusion) {
+                    const conclusionRect = conclusion.getBoundingClientRect();
+                    // When the center of the screen (compass) hits the top of the conclusion block
+                    if (offset > conclusionRect.top - 40) {
+                        conclusion.style.opacity = '1';
+                        conclusion.style.transform = 'translateY(0)';
+                    } else {
+                        conclusion.style.opacity = '0';
+                        conclusion.style.transform = 'translateY(40px)';
+                    }
+                }
+            });
+        </script>
+    </section>
+
+        <footer class="site-footer">
+        <svg class="footer-figura" viewBox="0 0 690.7 595.3">
+            <polygon points="378.8 345.9 356.2 376.2 342 357.2 328.2 375.6 305.3 345.2 341.6 296.5 378.8 345.9"/>
+            <polygon points="542.7 564 497.1 564 471.7 530.2 449.2 500.3 385.7 415.9 372.2 434.1 364.8 444 342.1 474.5 341.9 474.8 305.5 523.6 302.1 528.1 382 528.1 378.7 523.7 349.5 484.9 349.8 484.6 372.5 454.1 417.5 514 440.7 544.9 455.1 564 230 564 244.2 544.9 267.2 514 319.3 444.1 319.3 444.1 342 413.6 349.4 403.7 363.1 385.3 385.6 355 480.1 480.6 502.3 510.2 542.7 564"/>
+            <polygon points="335.2 404.5 312.4 435 298.2 416 298.1 415.9 235.4 500.1 213 530.1 187.8 564 142.3 564 182.4 510.2 204.5 480.5 298 355 320.9 385.5 335.2 404.5"/>
+            <path d="M608.5,297.4c0,71.1-27.7,137.9-77.9,188.2-8.9,8.9-18.4,17.2-28.3,24.6l-22.2-29.6c8.5-6.4,16.7-13.5,24.4-21.2,43.3-43.3,67.1-100.8,67.1-162s-23.8-118.7-67.1-162c-43.3-43.3-100.8-67.1-162-67.1s-118.7,23.8-162,67.1c-43.3,43.3-67.1,100.8-67.1,162s23.8,118.7,67.1,162c7.6,7.6,15.7,14.6,24.1,21l-22.1,29.7c-9.9-7.5-19.3-15.6-28.2-24.5-50.3-50.3-77.9-117.1-77.9-188.2s27.7-137.9,77.9-188.2c50.3-50.3,117.1-77.9,188.2-77.9s137.9,27.7,188.2,77.9c50.3,50.3,77.9,117.1,77.9,188.2Z"/>
+        </svg>
+        <div class="footer-container reveal">
+            <div class="footer-grid">
+                <!-- Col 1: Logo -->
+                <div class="footer-reveal-col">
+                    <a href="index.html" class="footer-logo-link">
+                        <svg class="footer-logo-svg" viewBox="0 0 612.01 57.51">
+                            <path fill="#fff" d="M76.96,40.73h0c0,9.27-7.51,16.78-16.77,16.78H0c0-2.13,3.96-9.48,12.92-9.48h38.91c4.02,0,7.29-3.27,7.29-7.29,0-2.01-.82-3.83-2.14-5.15-1.32-1.32-3.14-2.14-5.15-2.14H15.56c-8.59,0-15.56-6.97-15.56-15.56v-2.33C0,6.97,6.97,0,15.56,0h58.58c0,2.08-3.28,9.48-12.98,9.48H25.09c-4,0-7.24,3.24-7.24,7.24h0c0,4,3.24,7.24,7.24,7.24h35.1c9.26,0,16.77,7.51,16.77,16.77Z"/>
+                            <path fill="#fff" d="M166.27,0l-32.67,35.23v22.28h-17.87v-22.28L83.06,0h14.78c4.34,0,8.48,1.81,11.43,4.99l19.68,21.22.72.78L154.7,0h11.57Z"/>
+                            <path fill="#fff" d="M612.01,0l-32.67,35.23v22.28h-17.87v-22.28L528.8,0h14.78c4.34,0,8.48,1.81,11.43,4.99l19.68,21.22.72.78,25.03-26.99h11.57Z"/>
+                            <path fill="#fff" d="M251.98,0v57.51h-18.64c-2.56,0-5.01-1.06-6.78-2.92l-40.96-43.3v46.22h-9.19V0h14.46c7.7,0,15.06,3.17,20.35,8.76l31.56,33.36V0h9.19Z"/>
+                            <path fill="#fff" d="M332.7,32.89v-9.18h-34.68c-9.17,0-12.44,7.46-12.44,9.18h47.12Z"/>
+                            <path fill="#fff" d="M292.29,48.74h49.32v8.36h-60.09c-7.43,0-13.46-6.03-13.46-13.46V0h74.64c0,1-3.83,9.18-11.86,9.18h-45.26v32.84c0,3.71,3.01,6.71,6.71,6.71Z"/>
+                            <path fill="#fff" d="M415.83,34.37h-7.29l22.22,22.72h-16.13c-5.77,0-11.3-2.33-15.35-6.46l-15.9-16.26h-8.95c0-.94,1.59-9.18,12.35-9.18h18.46c2.21,0,4.21-.89,5.66-2.35,1.45-1.44,2.34-3.45,2.34-5.66,0-4.42-3.58-8.01-8.01-8.01h-32.85v47.92h-17.52V0h60.96c8.25,0,14.93,6.68,14.93,14.93v4.52c0,8.24-6.68,14.92-14.93,14.92Z"/>
+                            <path fill="#fff" d="M461.67,17.49v22.12c0,4.59,3.72,8.3,8.3,8.3h26.88c3.47,0,6.28-2.81,6.28-6.28v-14.68h17.52v17.25c0,7.12-5.77,12.89-12.89,12.89h-47.49c-8.9,0-16.11-7.21-16.11-16.11v-24.87c0-8.9,7.21-16.11,16.11-16.11h60.38s-1.69,9.18-11.74,9.18h-38.93c-4.59,0-8.3,3.72-8.3,8.3Z"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Col 2: Explore -->
+                <div class="footer-reveal-col">
+                    <h4 class="footer-heading">Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="history.html" class="footer-link">Our History</a></li>
+                        <li><a href="team.html" class="footer-link">Our Team</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Col 3: Contact -->
+                <div class="footer-reveal-col">
+                    <h4 class="footer-heading">Contact</h4>
+                    <div class="footer-contact-info">
+                        <p>contact@synergymaritime.com</p>
+                        <p>Limassol, Cyprus</p>
+                        <div class="footer-action">
+                            <a href="contact.html" class="footer-action-link">Get in touch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Row -->
+            <div class="footer-bottom footer-reveal-col">
+                <p>&copy; 2026 Synergy Maritime. All rights reserved.</p>
+                <div class="footer-legal-links">
+                    <a href="#" class="footer-legal-link">Privacy Policy</a>
+                    <a href="#" class="footer-legal-link">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
