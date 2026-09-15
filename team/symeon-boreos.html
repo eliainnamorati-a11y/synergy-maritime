@@ -5,6 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Symeon Boreos | Synergy Maritime</title>
     <link rel="stylesheet" href="../style.css">
+    <style>
+        .bio-section {
+            padding: 180px 10% 120px;
+            background: #FFFFFF;
+        }
+
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .bio-image-wrapper {
+            position: sticky;
+            top: 150px;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            background: linear-gradient(110deg, #0d335c 8%, #1b4977 22%, #0d335c 36%);
+            background-size: 200% 100%;
+            animation: bioImgShimmer 2s linear infinite;
+        }
+
+        @keyframes bioImgShimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .bio-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transform: scale(1.1);
+            filter: blur(4px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
+                        transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
+                        filter 1s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform, filter;
+        }
+
+        .bio-image-wrapper.active img,
+        body.loaded .bio-image-wrapper.reveal.active img,
+        body.loaded .bio-image-wrapper img {
+            opacity: 1;
+            transform: scale(1);
+            filter: blur(0);
+        }
+
+        .bio-content h1 {
+            font-family: 'IvyMode', serif;
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 300;
+            line-height: 1.1;
+        }
+
+        .bio-role {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 50px;
+            display: block;
+        }
+
+        .bio-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .bio-text p {
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 60px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: gap 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 25px;
+        }
+
+        @media (max-width: 968px) {
+            .bio-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .bio-image-wrapper {
+                position: static;
+                max-width: 500px;
+            }
+            .bio-content h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
 </head>
 <body class="loading"> <div id="preloader"> <div class="preloader-gate-top"></div> <div class="preloader-gate-bottom"></div> <div class="preloader-content">
 <svg class="synergy-text-logo" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612.01 57.51">
@@ -30,26 +142,29 @@
   <path fill="#fff" d="M461.67,17.49v22.12c0,4.59,3.72,8.3,8.3,8.3h26.88c3.47,0,6.28-2.81,6.28-6.28v-14.68h17.52v17.25c0,7.12-5.77,12.89-12.89,12.89h-47.49c-8.9,0-16.11-7.21-16.11-16.11v-24.87c0-8.9,7.21-16.11,16.11-16.11h60.38s-1.69,9.18-11.74,9.18h-38.93c-4.59,0-8.3,3.72-8.3,8.3Z"/>
 </svg></a>
         <ul class="nav-links">
+            <li><a href="../history.html">History</a></li>
             <li><a href="../about.html">About</a></li>
-            <li><a href="../team.html">Team</a></li>
+            <li><a href="../team.html" class="active">Team</a></li>
             <li><a href="../contact.html">Contact</a></li>
         </ul>
     </nav>
 
-    <section style="padding-top: 150px;">
-        <div class="grid" style="grid-template-columns: 1fr 2fr; gap: 60px; align-items: start;">
-            <div class="reveal active">
-                <img src="../team pictures/Symeon Boreos.jpg" alt="Symeon Boreos" style="width: 100%; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.1);">
+    <section class="bio-section">
+        <div class="bio-grid">
+            <div class="bio-image-wrapper reveal">
+                <img src="../team pictures/Symeon Boreos.png" alt="Symeon Boreos">
             </div>
-            <div class="reveal active">
-                <h1 style="font-size: 3rem; color: var(--primary); margin-bottom: 10px;">Symeon Boreos</h1>
-                <h3 style="color: var(--secondary); margin-bottom: 30px;">Technical Director</h3>
-                <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text-dark);">
-                    <p style="margin-bottom: 20px;">Joined the company in 2008, bringing over 30 years of maritime industry experience. He has deep operational expertise across multiple vessel segments, having previously held senior roles at Reederei Nord and Interorient Navigation.</p>
-                    <p style="margin-bottom: 20px;">His focus on technical management and performance optimization directly drives the company’s efficiency, safety standards, and operational strategy, ensuring the fleet operates at peak performance.</p>
-                    <p>He holds an M.S. from the University of Newcastle, a B.Eng. from the Polytechnic of Wales, and a Diploma from the Higher Technical Institute (HTI) of Cyprus.</p>
+            <div class="bio-content reveal">
+                <span class="bio-role">Technical Director</span>
+                <h1>Symeon Boreos</h1>
+                <div class="bio-text">
+                    <p>Ioannis joined Synergy Maritime in 2017 and currently serves as the Technical Director. He leads the group's asset acquisition and disposal strategies, as well as the structuring of co-investment platforms for institutional partners.</p>
+                    <p>Previously, he held senior roles at global maritime financial institutions, where he specialized in mezzanine financing and opportunistic shipping investments. His expertise in maritime deal-making and market analysis is central to Synergy's institutional platform.</p>
+                    <p>He is a CFA charterholder and holds a Master's degree in Shipping, Trade, and Finance from Bayes Business School, London.</p>
                 </div>
-                <a href="../team.html" class="btn" style="margin-top: 40px;">Back to Team</a>
+                <a href="../team.html" class="back-link">
+                    <span>←</span> Back to Team
+                </a>
             </div>
         </div>
     </section>
@@ -98,7 +213,7 @@
                     </div>
                 </div>
             </div>
-        </div><div class="footer-bottom">
+        </div><div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; padding-top: 40px; font-size: 0.85rem; opacity: 0.6;">
             <p>&copy; 2026 Synergy Maritime. All rights reserved.</p>
         </div>
     </footer>
