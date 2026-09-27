@@ -638,10 +638,12 @@ nav.home-nav.scrolled {
 }
 
 .accordion-content .stat-number {
-    font-family: 'PaulGrotesk', sans-serif;
-    font-size: 6rem;
+    font-family: 'IvyMode', serif;
+    font-weight: 300;
+    font-size: 6.5rem;
     line-height: 1;
-    margin-bottom: 0;
+    margin-bottom: 0.15rem;
+    letter-spacing: -1.5px;
 }
 
 .accordion-content .stat-description {
@@ -1414,10 +1416,13 @@ nav.home-nav #menu-toggle {
         display: block !important;
     }
     .accordion-content .stat-number {
-        font-size: 3.5rem !important;
+        font-family: 'IvyMode', serif !important;
+        font-weight: 300 !important;
+        font-size: 3.8rem !important;
         line-height: 1 !important;
         margin-bottom: 8px !important;
         color: #FFFFFF !important;
+        letter-spacing: -1px !important;
     }
     .accordion-content .stat-description {
         font-size: 0.92rem !important;
