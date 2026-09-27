@@ -343,3 +343,110 @@ if (document.readyState === 'loading') {
 } else {
     initCookieConsent();
 }
+
+
+
+// Sticky Platform Narrative & Showcase Numbers Controller (Homepage)
+function initPlatformShowcase() {
+    const showcase = document.getElementById('platform-showcase');
+    if (!showcase) return;
+
+    const bg1 = document.getElementById('stat-bg-1');
+    const bg2 = document.getElementById('stat-bg-2');
+    const bg3 = document.getElementById('stat-bg-3');
+
+    const card1 = document.getElementById('platform-card-1');
+    const card2 = document.getElementById('platform-card-2');
+    const card3 = document.getElementById('platform-card-3');
+
+    const pill1 = document.getElementById('pill-1');
+    const pill2 = document.getElementById('pill-2');
+    const pill3 = document.getElementById('pill-3');
+
+    let ticking = false;
+
+    function updateShowcase() {
+        const rect = showcase.getBoundingClientRect();
+        const total = showcase.offsetHeight - window.innerHeight;
+        if (total <= 0) return;
+        
+        const progress = Math.min(Math.max(-rect.top / total, 0), 1);
+
+        if (progress < 0.33) {
+            if (bg1) bg1.classList.add('active');
+            if (bg2) bg2.classList.remove('active');
+            if (bg3) bg3.classList.remove('active');
+
+            if (card1) card1.classList.add('is-active', 'is-spotlight');
+            if (card2) card2.classList.remove('is-active', 'is-spotlight');
+            if (card3) card3.classList.remove('is-active', 'is-spotlight');
+
+            if (pill1) pill1.classList.add('active');
+            if (pill2) pill2.classList.remove('active');
+            if (pill3) pill3.classList.remove('active');
+        } else if (progress < 0.66) {
+            if (bg1) bg1.classList.remove('active');
+            if (bg2) bg2.classList.add('active');
+            if (bg3) bg3.classList.remove('active');
+
+            if (card1) { card1.classList.add('is-active'); card1.classList.remove('is-spotlight'); }
+            if (card2) { card2.classList.add('is-active', 'is-spotlight'); }
+            if (card3) { card3.classList.remove('is-active', 'is-spotlight'); }
+
+            if (pill1) pill1.classList.remove('active');
+            if (pill2) pill2.classList.add('active');
+            if (pill3) pill3.classList.remove('active');
+        } else {
+            if (bg1) bg1.classList.remove('active');
+            if (bg2) bg2.classList.remove('active');
+            if (bg3) bg3.classList.add('active');
+
+            if (card1) { card1.classList.add('is-active'); card1.classList.remove('is-spotlight'); }
+            if (card2) { card2.classList.add('is-active'); card2.classList.remove('is-spotlight'); }
+            if (card3) { card3.classList.add('is-active', 'is-spotlight'); }
+
+            if (pill1) pill1.classList.remove('active');
+            if (pill2) pill2.classList.remove('active');
+            if (pill3) pill3.classList.add('active');
+        }
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            requestAnimationFrame(updateShowcase);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    updateShowcase();
+}
+
+// Integrated Operator & Institutional Investor Loading Effect (About Page)
+function initCapabilitiesLoading() {
+    const opTrack = document.getElementById('operating-track');
+    const invTrack = document.getElementById('investor-track');
+    if (!opTrack && !invTrack) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('track-visible');
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    if (opTrack) observer.observe(opTrack);
+    if (invTrack) observer.observe(invTrack);
+}
+
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        initPlatformShowcase();
+        initCapabilitiesLoading();
+    });
+} else {
+    initPlatformShowcase();
+    initCapabilitiesLoading();
+}

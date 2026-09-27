@@ -6,6 +6,9 @@
     <title>Synergy Maritime | World-Class Ship Management</title>
     <meta name="description" content="Synergy Maritime provides innovative and sustainable ship management services, crewing solutions, and maritime technology.">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="favicon.png">
 </head>
 <body class="loading"> <div id="preloader"> <div class="preloader-gate-top"></div> <div class="preloader-gate-bottom"></div> <div class="preloader-content">
 <svg id="preloader-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 690.7 595.3">
@@ -98,46 +101,60 @@
 
     </header>
 
-    <!-- Combined Overview Statement & Flagship Numbers -->
-    <section id="introduction" style="
-        padding: 130px 8% 110px 8%;
-        background: #FFFFFF;
-        position: relative;
-    ">
-        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <!-- Main Editorial Statement -->
-            <div class="reveal" style="max-width: 1050px; margin: 0 auto 50px auto;">
-                <div style="width: 1px; height: 40px; background-color: var(--secondary); margin: 0 auto 30px auto;"></div>
-                <p id="intro-text" class="scroll-highlight-text" style="
-                    font-size: clamp(2rem, 3.8vw, 2.75rem); 
-                    line-height: 1.35; 
-                    color: var(--primary); 
-                    font-family: 'IvyMode', serif; 
-                    font-weight: 400;
-                    letter-spacing: -0.3px;
-                    margin-bottom: 35px;
-                ">
-                    Synergy is an ownership-led maritime investment and operating platform with a track record spanning every major shipping cycle since 1963.
-                </p>
-                <div style="width: 40px; height: 1px; background-color: var(--secondary); margin: 0 auto; opacity: 0.5;"></div>
-            </div>
+    <!-- Sticky Platform Narrative & Numbers Showcase Section -->
+    <section id="platform-showcase" class="sticky-stats-section">
+        <div class="sticky-stats-viewport">
+            <!-- Background Image Layers for Crossfade as user scrolls -->
+            <div id="stat-bg-1" class="sticky-stats-bg active" style="background-image: url('assets/hist_1963.png');"></div>
+            <div id="stat-bg-2" class="sticky-stats-bg" style="background-image: url('assets/hero.png');"></div>
+            <div id="stat-bg-3" class="sticky-stats-bg" style="background-image: url('assets/building.png');"></div>
+            
+            <!-- Rich Dark Gradient Overlay -->
+            <div class="sticky-stats-overlay"></div>
 
-            <!-- Integrated Institutional Numbers -->
-            <div class="intro-stats-container reveal">
-                <div class="intro-stat-card">
-                    <div class="intro-stat-number">60<span class="stat-plus">+</span></div>
-                    <div class="intro-stat-label">Years Heritage</div>
-                    <p class="intro-stat-sub">Continuous operating history spanning every major global shipping cycle since 1963.</p>
+            <!-- Foreground Content Pinned & Active -->
+            <div class="sticky-stats-content">
+                <!-- Editorial Lead Statement -->
+                <div class="sticky-stats-lead-wrap">
+                    <div class="sticky-stats-lead-bar"></div>
+                    <p class="sticky-stats-lead-text">
+                        Synergy is an ownership-led maritime investment and operating platform with a track record spanning every major shipping cycle since 1963.
+                    </p>
+                    <div class="sticky-stats-lead-divider"></div>
                 </div>
-                <div class="intro-stat-card">
-                    <div class="intro-stat-number">70<span class="stat-plus">+</span></div>
-                    <div class="intro-stat-label">Transactions</div>
-                    <p class="intro-stat-sub">Vessel acquisitions, restructuring, and portfolio sales executed with precision.</p>
+
+                <!-- 3 Showcase Number Cards -->
+                <div class="sticky-stats-cards-grid">
+                    <!-- Stat 1: Heritage -->
+                    <div id="platform-card-1" class="platform-stat-card is-active is-spotlight">
+                        <div class="platform-stat-card-step">01 / Heritage</div>
+                        <div class="platform-stat-number">60<span class="stat-accent">+</span></div>
+                        <div class="platform-stat-label">Years Heritage</div>
+                        <p class="platform-stat-desc">Continuous operating history spanning every major global shipping cycle since 1963.</p>
+                    </div>
+
+                    <!-- Stat 2: Transactions -->
+                    <div id="platform-card-2" class="platform-stat-card">
+                        <div class="platform-stat-card-step">02 / Transactions</div>
+                        <div class="platform-stat-number">70<span class="stat-accent">+</span></div>
+                        <div class="platform-stat-label">Transactions</div>
+                        <p class="platform-stat-desc">Vessel acquisitions, restructuring, and portfolio sales executed with precision.</p>
+                    </div>
+
+                    <!-- Stat 3: Capital Deployed -->
+                    <div id="platform-card-3" class="platform-stat-card">
+                        <div class="platform-stat-card-step">03 / Capital</div>
+                        <div class="platform-stat-number"><span class="stat-accent">$</span>2.5B<span class="stat-accent">+</span></div>
+                        <div class="platform-stat-label">Capital Deployed</div>
+                        <p class="platform-stat-desc">Invested across commercial vessels and operating platforms alongside global financial partners.</p>
+                    </div>
                 </div>
-                <div class="intro-stat-card">
-                    <div class="intro-stat-number"><span class="stat-currency">$</span>2.5B<span class="stat-plus">+</span></div>
-                    <div class="intro-stat-label">Capital Deployed</div>
-                    <p class="intro-stat-sub">Invested across commercial vessels and operating platforms alongside global financial partners.</p>
+
+                <!-- Progress Indicators -->
+                <div class="sticky-stats-progress-pills">
+                    <div id="pill-1" class="progress-pill active"></div>
+                    <div id="pill-2" class="progress-pill"></div>
+                    <div id="pill-3" class="progress-pill"></div>
                 </div>
             </div>
         </div>
@@ -287,9 +304,7 @@
                             <path fill="#fff" d="M461.67,17.49v22.12c0,4.59,3.72,8.3,8.3,8.3h26.88c3.47,0,6.28-2.81,6.28-6.28v-14.68h17.52v17.25c0,7.12-5.77,12.89-12.89,12.89h-47.49c-8.9,0-16.11-7.21-16.11-16.11v-24.87c0-8.9,7.21-16.11,16.11-16.11h60.38s-1.69,9.18-11.74,9.18h-38.93c-4.59,0-8.3,3.72-8.3,8.3Z"/>
                         </svg>
                     </a>
-                    <p class="footer-tagline-block">
-                        Institutional maritime investment and direct operating platform with an ownership legacy spanning over six decades.
-                    </p>
+                    
                 </div>
                 
                 <!-- Col 2: Navigation -->
