@@ -40,8 +40,8 @@
         <ul class="nav-links">
             <li><a href="history.html">History</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="philanthropy.html">Philanthropy</a></li>
             <li><a href="team.html">Team</a></li>
+            <li><a href="philanthropy.html">Philanthropy</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
         <div id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
@@ -61,8 +61,8 @@
             <li><a href="index.html" class="nav-main-link active">Home</a></li>
             <li><a href="history.html" class="nav-main-link">History</a></li>
             <li><a href="about.html" class="nav-main-link">About</a></li>
-            <li><a href="philanthropy.html" class="nav-main-link">Philanthropy</a></li>
             <li><a href="team.html" class="nav-main-link">Team</a></li>
+            <li><a href="philanthropy.html" class="nav-main-link">Philanthropy</a></li>
             <li><a href="contact.html" class="nav-main-link">Contact</a></li>
         </ul>
     </div>
@@ -174,7 +174,20 @@
     <!-- Horizontal Image Accordion Stats (Scroll-driven) -->
     <section class="sticky-accordion-track" style="height: 500vh; position: relative; background: var(--bg-light); padding: 0;">
         <div class="accordion-stats reveal" style="position: sticky; top: 0; height: 100vh;">
+            <!-- Interactive Scroll Affordance Guide -->
+            <div class="accordion-scroll-cue" id="accordion-scroll-cue">
+                <div class="scroll-cue-pill">
+                    <span class="scroll-cue-mouse">
+                        <span class="scroll-cue-dot"></span>
+                    </span>
+                    <span class="scroll-cue-text">Scroll to explore track</span>
+                    <span class="scroll-cue-divider">|</span>
+                    <span class="scroll-cue-step" id="acc-counter">01 / 03</span>
+                </div>
+            </div>
+
             <div class="accordion-item active" id="acc-item-1" style="background-image: linear-gradient(to right, rgba(13, 51, 92, 0.8) 0%, rgba(13, 51, 92, 0.2) 100%), url('assets/hero.png');">
+                <div class="accordion-vertical-title">01 · 60+ Years</div>
                 <!-- Expanded State Content -->
                 <div class="accordion-content">
                     <div class="stat-number">60+</div>
@@ -183,7 +196,7 @@
             </div>
             
             <div class="accordion-item" id="acc-item-2" style="background-image: linear-gradient(to right, rgba(13, 51, 92, 0.8) 0%, rgba(13, 51, 92, 0.2) 100%), url('assets/building.png');">
-                
+                <div class="accordion-vertical-title">02 · 70+ Transactions</div>
                 <div class="accordion-content">
                     <div class="stat-number">70+</div>
                     <div class="stat-description">transactions executed with precision and deep market insight</div>
@@ -191,7 +204,7 @@
             </div>
             
             <div class="accordion-item" id="acc-item-3" style="background-image: linear-gradient(to right, rgba(13, 51, 92, 0.8) 0%, rgba(13, 51, 92, 0.2) 100%), url('assets/majestic_vessel.png');">
-                
+                <div class="accordion-vertical-title">03 · $2.5B+ Capital</div>
                 <div class="accordion-content">
                     <div class="stat-number">$2.5B+</div>
                     <div class="stat-description">Deployed capital since inception driving strategic growth</div>
@@ -304,15 +317,9 @@
                 <h2 style="font-family: 'IvyMode'; font-size: 3rem; color: var(--primary); margin-bottom: 30px; line-height: 1.1;">Connect with<br>Our Team</h2>
                 <p style="font-size: 1.15rem; color: var(--text-dark); opacity: 0.8; margin-bottom: 40px; line-height: 1.6; font-weight: 300;">Whether you are looking for technical management excellence or strategic investment partnership, our global team is ready to assist.</p>
                 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                    <div>
-                        <h4 style="font-family: 'IvyMode'; color: var(--primary); margin-bottom: 10px; font-size: 1.1rem; letter-spacing: 0.5px;">Cyprus</h4>
-                        <p style="font-size: 0.9rem; opacity: 0.7; line-height: 1.5;">Headquarters<br>16, Leandrou Street, 2328 Nicosia<br>+357 9949 4770</p>
-                    </div>
-                    <div>
-                        <h4 style="font-family: 'IvyMode'; color: var(--primary); margin-bottom: 10px; font-size: 1.1rem; letter-spacing: 0.5px;">Geneva</h4>
-                        <p style="font-size: 0.9rem; opacity: 0.7; line-height: 1.5;">Investment Office<br>Rue du Rhône</p>
-                    </div>
+                <div>
+                    <h4 style="font-family: 'IvyMode'; color: var(--primary); margin-bottom: 10px; font-size: 1.1rem; letter-spacing: 0.5px;">Cyprus</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.7; line-height: 1.5;">Headquarters<br>16, Leandrou Street, 2328 Nicosia<br>+357 9949 4770</p>
                 </div>
             </div>
             

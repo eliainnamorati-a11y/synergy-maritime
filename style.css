@@ -242,7 +242,7 @@ nav.scrolled {
 }
 
 nav.scrolled .logo {
-    padding: 1rem 0;
+    padding: 1.5rem 0;
 }
 
 .nav-links {
@@ -323,47 +323,69 @@ nav.scrolled .logo {
 }
 
 .btn {
-    display: inline-block;
-    padding: 14px 32px;
-    background-color: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0 8px 0;
+    background-color: transparent !important;
+    background: transparent !important;
     color: var(--primary);
-    border: 1px solid var(--primary);
+    border: none !important;
+    border-bottom: 1.5px solid var(--primary) !important;
     text-decoration: none;
-    font-weight: 400;
-    border-radius: 2px;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    font-weight: 500;
+    border-radius: 0 !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 0.85rem;
     cursor: pointer;
+    box-shadow: none !important;
+    width: auto;
 }
 
 .btn:hover {
-    background-color: var(--primary);
-    color: #ffffff;
+    background-color: transparent !important;
+    background: transparent !important;
+    color: var(--secondary) !important;
+    border-bottom-color: var(--secondary) !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(13, 51, 92, 0.15);
+    box-shadow: none !important;
 }
 
 .btn-light {
-    color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.5);
+    color: #ffffff !important;
+    border-bottom-color: rgba(255, 255, 255, 0.6) !important;
 }
 
 .btn-light:hover {
-    background-color: #ffffff;
-    color: var(--primary);
-    border-color: #ffffff;
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border-bottom-color: #ffffff !important;
+    opacity: 0.85;
 }
 
 .btn-accent {
-    color: var(--accent);
-    border-color: var(--accent);
+    color: #ffffff !important;
+    border-bottom-color: rgba(255, 255, 255, 0.6) !important;
 }
 
 .btn-accent:hover {
-    background-color: var(--accent);
-    color: var(--primary);
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border-bottom-color: #ffffff !important;
+    opacity: 0.85;
+}
+
+.btn-primary {
+    color: var(--primary) !important;
+    border-bottom-color: var(--primary) !important;
+}
+
+.btn-primary:hover {
+    background-color: transparent !important;
+    color: var(--secondary) !important;
+    border-bottom-color: var(--secondary) !important;
 }
 
 /* Sections */
@@ -600,18 +622,90 @@ nav.home-nav.scrolled {
 /* Collapsed Vertical Title */
 .accordion-vertical-title {
     position: absolute;
-    bottom: 40px;
+    bottom: 75px;
     left: 50%;
     transform: translateX(-50%) rotate(-90deg);
-    transform-origin: left bottom;
+    transform-origin: center center;
     color: white;
     font-family: 'IvyMode', serif;
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: 300;
     white-space: nowrap;
-    opacity: 1;
-    transition: opacity 0.4s ease;
+    opacity: 0.9;
+    transition: opacity 0.4s ease, transform 0.4s ease;
     letter-spacing: 2px;
+}
+
+/* Accordion Scroll Cue */
+.accordion-scroll-cue {
+    position: absolute;
+    top: 90px;
+    right: 5%;
+    z-index: 25;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.scroll-cue-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(13, 51, 92, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 40px;
+    padding: 8px 20px;
+    color: #FFFFFF;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-cue-mouse {
+    width: 14px;
+    height: 22px;
+    border: 1.5px solid rgba(255, 255, 255, 0.75);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.scroll-cue-dot {
+    width: 3px;
+    height: 5px;
+    background: var(--secondary);
+    border-radius: 2px;
+    position: absolute;
+    top: 3px;
+    animation: scrollMouseAnim 1.6s infinite ease-in-out;
+}
+
+@keyframes scrollMouseAnim {
+    0% { transform: translateY(0); opacity: 1; }
+    60% { transform: translateY(7px); opacity: 0.2; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.scroll-cue-divider {
+    color: rgba(255, 255, 255, 0.25);
+    font-weight: 300;
+}
+
+.scroll-cue-step {
+    font-family: 'RobotoLocal', sans-serif;
+    color: var(--secondary);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .accordion-scroll-cue {
+        display: none !important;
+    }
 }
 
 .accordion-item.active .accordion-vertical-title {
@@ -640,10 +734,10 @@ nav.home-nav.scrolled {
 .accordion-content .stat-number {
     font-family: 'IvyMode', serif;
     font-weight: 300;
-    font-size: 6.5rem;
-    line-height: 1;
-    margin-bottom: 0.15rem;
-    letter-spacing: -1.5px;
+    font-size: 4.2rem;
+    line-height: 1.05;
+    margin-bottom: 0.35rem;
+    letter-spacing: -1px;
 }
 
 .accordion-content .stat-description {
@@ -677,7 +771,7 @@ nav.home-nav.scrolled {
         bottom: 30px;
     }
     .accordion-content .stat-number {
-        font-size: 4rem;
+        font-size: 3.2rem;
     }
 }
 
@@ -1416,7 +1510,7 @@ nav.home-nav.scrolled {
     .accordion-content .stat-number {
         font-family: 'IvyMode', serif !important;
         font-weight: 300 !important;
-        font-size: 3.8rem !important;
+        font-size: 2.8rem !important;
         line-height: 1 !important;
         margin-bottom: 8px !important;
         color: #FFFFFF !important;
@@ -1483,9 +1577,9 @@ nav.home-nav.scrolled {
         text-align: left !important;
     }
     #home-contact .btn {
-        width: 100% !important;
-        text-align: center !important;
-        padding: 16px 28px !important;
+        width: auto !important;
+        text-align: left !important;
+        padding: 6px 0 8px 0 !important;
     }
 
     /* About Page Mobile Layout */

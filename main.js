@@ -15,9 +15,9 @@ window.addEventListener('scroll', () => {
 
         if (window.innerWidth <= 768) {
             if (item1 && item2 && item3) {
-                item1.classList.add('active');
-                item2.classList.add('active');
-                item3.classList.add('active');
+                item1.classList.add('active'); if(document.getElementById('acc-counter')) document.getElementById('acc-counter').textContent = '01 / 03';
+                item2.classList.add('active'); if(document.getElementById('acc-counter')) document.getElementById('acc-counter').textContent = '02 / 03';
+                item3.classList.add('active'); if(document.getElementById('acc-counter')) document.getElementById('acc-counter').textContent = '03 / 03';
             }
         } else {
             const trackRect = track.getBoundingClientRect();
@@ -33,11 +33,11 @@ window.addEventListener('scroll', () => {
                     item3.classList.remove('active');
 
                     if (progress < 0.33) {
-                        item1.classList.add('active');
+                        item1.classList.add('active'); if(document.getElementById('acc-counter')) document.getElementById('acc-counter').textContent = '01 / 03';
                     } else if (progress < 0.66) {
-                        item2.classList.add('active');
+                        item2.classList.add('active'); if(document.getElementById('acc-counter')) document.getElementById('acc-counter').textContent = '02 / 03';
                     } else {
-                        item3.classList.add('active');
+                        item3.classList.add('active'); if(document.getElementById('acc-counter')) document.getElementById('acc-counter').textContent = '03 / 03';
                     }
                 }
             }
@@ -263,4 +263,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     
     textBlocks.forEach(block => trackObserver.observe(block));
+});
+
+// Click-to-navigate for Accordion Stats
+document.addEventListener("DOMContentLoaded", () => {
+    const accTrack = document.querySelector('.sticky-accordion-track');
+    if (!accTrack) return;
+    const items = [
+        { el: document.getElementById('acc-item-1'), progress: 0.05 },
+        { el: document.getElementById('acc-item-2'), progress: 0.45 },
+        { el: document.getElementById('acc-item-3'), progress: 0.85 }
+    ];
+    items.forEach(item => {
+        if (item.el) {
+            item.el.addEventListener('click', () => {
+                if (window.innerWidth > 768 && !item.el.classList.contains('active')) {
+                    const trackTop = accTrack.offsetTop;
+                    const scrollDist = accTrack.offsetHeight - window.innerHeight;
+                    window.scrollTo({
+                        top: trackTop + scrollDist * item.progress,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+    });
 });
