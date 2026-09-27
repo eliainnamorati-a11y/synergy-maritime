@@ -17,43 +17,20 @@
         .history-timeline::after {
             content: '';
             position: absolute;
-            width: 4px;
-            background: repeating-linear-gradient(
-                to bottom,
-                var(--primary),
-                var(--primary) 2px,
-                transparent 2px,
-                transparent 30px
-            );
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-            opacity: 0.4;
-        }
-
-        .history-timeline::before {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background-color: var(--primary);
+            width: 0;
+            border-left: 2px dashed rgba(13, 51, 92, 0.25);
             top: 0;
             bottom: 0;
             left: 50%;
             margin-left: -1px;
-            opacity: 0.1;
+        }
+
+        .history-timeline::before {
+            display: none;
         }
 
         .timeline-wake {
-            position: absolute;
-            width: 60px;
-            height: 100px;
-            background: linear-gradient(to bottom, rgba(118, 149, 178, 0.2), transparent);
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-            pointer-events: none;
-            filter: blur(10px);
+            display: none !important;
         }
         
         .timeline-item {
@@ -169,6 +146,7 @@
         @media (max-width: 768px) {
             .history-timeline::after {
                 left: 20px;
+                margin-left: 0;
             }
             
             .timeline-item {
@@ -279,7 +257,7 @@
                 <img src="assets/icon for timeline.png" style="width: 100%; height: 100%; object-fit: contain;" alt="Timeline Tracker">
             </div>
             
-            <div id="timeline-wake" class="timeline-wake"></div>
+
 
 
             <!-- 2001 - 2009 -->
@@ -317,21 +295,36 @@
                     </p>
                 </div>
             </div>
-            <!-- Conclusion Text embedded in timeline -->
-            <div id="timeline-conclusion" style="max-width: 900px; margin: 80px auto 0; text-align: center; position: relative; opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);">
+        </div>
 
-                <p style="font-size: 1.8rem; color: var(--primary); font-family: 'IvyMode', serif; font-weight: 300; line-height: 1.6;">
-                    A disciplined investment approach across multiple shipping cycles has enabled Synergy to scale, reposition assets, and capitalize on market inflection points, without being exposed to market risk.
-                </p>
-            </div>
+        <!-- Dedicated Conclusion Statement Section (Separate from Timeline) -->
+        <div class="reveal" style="
+            max-width: 900px; 
+            margin: 110px auto 30px auto; 
+            text-align: center; 
+            padding: 0 20px;
+        ">
+            <div style="width: 1px; height: 40px; background-color: var(--secondary); margin: 0 auto 30px auto;"></div>
+            <p class="scroll-highlight-text" style="
+                font-family: 'IvyMode', serif; 
+                font-size: clamp(1.8rem, 4vw, 2.4rem); 
+                line-height: 1.45; 
+                color: var(--primary); 
+                font-weight: 300;
+                letter-spacing: -0.2px;
+            ">
+                A disciplined investment approach across multiple shipping cycles has enabled Synergy to scale, reposition assets, and capitalize on market inflection points, without being exposed to market risk.
+            </p>
+            <div style="width: 40px; height: 1px; background-color: var(--secondary); margin: 40px auto 0 auto; opacity: 0.6;"></div>
         </div>
 
         <script>
             window.addEventListener('scroll', function() {
                 const compass = document.getElementById('scrolling-compass');
-                const wake = document.getElementById('timeline-wake');
                 const timeline = document.querySelector('.history-timeline');
                 const items = document.querySelectorAll('.timeline-item');
+                if (!timeline || !compass) return;
+
                 const timelineRect = timeline.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
                 const offset = windowHeight / 2;
@@ -339,10 +332,9 @@
                 let scrollPercent = (offset - timelineRect.top) / timelineRect.height;
                 scrollPercent = Math.max(0, Math.min(1, scrollPercent));
                 
-                const topPos = scrollPercent * timelineRect.height;
+                const maxTop = timelineRect.height - 40;
+                const topPos = Math.min(scrollPercent * timelineRect.height, maxTop);
                 compass.style.top = (topPos - 20) + 'px';
-                wake.style.top = (topPos - 100) + 'px';
-                wake.style.opacity = scrollPercent > 0.05 ? 1 : 0;
 
                 // Parallax effect for items (desktop only)
                 if (window.innerWidth > 768) {
@@ -360,24 +352,6 @@
                     items.forEach(item => {
                         item.style.transform = 'none';
                     });
-                }
-
-                // Conclusion Load Effect
-                const conclusion = document.getElementById('timeline-conclusion');
-                if (conclusion) {
-                    if (window.innerWidth <= 768) {
-                        conclusion.style.opacity = '1';
-                        conclusion.style.transform = 'translateY(0)';
-                    } else {
-                        const conclusionRect = conclusion.getBoundingClientRect();
-                        if (offset > conclusionRect.top - 40) {
-                            conclusion.style.opacity = '1';
-                            conclusion.style.transform = 'translateY(0)';
-                        } else {
-                            conclusion.style.opacity = '0';
-                            conclusion.style.transform = 'translateY(40px)';
-                        }
-                    }
                 }
             });
         </script>

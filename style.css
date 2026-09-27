@@ -1857,8 +1857,7 @@ nav.home-nav.scrolled {
         height: 40px !important;
     }
     .timeline-wake {
-        left: 20px !important;
-        transform: translateX(-50%) !important;
+        display: none !important;
     }
     .timeline-item {
         width: 100% !important;
