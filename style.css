@@ -7,17 +7,26 @@
 
 @font-face {
     font-family: 'Figtree';
-    src: url('assets/Figtree-Regular.ttf') format('truetype'),
-         url('Figtree/static/Figtree-Regular.ttf') format('truetype');
+    src: url('assets/Figtree-Light.ttf') format('truetype'),
+         url('Figtree/static/Figtree-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* Map default 400 to Figtree Light for crisp, elegant body text */
+@font-face {
+    font-family: 'Figtree';
+    src: url('assets/Figtree-Light.ttf') format('truetype'),
+         url('Figtree/static/Figtree-Light.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Figtree';
-    src: url('assets/Figtree-Light.ttf') format('truetype'),
-         url('Figtree/static/Figtree-Light.ttf') format('truetype');
-    font-weight: 300;
+    src: url('assets/Figtree-Regular.ttf') format('truetype'),
+         url('Figtree/static/Figtree-Regular.ttf') format('truetype');
+    font-weight: 500;
     font-style: normal;
 }
 
@@ -25,14 +34,14 @@
     font-family: 'Figtree';
     src: url('assets/Figtree-Medium.ttf') format('truetype'),
          url('Figtree/static/Figtree-Medium.ttf') format('truetype');
-    font-weight: 500;
+    font-weight: 600;
     font-style: normal;
 }
 
-/* Alias Figtree to Figtree Regular for backwards compatibility */
+/* Alias RobotoLocal to Figtree Light for complete backwards compatibility */
 @font-face {
-    font-family: 'Figtree';
-    src: url('assets/Figtree-Regular.ttf') format('truetype');
+    font-family: 'RobotoLocal';
+    src: url('assets/Figtree-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
@@ -222,10 +231,15 @@ body.loaded .preloader-content {
 
 body {
     font-family: 'Figtree', sans-serif;
+    font-weight: 300;
     color: var(--text-dark);
     background-color: var(--bg-light);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+p {
+    font-weight: 300;
 }
 
 h1, h2, h3, h4 {
