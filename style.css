@@ -661,9 +661,9 @@ nav.home-nav.scrolled {
 /* Collapsed Vertical Title */
 .accordion-vertical-title {
     position: absolute;
-    bottom: 75px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%) rotate(-90deg);
+    transform: translate(-50%, -50%) rotate(-90deg);
     transform-origin: center center;
     color: white;
     font-family: 'IvyMode', serif;
@@ -1176,18 +1176,40 @@ nav.home-nav.scrolled {
 .hero-scroll-indicator {
   position: absolute;
   bottom: 60px;
-  left: 5%;
+  right: 5%;
+  left: auto;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 45px;
-  height: 45px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  width: 54px;
+  height: 54px;
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  background: rgba(13, 51, 92, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 50%;
   cursor: pointer;
-  transition: var(--transition);
+  color: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   opacity: 0;
+}
+
+.hero-scroll-indicator svg {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.hero-scroll-indicator:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: #FFFFFF;
+  transform: translateY(4px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+.hero-scroll-indicator:hover svg {
+  transform: translateY(2px);
 }
 
 .hero-badge {
@@ -1422,11 +1444,12 @@ nav.home-nav.scrolled {
         font-size: 1.15rem !important;
     }
     .hero-scroll-indicator {
-        bottom: 25px !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: 40px !important;
-        height: 40px !important;
+        bottom: 30px !important;
+        right: 6% !important;
+        left: auto !important;
+        transform: none !important;
+        width: 48px !important;
+        height: 48px !important;
     }
 
     /* Section 1: Intro */
