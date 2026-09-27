@@ -2050,3 +2050,42 @@ nav.home-nav.scrolled {
         line-height: 1.65 !important;
     }
 }
+
+/* ==========================================================================
+   SCROLL-DRIVEN HIGHLIGHT TYPOGRAPHY
+   ========================================================================== */
+.scroll-highlight-text {
+    position: relative;
+}
+
+.highlight-word {
+    display: inline;
+    opacity: 0.22;
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+                color 0.22s ease, 
+                font-weight 0.22s ease,
+                text-shadow 0.22s ease;
+    will-change: opacity, color;
+}
+
+.highlight-word.active {
+    opacity: 1 !important;
+}
+
+/* Light Backgrounds: text shows up more strong */
+#intro-text .highlight-word.active,
+#introduction .highlight-word.active,
+.scroll-highlight-text .highlight-word.active {
+    color: var(--primary);
+    font-weight: 450;
+    text-shadow: 0 0 0.75px rgba(13, 51, 92, 0.45);
+}
+
+/* Dark Backgrounds */
+.hero .scroll-highlight-text .highlight-word.active,
+header .scroll-highlight-text .highlight-word.active,
+#legacy-scroll-narrative .scroll-highlight-text .highlight-word.active {
+    color: #FFFFFF !important;
+    font-weight: 400;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
+}

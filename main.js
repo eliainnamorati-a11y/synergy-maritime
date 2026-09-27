@@ -289,3 +289,75 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+// Universal Scroll Highlight Text Engine
+function initScrollHighlightTexts() {
+    const targets = document.querySelectorAll('#intro-text, .scroll-highlight-text');
+    if (!targets.length) return;
+
+    targets.forEach(el => {
+        if (el.dataset.highlightInit) return;
+        el.dataset.highlightInit = "true";
+
+        const text = el.innerText.trim();
+        if (!text) return;
+
+        const words = text.split(/\s+/);
+        el.innerHTML = '';
+
+        words.forEach((word, idx) => {
+            const span = document.createElement('span');
+            span.className = 'highlight-word';
+            span.textContent = word + (idx < words.length - 1 ? ' ' : '');
+            el.appendChild(span);
+        });
+    });
+
+    function updateHighlightProgress() {
+        const elements = document.querySelectorAll('#intro-text, .scroll-highlight-text');
+        const windowHeight = window.innerHeight;
+
+        elements.forEach(el => {
+            const spans = el.querySelectorAll('.highlight-word');
+            if (!spans.length) return;
+
+            const rect = el.getBoundingClientRect();
+            const start = windowHeight * 0.85;
+            const end = windowHeight * 0.30;
+
+            let progress = (start - rect.top) / (start - end);
+            progress = Math.max(0, Math.min(1, progress));
+
+            const total = spans.length;
+            const activeCount = Math.floor(progress * total);
+            const subProgress = (progress * total) % 1;
+
+            spans.forEach((span, idx) => {
+                if (idx < activeCount) {
+                    span.style.opacity = '1';
+                    span.classList.add('active');
+                } else if (idx === activeCount) {
+                    span.style.opacity = (0.22 + 0.78 * subProgress).toFixed(3);
+                    if (subProgress > 0.45) {
+                        span.classList.add('active');
+                    } else {
+                        span.classList.remove('active');
+                    }
+                } else {
+                    span.style.opacity = '0.22';
+                    span.classList.remove('active');
+                }
+            });
+        });
+    }
+
+    window.addEventListener('scroll', updateHighlightProgress, { passive: true });
+    window.addEventListener('resize', updateHighlightProgress, { passive: true });
+    updateHighlightProgress();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollHighlightTexts);
+} else {
+    initScrollHighlightTexts();
+}
