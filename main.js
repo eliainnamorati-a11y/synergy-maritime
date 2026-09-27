@@ -302,3 +302,44 @@ if (document.readyState === 'loading') {
 } else {
     initScrollHighlightTexts();
 }
+
+// Cookie Consent Banner System
+function initCookieConsent() {
+    if (localStorage.getItem('synergy_cookies_consented')) return;
+
+    const banner = document.createElement('div');
+    banner.id = 'cookie-consent-banner';
+    banner.innerHTML = `
+        <div class="cookie-banner-inner">
+            <div class="cookie-banner-title">Cookie & Privacy Preferences</div>
+            <p class="cookie-banner-text">
+                We use essential cookies and analytics to enhance your browsing experience, optimize site performance, and analyze platform traffic in accordance with our <a href="privacy.html">Privacy Policy</a>.
+            </p>
+            <div class="cookie-banner-actions">
+                <button id="cookie-accept-all" class="cookie-btn cookie-btn-primary">Accept All</button>
+                <button id="cookie-essential" class="cookie-btn cookie-btn-secondary">Essential Only</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(banner);
+
+    // Smoothly animate in after 800ms
+    setTimeout(() => {
+        banner.classList.add('visible');
+    }, 800);
+
+    const dismissBanner = () => {
+        banner.classList.remove('visible');
+        setTimeout(() => banner.remove(), 400);
+        localStorage.setItem('synergy_cookies_consented', 'true');
+    };
+
+    document.getElementById('cookie-accept-all')?.addEventListener('click', dismissBanner);
+    document.getElementById('cookie-essential')?.addEventListener('click', dismissBanner);
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCookieConsent);
+} else {
+    initCookieConsent();
+}

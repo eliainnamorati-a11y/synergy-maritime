@@ -1303,6 +1303,9 @@ nav.home-nav.scrolled {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease 1s, transform 1s ease 1s;
+  margin-right: auto;
+  margin-left: 9%;
+  max-width: 850px;
 }
 
 .hero-container.active .hero-content {
@@ -2328,4 +2331,162 @@ header .scroll-highlight-text .highlight-word.active,
     color: #FFFFFF !important;
     font-weight: 400;
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
+}
+
+/* ==========================================================================
+   COOKIE CONSENT POPUP
+   ========================================================================== */
+#cookie-consent-banner {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    max-width: 440px;
+    width: calc(100% - 48px);
+    z-index: 99999;
+    background: rgba(13, 51, 92, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+    color: #FFFFFF;
+    padding: 24px;
+    transform: translateY(120%);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#cookie-consent-banner.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.cookie-banner-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.cookie-banner-title {
+    font-family: 'IvyMode', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+}
+
+.cookie-banner-text {
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 300;
+    margin: 0;
+}
+
+.cookie-banner-text a {
+    color: var(--secondary);
+    text-decoration: underline;
+    transition: opacity 0.2s;
+}
+
+.cookie-banner-text a:hover {
+    opacity: 0.8;
+}
+
+.cookie-banner-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.cookie-btn {
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.84rem;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+    letter-spacing: 0.5px;
+}
+
+.cookie-btn-primary {
+    background: #FFFFFF;
+    color: var(--primary);
+}
+
+.cookie-btn-primary:hover {
+    background: var(--secondary);
+    color: var(--primary);
+    transform: translateY(-1px);
+}
+
+.cookie-btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.cookie-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 600px) {
+    #cookie-consent-banner {
+        bottom: 16px;
+        right: 16px;
+        left: 16px;
+        width: auto;
+        padding: 20px;
+    }
+    .cookie-banner-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    .cookie-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Bespoke Luxury Footer Elements */
+.footer-tagline-block {
+    margin-top: 15px;
+    max-width: 320px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 300;
+}
+
+.footer-contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 15px;
+}
+
+.footer-contact-label {
+    font-family: 'IvyMode', serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--secondary);
+    opacity: 0.9;
+}
+
+.footer-contact-val {
+    font-family: 'Figtree', sans-serif;
+    font-size: 1rem;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.2s ease;
+}
+
+.footer-contact-val:hover {
+    color: var(--secondary);
 }
