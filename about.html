@@ -67,54 +67,69 @@
     <section id="capabilities" style="padding: 120px 0 0 0; background: #FFFFFF; border-bottom: 1px solid rgba(13, 51, 92, 0.05);">
 
 
-        <!-- Operating Capabilities Section -->
-        <section id="operating-track" style="padding: 90px 0 110px; background: #ffffff; border-bottom: 1px solid rgba(13, 51, 92, 0.08);">
-            <div style="max-width: 1280px; margin: 0 auto; padding: 0 6%; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center;">
+        <!-- Operating Track -->
+        <section id="operating-track" style="min-height: 100vh; position: relative; width: 100%; padding: 0; background: #ffffff;">
+            <div style="min-height: 100vh; display: flex; flex-direction: row; overflow: hidden;">
                 <!-- Left Side: Ship Image -->
-                <div style="position: relative; overflow: hidden; height: 580px; box-shadow: 0 25px 50px rgba(0,0,0,0.12);">
-                    <div style="background: url('assets/hero.png') center/cover no-repeat; width: 100%; height: 100%;"></div>
+                <div style="flex: 1; position: relative; overflow: hidden; min-height: 480px;">
+                    <div style="background: url('assets/hero.png') center/cover no-repeat; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></div>
                 </div>
                 
                 <!-- Right Side: Content -->
-                <div style="display: flex; flex-direction: column; justify-content: center;">
-                    <div style="margin-bottom: 35px;">
-                        <h2 style="font-family: 'IvyMode'; font-size: 2.85rem; letter-spacing: 1px; margin-bottom: 15px; font-weight: 300; line-height: 1.1; color: var(--primary);">Integrated Operator</h2>
-                        <div style="width: 40px; height: 1px; background: var(--accent); margin-bottom: 20px; opacity: 0.6;"></div>
-                        <p style="font-size: 1.15rem; color: var(--text-dark); opacity: 0.85; max-width: 520px; font-family: 'Figtree'; line-height: 1.6; font-weight: 300;">
+                <div style="flex: 1; padding: 60px 6%; display: flex; flex-direction: column; justify-content: center; background: #ffffff;">
+                    <!-- Intro -->
+                    <div style="margin-bottom: 40px;">
+                        <h2 style="font-family: 'IvyMode'; font-size: 3rem; letter-spacing: 1px; margin-bottom: 20px; font-weight: 300; line-height: 1.1; color: var(--primary);">Integrated Operator</h2>
+                        <div style="width: 40px; height: 1px; background: var(--accent); margin-bottom: 25px; opacity: 0.6;"></div>
+                        <p class="scroll-highlight-text" style="font-size: 1.25rem; color: var(--text-dark); max-width: 480px; font-family: 'Figtree'; line-height: 1.6; font-weight: 300;">
                             Direct control of chartering, technical management and vessel performance optimization.
                         </p>
                     </div>
 
-                    <div style="display: flex; flex-direction: column; gap: 16px;">
-                        <div class="op-cap-card" style="display: flex; align-items: center; gap: 20px; padding: 12px 0; border-bottom: 1px solid rgba(13, 51, 92, 0.06);">
-                            <div style="width: 55px; flex-shrink: 0; font-family: 'IvyMode', serif; font-size: 2.4rem; color: var(--primary); line-height: 1;">01</div>
+                    <!-- Capabilities Grid (Vertical) -->
+                    <div style="display: flex; align-items: center; margin-bottom: 30px;">
+                        <div style="color: var(--primary); padding-right: 20px; font-family: 'IvyMode'; letter-spacing: 1.5px; font-size: 1.4rem; font-weight: 600;">Operating Capabilities</div>
+                        <div style="flex: 1; height: 1px; background: rgba(13, 51, 92, 0.1);"></div>
+                    </div>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div class="op-cap-card cap-detail-card" style="opacity: 1; transform: none; display: flex; align-items: center; gap: 20px; padding: 0; background: transparent; border: none;">
+                            <div class="cap-card-icon-wrap" style="margin-bottom: 0; width: 60px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start;">
+                                <div style="font-family: 'IvyMode', serif; font-size: 3rem; color: var(--primary); line-height: 1;">01</div>
+                            </div>
                             <div>
-                                <h4 style="font-family: 'IvyMode'; font-size: 1.2rem; color: var(--primary); margin-bottom: 4px;">Management</h4>
-                                <p style="margin: 0; font-size: 0.95rem; color: var(--text-dark); opacity: 0.8; font-weight: 300; line-height: 1.5;">Employment, chartering, relationships, insurance and credit risk.</p>
+                                <h4 class="cap-card-title" style="margin-bottom: 5px;">Management</h4>
+                                <p class="cap-card-desc" style="margin: 0;">Employment, chartering, relationships, insurance and credit risk.</p>
                             </div>
                         </div>
                         
-                        <div class="op-cap-card" style="display: flex; align-items: center; gap: 20px; padding: 12px 0; border-bottom: 1px solid rgba(13, 51, 92, 0.06);">
-                            <div style="width: 55px; flex-shrink: 0; font-family: 'IvyMode', serif; font-size: 2.4rem; color: var(--primary); line-height: 1;">02</div>
+                        <div class="op-cap-card cap-detail-card" style="opacity: 1; transform: none; display: flex; align-items: center; gap: 20px; padding: 0; background: transparent; border: none;">
+                            <div class="cap-card-icon-wrap" style="margin-bottom: 0; width: 60px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start;">
+                                <div style="font-family: 'IvyMode', serif; font-size: 3rem; color: var(--primary); line-height: 1;">02</div>
+                            </div>
                             <div>
-                                <h4 style="font-family: 'IvyMode'; font-size: 1.2rem; color: var(--primary); margin-bottom: 4px;">Technical Management</h4>
-                                <p style="margin: 0; font-size: 0.95rem; color: var(--text-dark); opacity: 0.8; font-weight: 300; line-height: 1.5;">Decades-long track record, inspections, compliance, maintenance and performance audits.</p>
+                                <h4 class="cap-card-title" style="margin-bottom: 5px;">Technical Management</h4>
+                                <p class="cap-card-desc" style="margin: 0;">Decades-long track record, inspections, compliance, maintenance and performance audits.</p>
                             </div>
                         </div>
                         
-                        <div class="op-cap-card" style="display: flex; align-items: center; gap: 20px; padding: 12px 0; border-bottom: 1px solid rgba(13, 51, 92, 0.06);">
-                            <div style="width: 55px; flex-shrink: 0; font-family: 'IvyMode', serif; font-size: 2.4rem; color: var(--primary); line-height: 1;">03</div>
+                        <div class="op-cap-card cap-detail-card" style="opacity: 1; transform: none; display: flex; align-items: center; gap: 20px; padding: 0; background: transparent; border: none;">
+                            <div class="cap-card-icon-wrap" style="margin-bottom: 0; width: 60px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start;">
+                                <div style="font-family: 'IvyMode', serif; font-size: 3rem; color: var(--primary); line-height: 1;">03</div>
+                            </div>
                             <div>
-                                <h4 style="font-family: 'IvyMode'; font-size: 1.2rem; color: var(--primary); margin-bottom: 4px;">Vessel Performance</h4>
-                                <p style="margin: 0; font-size: 0.95rem; color: var(--text-dark); opacity: 0.8; font-weight: 300; line-height: 1.5;">Decarbonisation retrofits, fuel efficiency optimization and performance upgrades.</p>
+                                <h4 class="cap-card-title" style="margin-bottom: 5px;">Vessel Performance</h4>
+                                <p class="cap-card-desc" style="margin: 0;">Decarbonisation retrofits, fuel efficiency optimization and performance upgrades.</p>
                             </div>
                         </div>
 
-                        <div class="op-cap-card" style="display: flex; align-items: center; gap: 20px; padding: 12px 0;">
-                            <div style="width: 55px; flex-shrink: 0; font-family: 'IvyMode', serif; font-size: 2.4rem; color: var(--primary); line-height: 1;">04</div>
+                        <div class="op-cap-card cap-detail-card" style="opacity: 1; transform: none; display: flex; align-items: center; gap: 20px; padding: 0; background: transparent; border: none;">
+                            <div class="cap-card-icon-wrap" style="margin-bottom: 0; width: 60px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start;">
+                                <div style="font-family: 'IvyMode', serif; font-size: 3rem; color: var(--primary); line-height: 1;">04</div>
+                            </div>
                             <div>
-                                <h4 style="font-family: 'IvyMode'; font-size: 1.2rem; color: var(--primary); margin-bottom: 4px;">Crew & Ship Management</h4>
-                                <p style="margin: 0; font-size: 0.95rem; color: var(--text-dark); opacity: 0.8; font-weight: 300; line-height: 1.5;">In-house crewing, training, operations, budgeting and accounting services.</p>
+                                <h4 class="cap-card-title" style="margin-bottom: 5px;">Crew & Ship Management</h4>
+                                <p class="cap-card-desc" style="margin: 0;">In-house crewing, training, operations, budgeting and accounting services.</p>
                             </div>
                         </div>
                     </div>
@@ -122,57 +137,66 @@
             </div>
         </section>
 
-        <!-- Investor Capabilities Section -->
-        <section id="investor-track" style="padding: 100px 0; background: #fdfdfd; border-bottom: 1px solid rgba(13, 51, 92, 0.08);">
-            <div style="max-width: 1280px; margin: 0 auto; padding: 0 6%; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center;">
+        <!-- Investor Track -->
+        <section id="investor-track" style="min-height: 100vh; position: relative; width: 100%; padding: 0; background: #ffffff;">
+            <div style="min-height: 100vh; display: flex; flex-direction: row-reverse; overflow: hidden;">
+                <!-- Right Side: Building Image -->
+                <div style="flex: 1; position: relative; overflow: hidden; min-height: 480px;">
+                    <div style="background: url('assets/building.png') center/cover no-repeat; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></div>
+                </div>
+                
                 <!-- Left Side: Content -->
-                <div style="display: flex; flex-direction: column; justify-content: center;">
-                    <div style="margin-bottom: 35px;">
-                        <h2 style="font-family: 'IvyMode'; font-size: 2.85rem; letter-spacing: 1px; margin-bottom: 15px; font-weight: 300; line-height: 1.1; color: var(--primary);">Institutional Investor</h2>
-                        <div style="width: 40px; height: 1px; background: var(--primary); margin-bottom: 20px; opacity: 0.6;"></div>
-                        <p style="font-size: 1.15rem; color: var(--text-dark); opacity: 0.85; max-width: 520px; font-family: 'Figtree'; line-height: 1.6; font-weight: 300;">
+                <div style="flex: 1; padding: 60px 6%; display: flex; flex-direction: column; justify-content: center; background: #ffffff;">
+                    <!-- Intro -->
+                    <div style="margin-bottom: 40px;">
+                        <h2 style="font-family: 'IvyMode'; font-size: 3rem; letter-spacing: 1px; margin-bottom: 20px; font-weight: 300; line-height: 1.1; color: var(--primary);">Institutional Investor</h2>
+                        <div style="width: 40px; height: 1px; background: var(--primary); margin-bottom: 25px; opacity: 0.6;"></div>
+                        <p style="font-size: 1.15rem; color: var(--text-dark); opacity: 0.8; max-width: 420px; font-family: 'Figtree'; line-height: 1.6; font-weight: 300;">
                             Aligned capital alongside partners, combined with disciplined underwriting and active portfolio management.
                         </p>
                     </div>
                     
-                    <div style="display: flex; flex-direction: column; gap: 16px;">
-                        <div class="inv-cap-card" style="display: flex; align-items: center; gap: 20px; padding: 12px 0; border-bottom: 1px solid rgba(13, 51, 92, 0.06);">
-                            <div style="width: 55px; flex-shrink: 0; font-family: 'IvyMode', serif; font-size: 2.4rem; color: var(--primary); line-height: 1;">01</div>
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div class="inv-cap-card cap-detail-card" style="opacity: 1; transform: none; display: flex; align-items: center; gap: 20px; padding: 0; background: transparent; border: none;">
+                            <div class="cap-card-icon-wrap" style="margin-bottom: 0; width: 70px; flex-shrink: 0; display: flex; align-items: flex-start; justify-content: flex-start;">
+                                <div style="font-family: 'IvyMode', serif; font-size: 3.5rem; color: var(--primary); opacity: 0.8; line-height: 0.8;">01</div>
+                            </div>
                             <div>
-                                <h4 style="font-family: 'IvyMode'; font-size: 1.2rem; color: var(--primary); margin-bottom: 4px;">Investment Decision Making</h4>
-                                <p style="margin: 0; font-size: 0.95rem; color: var(--text-dark); opacity: 0.8; font-weight: 300; line-height: 1.5;">Sourcing, analysis, structuring, commercial and technical due diligence.</p>
+                                <h4 class="cap-card-title" style="margin-bottom: 5px;">Investment Decision Making</h4>
+                                <p class="cap-card-desc" style="margin: 0;">Sourcing, analysis, structuring, commercial and technical due diligence.</p>
                             </div>
                         </div>
                         
-                        <div class="inv-cap-card" style="display: flex; align-items: center; gap: 20px; padding: 12px 0; border-bottom: 1px solid rgba(13, 51, 92, 0.06);">
-                            <div style="width: 55px; flex-shrink: 0; font-family: 'IvyMode', serif; font-size: 2.4rem; color: var(--primary); line-height: 1;">02</div>
+                        <div class="inv-cap-card cap-detail-card" style="opacity: 1; transform: none; display: flex; align-items: center; gap: 20px; padding: 0; background: transparent; border: none;">
+                            <div class="cap-card-icon-wrap" style="margin-bottom: 0; width: 60px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start;">
+                                <div style="font-family: 'IvyMode', serif; font-size: 3rem; color: var(--primary); line-height: 1;">02</div>
+                            </div>
                             <div>
-                                <h4 style="font-family: 'IvyMode'; font-size: 1.2rem; color: var(--primary); margin-bottom: 4px;">Capital Structuring</h4>
-                                <p style="margin: 0; font-size: 0.95rem; color: var(--text-dark); opacity: 0.8; font-weight: 300; line-height: 1.5;">Co-investment structures, banking relationships, debt sourcing and advisory.</p>
+                                <h4 class="cap-card-title" style="margin-bottom: 5px;">Capital Structuring</h4>
+                                <p class="cap-card-desc" style="margin: 0;">Co-investment structures, banking relationships, debt sourcing and advisory.</p>
                             </div>
                         </div>
                         
-                        <div class="inv-cap-card" style="display: flex; align-items: center; gap: 20px; padding: 12px 0; border-bottom: 1px solid rgba(13, 51, 92, 0.06);">
-                            <div style="width: 55px; flex-shrink: 0; font-family: 'IvyMode', serif; font-size: 2.4rem; color: var(--primary); line-height: 1;">03</div>
+                        <div class="inv-cap-card cap-detail-card" style="opacity: 1; transform: none; display: flex; align-items: center; gap: 20px; padding: 0; background: transparent; border: none;">
+                            <div class="cap-card-icon-wrap" style="margin-bottom: 0; width: 60px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start;">
+                                <div style="font-family: 'IvyMode', serif; font-size: 3rem; color: var(--primary); line-height: 1;">03</div>
+                            </div>
                             <div>
-                                <h4 style="font-family: 'IvyMode'; font-size: 1.2rem; color: var(--primary); margin-bottom: 4px;">Portfolio Management</h4>
-                                <p style="margin: 0; font-size: 0.95rem; color: var(--text-dark); opacity: 0.8; font-weight: 300; line-height: 1.5;">Vessel operations oversight, divestment timing and market cycles navigation.</p>
+                                <h4 class="cap-card-title" style="margin-bottom: 5px;">Portfolio Management</h4>
+                                <p class="cap-card-desc" style="margin: 0;">Vessel operations oversight, divestment timing and market cycles navigation.</p>
                             </div>
                         </div>
 
-                        <div class="inv-cap-card" style="display: flex; align-items: center; gap: 20px; padding: 12px 0;">
-                            <div style="width: 55px; flex-shrink: 0; font-family: 'IvyMode', serif; font-size: 2.4rem; color: var(--primary); line-height: 1;">04</div>
+                        <div class="inv-cap-card cap-detail-card" style="opacity: 1; transform: none; display: flex; align-items: center; gap: 20px; padding: 0; background: transparent; border: none;">
+                            <div class="cap-card-icon-wrap" style="margin-bottom: 0; width: 60px; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-start;">
+                                <div style="font-family: 'IvyMode', serif; font-size: 3rem; color: var(--primary); line-height: 1;">04</div>
+                            </div>
                             <div>
-                                <h4 style="font-family: 'IvyMode'; font-size: 1.2rem; color: var(--primary); margin-bottom: 4px;">Reporting, Admin & Compliance</h4>
-                                <p style="margin: 0; font-size: 0.95rem; color: var(--text-dark); opacity: 0.8; font-weight: 300; line-height: 1.5;">Institutional-grade accounting, reporting, audit and regulatory compliance.</p>
+                                <h4 class="cap-card-title" style="margin-bottom: 5px;">Reporting, Admin & Compliance</h4>
+                                <p class="cap-card-desc" style="margin: 0;">Institutional-grade accounting, reporting, audit and regulatory compliance.</p>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Right Side: Building Image -->
-                <div style="position: relative; overflow: hidden; height: 580px; box-shadow: 0 25px 50px rgba(0,0,0,0.12);">
-                    <div style="background: url('assets/building.png') center/cover no-repeat; width: 100%; height: 100%;"></div>
                 </div>
             </div>
         </section>
@@ -512,7 +536,7 @@
                             <a href="tel:+35799494770" class="footer-contact-val">+357 9949 4770</a>
                         </div>
                         <div class="footer-action" style="margin-top: 15px;">
-                            <a href="contact.html" class="footer-action-link">Global Presence & Map ↗</a>
+                            <a href="contact.html" class="footer-action-link">Headquarters & Contact ↗</a>
                         </div>
                     </div>
                 </div>
