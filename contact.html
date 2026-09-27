@@ -153,10 +153,32 @@
         <ul class="nav-links">
             <li><a href="history.html">History</a></li>
             <li><a href="about.html">About</a></li>
+            <li><a href="philanthropy.html">Philanthropy</a></li>
             <li><a href="team.html">Team</a></li>
             <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
+        <div id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
     </nav>
+
+    <!-- Navigation Overlay -->
+    <div id="nav-overlay">
+        <div id="menu-close" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--primary);">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+        </div>
+        <ul class="overlay-nav-list">
+            <li><a href="index.html" class="nav-main-link">Home</a></li>
+            <li><a href="history.html" class="nav-main-link">History</a></li>
+            <li><a href="about.html" class="nav-main-link">About</a></li>
+            <li><a href="philanthropy.html" class="nav-main-link">Philanthropy</a></li>
+            <li><a href="team.html" class="nav-main-link">Team</a></li>
+            <li><a href="contact.html" class="nav-main-link active">Contact</a></li>
+        </ul>
+    </div>
 
     <header class="contact-hero">
         <div class="reveal">
@@ -170,11 +192,11 @@
                 <div>
                     <div class="info-item">
                         <h3>Cyprus Office</h3>
-                        <p>Amathountos 108, Office 201<br>Agios Tychonas<br>Limassol 4532, Cyprus</p>
+                        <p>16, Leandrou Street<br>2328 Nicosia, Cyprus</p>
                     </div>
                     <div class="info-item">
                         <h3>Contact Details</h3>
-                        <p><strong>General:</strong> contact@synergymaritime.com</p>
+                        <p><strong>Phone:</strong> <a href="tel:+35799494770" style="color: inherit; text-decoration: none;">+357 9949 4770</a><br><strong>General:</strong> contact@synergymaritime.com</p>
                         <p><strong>Media:</strong> media@synergymaritime.com</p>
                     </div>
                 </div>
@@ -197,7 +219,7 @@
                 <p style="opacity: 0.6; margin-bottom: 40px;">Fields marked with * are required.</p>
                 
                 <form class="contact-form">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-row-2col" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" placeholder="John Doe" required>
@@ -252,6 +274,7 @@
                     <ul class="footer-links">
                         <li><a href="about.html" class="footer-link">About Us</a></li>
                         <li><a href="history.html" class="footer-link">Our History</a></li>
+                        <li><a href="philanthropy.html" class="footer-link">Philanthropy</a></li>
                         <li><a href="team.html" class="footer-link">Our Team</a></li>
                     </ul>
                 </div>
@@ -261,7 +284,8 @@
                     <h4 class="footer-heading">Contact</h4>
                     <div class="footer-contact-info">
                         <p>contact@synergymaritime.com</p>
-                        <p>Limassol, Cyprus</p>
+                        <p>+357 9949 4770</p>
+                        <p>16, Leandrou Street, 2328 Nicosia</p>
                         <div class="footer-action">
                             <a href="contact.html" class="footer-action-link">Get in touch</a>
                         </div>

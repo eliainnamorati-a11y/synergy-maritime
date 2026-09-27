@@ -37,68 +37,26 @@
   <path fill="#fff" d="M461.67,17.49v22.12c0,4.59,3.72,8.3,8.3,8.3h26.88c3.47,0,6.28-2.81,6.28-6.28v-14.68h17.52v17.25c0,7.12-5.77,12.89-12.89,12.89h-47.49c-8.9,0-16.11-7.21-16.11-16.11v-24.87c0-8.9,7.21-16.11,16.11-16.11h60.38s-1.69,9.18-11.74,9.18h-38.93c-4.59,0-8.3,3.72-8.3,8.3Z"/>
 </svg></a>
         
-        <div id="menu-toggle" style="
-            width: 50px; 
-            height: 50px; 
-            background: white; 
-            border-radius: 50%; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            gap: 5px;
-            transition: var(--transition);
-        ">
-            <div style="width: 20px; height: 1.5px; background: var(--primary);"></div>
-            <div style="width: 20px; height: 1.5px; background: var(--primary);"></div>
+        <div id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
         </div>
     </nav>
 
     <!-- Navigation Overlay -->
-    <div id="nav-overlay" style="
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(13, 51, 92, 0.98);
-        z-index: 2000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    ">
-        <div id="menu-close" style="
-            position: absolute;
-            top: 40px; right: 5%;
-            width: 50px; height: 50px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        ">
+    <div id="nav-overlay">
+        <div id="menu-close" aria-label="Close menu">
             <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--primary);">
                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
             </svg>
         </div>
-        <ul class="overlay-nav-list" style="list-style: none; text-align: center; padding: 0; margin: 0;">
-            <li style="margin-bottom: 40px; position: relative;">
-                <a href="history.html" class="nav-main-link" style="font-family: 'IvyMode'; font-size: 3rem; color: white; text-decoration: none; letter-spacing: 4px; transition: var(--transition); display: inline-block; position: relative; z-index: 2;">History</a>
-            </li>
-            <li style="margin-bottom: 40px; position: relative;">
-                <a href="about.html" class="nav-main-link" style="font-family: 'IvyMode'; font-size: 3rem; color: white; text-decoration: none; letter-spacing: 4px; transition: var(--transition); display: inline-block; position: relative; z-index: 2;">About</a>
-            </li>
-            <li style="margin-bottom: 40px; position: relative;">
-                <a href="team.html" class="nav-main-link" style="font-family: 'IvyMode'; font-size: 3rem; color: white; text-decoration: none; letter-spacing: 4px; transition: var(--transition); display: inline-block; position: relative; z-index: 2;">Team</a>
-            </li>
-            <li style="margin-bottom: 40px; position: relative;">
-                <a href="contact.html" class="nav-main-link" style="font-family: 'IvyMode'; font-size: 3rem; color: white; text-decoration: none; letter-spacing: 4px; transition: var(--transition); display: inline-block; position: relative; z-index: 2;">Contact</a>
-            </li>
+        <ul class="overlay-nav-list">
+            <li><a href="index.html" class="nav-main-link active">Home</a></li>
+            <li><a href="history.html" class="nav-main-link">History</a></li>
+            <li><a href="about.html" class="nav-main-link">About</a></li>
+            <li><a href="philanthropy.html" class="nav-main-link">Philanthropy</a></li>
+            <li><a href="team.html" class="nav-main-link">Team</a></li>
+            <li><a href="contact.html" class="nav-main-link">Contact</a></li>
         </ul>
     </div>
 
@@ -345,7 +303,7 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
                     <div>
                         <h4 style="font-family: 'IvyMode'; color: var(--primary); margin-bottom: 10px; font-size: 1.1rem; letter-spacing: 0.5px;">Cyprus</h4>
-                        <p style="font-size: 0.9rem; opacity: 0.7; line-height: 1.5;">Headquarters<br>Amathountos 108, Limassol</p>
+                        <p style="font-size: 0.9rem; opacity: 0.7; line-height: 1.5;">Headquarters<br>16, Leandrou Street, 2328 Nicosia<br>+357 9949 4770</p>
                     </div>
                     <div>
                         <h4 style="font-family: 'IvyMode'; color: var(--primary); margin-bottom: 10px; font-size: 1.1rem; letter-spacing: 0.5px;">Geneva</h4>
@@ -396,6 +354,7 @@
                     <ul class="footer-links">
                         <li><a href="about.html" class="footer-link">About Us</a></li>
                         <li><a href="history.html" class="footer-link">Our History</a></li>
+                        <li><a href="philanthropy.html" class="footer-link">Philanthropy</a></li>
                         <li><a href="team.html" class="footer-link">Our Team</a></li>
                     </ul>
                 </div>
@@ -405,7 +364,8 @@
                     <h4 class="footer-heading">Contact</h4>
                     <div class="footer-contact-info">
                         <p>contact@synergymaritime.com</p>
-                        <p>Limassol, Cyprus</p>
+                        <p>+357 9949 4770</p>
+                        <p>16, Leandrou Street, 2328 Nicosia</p>
                         <div class="footer-action">
                             <a href="contact.html" class="footer-action-link">Get in touch</a>
                         </div>

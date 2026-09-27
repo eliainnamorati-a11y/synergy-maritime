@@ -219,10 +219,32 @@
         <ul class="nav-links">
             <li><a href="history.html" class="active">History</a></li>
             <li><a href="about.html">About</a></li>
+            <li><a href="philanthropy.html">Philanthropy</a></li>
             <li><a href="team.html">Team</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
+        <div id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
     </nav>
+
+    <!-- Navigation Overlay -->
+    <div id="nav-overlay">
+        <div id="menu-close" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--primary);">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+        </div>
+        <ul class="overlay-nav-list">
+            <li><a href="index.html" class="nav-main-link">Home</a></li>
+            <li><a href="history.html" class="nav-main-link active">History</a></li>
+            <li><a href="about.html" class="nav-main-link">About</a></li>
+            <li><a href="philanthropy.html" class="nav-main-link">Philanthropy</a></li>
+            <li><a href="team.html" class="nav-main-link">Team</a></li>
+            <li><a href="contact.html" class="nav-main-link">Contact</a></li>
+        </ul>
+    </div>
 
     <header class="hero" style="height: 60vh; background: linear-gradient(rgba(13, 51, 92, 0.8), rgba(13, 51, 92, 0.9)), url('assets/hero.png'); background-size: cover; background-position: center; text-align: center;">
         <h1 style="font-size: 3.5rem; color: var(--text-light); margin-bottom: 20px;">Our History</h1>
@@ -322,29 +344,39 @@
                 wake.style.top = (topPos - 100) + 'px';
                 wake.style.opacity = scrollPercent > 0.05 ? 1 : 0;
 
-                // Parallax effect for items
-                items.forEach(item => {
-                    const rect = item.getBoundingClientRect();
-                    const itemCenter = rect.top + rect.height / 2;
-                    const distanceFromCenter = (offset - itemCenter) / offset;
-                    
-                    if (Math.abs(distanceFromCenter) < 1) {
-                        const shift = distanceFromCenter * 20;
-                        item.style.transform = `translateY(${shift}px)`;
-                    }
-                });
+                // Parallax effect for items (desktop only)
+                if (window.innerWidth > 768) {
+                    items.forEach(item => {
+                        const rect = item.getBoundingClientRect();
+                        const itemCenter = rect.top + rect.height / 2;
+                        const distanceFromCenter = (offset - itemCenter) / offset;
+                        
+                        if (Math.abs(distanceFromCenter) < 1) {
+                            const shift = distanceFromCenter * 20;
+                            item.style.transform = `translateY(${shift}px)`;
+                        }
+                    });
+                } else {
+                    items.forEach(item => {
+                        item.style.transform = 'none';
+                    });
+                }
 
                 // Conclusion Load Effect
                 const conclusion = document.getElementById('timeline-conclusion');
                 if (conclusion) {
-                    const conclusionRect = conclusion.getBoundingClientRect();
-                    // When the center of the screen (compass) hits the top of the conclusion block
-                    if (offset > conclusionRect.top - 40) {
+                    if (window.innerWidth <= 768) {
                         conclusion.style.opacity = '1';
                         conclusion.style.transform = 'translateY(0)';
                     } else {
-                        conclusion.style.opacity = '0';
-                        conclusion.style.transform = 'translateY(40px)';
+                        const conclusionRect = conclusion.getBoundingClientRect();
+                        if (offset > conclusionRect.top - 40) {
+                            conclusion.style.opacity = '1';
+                            conclusion.style.transform = 'translateY(0)';
+                        } else {
+                            conclusion.style.opacity = '0';
+                            conclusion.style.transform = 'translateY(40px)';
+                        }
                     }
                 }
             });
@@ -382,6 +414,7 @@
                     <ul class="footer-links">
                         <li><a href="about.html" class="footer-link">About Us</a></li>
                         <li><a href="history.html" class="footer-link">Our History</a></li>
+                        <li><a href="philanthropy.html" class="footer-link">Philanthropy</a></li>
                         <li><a href="team.html" class="footer-link">Our Team</a></li>
                     </ul>
                 </div>
@@ -391,7 +424,8 @@
                     <h4 class="footer-heading">Contact</h4>
                     <div class="footer-contact-info">
                         <p>contact@synergymaritime.com</p>
-                        <p>Limassol, Cyprus</p>
+                        <p>+357 9949 4770</p>
+                        <p>16, Leandrou Street, 2328 Nicosia</p>
                         <div class="footer-action">
                             <a href="contact.html" class="footer-action-link">Get in touch</a>
                         </div>

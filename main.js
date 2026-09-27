@@ -9,28 +9,36 @@ window.addEventListener('scroll', () => {
     // Sticky Accordion Scroll Logic
     const track = document.querySelector('.sticky-accordion-track');
     if (track) {
-        const trackRect = track.getBoundingClientRect();
-        const scrollDistance = trackRect.height - window.innerHeight;
-        
-        if (scrollDistance > 0) {
-            let progress = -trackRect.top / scrollDistance;
-            progress = Math.max(0, Math.min(1, progress));
+        const item1 = document.getElementById('acc-item-1');
+        const item2 = document.getElementById('acc-item-2');
+        const item3 = document.getElementById('acc-item-3');
 
-            const item1 = document.getElementById('acc-item-1');
-            const item2 = document.getElementById('acc-item-2');
-            const item3 = document.getElementById('acc-item-3');
-
+        if (window.innerWidth <= 768) {
             if (item1 && item2 && item3) {
-                item1.classList.remove('active');
-                item2.classList.remove('active');
-                item3.classList.remove('active');
+                item1.classList.add('active');
+                item2.classList.add('active');
+                item3.classList.add('active');
+            }
+        } else {
+            const trackRect = track.getBoundingClientRect();
+            const scrollDistance = trackRect.height - window.innerHeight;
+            
+            if (scrollDistance > 0) {
+                let progress = -trackRect.top / scrollDistance;
+                progress = Math.max(0, Math.min(1, progress));
 
-                if (progress < 0.33) {
-                    item1.classList.add('active');
-                } else if (progress < 0.66) {
-                    item2.classList.add('active');
-                } else {
-                    item3.classList.add('active');
+                if (item1 && item2 && item3) {
+                    item1.classList.remove('active');
+                    item2.classList.remove('active');
+                    item3.classList.remove('active');
+
+                    if (progress < 0.33) {
+                        item1.classList.add('active');
+                    } else if (progress < 0.66) {
+                        item2.classList.add('active');
+                    } else {
+                        item3.classList.add('active');
+                    }
                 }
             }
         }
@@ -178,23 +186,35 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // Menu Toggle Overlay Logic
 document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.getElementById('menu-toggle');
-    const menuClose = document.getElementById('menu-close');
     const navOverlay = document.getElementById('nav-overlay');
 
-    if (menuToggle && navOverlay) {
-        menuToggle.addEventListener('click', () => {
+    document.addEventListener('click', (e) => {
+        const toggleBtn = e.target.closest('#menu-toggle, .menu-toggle');
+        const closeBtn = e.target.closest('#menu-close, .menu-close');
+        const overlayLink = e.target.closest('#nav-overlay a');
+
+        if (toggleBtn && navOverlay) {
+            e.preventDefault();
+            navOverlay.classList.add('active');
             navOverlay.style.opacity = '1';
             navOverlay.style.pointerEvents = 'auto';
             document.body.style.overflow = 'hidden';
-        });
-
-        menuClose.addEventListener('click', () => {
+        } else if ((closeBtn || overlayLink) && navOverlay) {
+            navOverlay.classList.remove('active');
             navOverlay.style.opacity = '0';
             navOverlay.style.pointerEvents = 'none';
-            document.body.style.overflow = 'auto';
-        });
-    }
+            document.body.style.overflow = '';
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navOverlay && navOverlay.classList.contains('active')) {
+            navOverlay.classList.remove('active');
+            navOverlay.style.opacity = '0';
+            navOverlay.style.pointerEvents = 'none';
+            document.body.style.overflow = '';
+        }
+    });
 });
 
 

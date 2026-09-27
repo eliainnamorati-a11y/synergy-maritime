@@ -31,11 +31,33 @@
 </svg></a>
         <ul class="nav-links">
             <li><a href="history.html">History</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="philanthropy.html">Philanthropy</a></li>
             <li><a href="team.html">Team</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
+        <div id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
     </nav>
+
+    <!-- Navigation Overlay -->
+    <div id="nav-overlay">
+        <div id="menu-close" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--primary);">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+        </div>
+        <ul class="overlay-nav-list">
+            <li><a href="index.html" class="nav-main-link">Home</a></li>
+            <li><a href="history.html" class="nav-main-link">History</a></li>
+            <li><a href="about.html" class="nav-main-link active">About</a></li>
+            <li><a href="philanthropy.html" class="nav-main-link">Philanthropy</a></li>
+            <li><a href="team.html" class="nav-main-link">Team</a></li>
+            <li><a href="contact.html" class="nav-main-link">Contact</a></li>
+        </ul>
+    </div>
 
     <section id="about-hero" style="padding: 220px 8% 120px 8%; background: linear-gradient(rgba(13, 51, 92, 0.8), rgba(13, 51, 92, 0.9)), url('assets/majestic_vessel.png') center/cover no-repeat; color: white; text-align: left;">
         <h1 style="font-size: 3.5rem; max-width: 1200px; font-family: 'IvyMode', serif;">Charting the Future of Maritime Investing</h1>
@@ -476,6 +498,9 @@
                     <p id="gb-p2" style="font-size: 1.1rem; line-height: 1.8; color: var(--text-dark); font-family: 'RobotoLocal', sans-serif; font-weight: 300; opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.2, 0, 0.2, 1);">
                         By providing the essential financial and professional framework required to compete at the highest level, we help talent translate potential into performance. Much like maritime navigation, success on the track requires precision, endurance, and an unwavering focus on the horizon.
                     </p>
+                    <div id="gb-btn" style="margin-top: 25px; opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.2, 0, 0.2, 1);">
+                        <a href="philanthropy.html" class="btn btn-primary">Discover Our Philanthropy</a>
+                    </div>
                 </div>
                 <div id="gb-image" style="position: relative; opacity: 0; transform: scale(0.95); transition: all 1s cubic-bezier(0.2, 0, 0.2, 1);">
                     <div style="position: absolute; top: -30px; left: -30px; width: 100px; height: 100px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent); z-index: 1;"></div>
@@ -486,18 +511,26 @@
         </div>
         <script>
             function updateGivingBackScroll() {
+                const subtitle = document.getElementById('gb-subtitle');
+                const title = document.getElementById('gb-title');
+                const p1 = document.getElementById('gb-p1');
+                const p2 = document.getElementById('gb-p2');
+                const image = document.getElementById('gb-image');
+                const btn = document.getElementById('gb-btn');
+
+                if (window.innerWidth <= 850) {
+                    [subtitle, title, p1, p2, image, btn].forEach(el => {
+                        if (el) { el.style.opacity = '1'; el.style.transform = 'none'; }
+                    });
+                    return;
+                }
+
                 const container = document.getElementById('giving-back-scroll');
                 const rect = container.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
                 
                 let progress = -rect.top / (rect.height - windowHeight);
                 progress = Math.max(0, Math.min(1, progress));
-                
-                const subtitle = document.getElementById('gb-subtitle');
-                const title = document.getElementById('gb-title');
-                const p1 = document.getElementById('gb-p1');
-                const p2 = document.getElementById('gb-p2');
-                const image = document.getElementById('gb-image');
 
                 if (progress > 0.05) {
                     title.style.opacity = '1';
@@ -527,6 +560,10 @@
                     p2.style.transform = 'translateY(20px)';
                 }
 
+                if (progress > 0.45 && btn) {
+                    btn.style.opacity = '1';
+                    btn.style.transform = 'translateY(0)';
+                }
                 if (progress > 0.5) {
                     image.style.opacity = '1';
                     image.style.transform = 'scale(1)';
@@ -571,6 +608,7 @@
                     <ul class="footer-links">
                         <li><a href="about.html" class="footer-link">About Us</a></li>
                         <li><a href="history.html" class="footer-link">Our History</a></li>
+                        <li><a href="philanthropy.html" class="footer-link">Philanthropy</a></li>
                         <li><a href="team.html" class="footer-link">Our Team</a></li>
                     </ul>
                 </div>
@@ -580,7 +618,8 @@
                     <h4 class="footer-heading">Contact</h4>
                     <div class="footer-contact-info">
                         <p>contact@synergymaritime.com</p>
-                        <p>Limassol, Cyprus</p>
+                        <p>+357 9949 4770</p>
+                        <p>16, Leandrou Street, 2328 Nicosia</p>
                         <div class="footer-action">
                             <a href="contact.html" class="footer-action-link">Get in touch</a>
                         </div>
@@ -601,7 +640,19 @@
 
     <script src="main.js"></script>
     <script>
-        window.addEventListener('scroll', function() {
+        function updateCapabilitiesTracks() {
+            if (window.innerWidth <= 850) {
+                document.querySelectorAll('.op-cap-card, .inv-cap-card').forEach(card => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'none';
+                });
+                const swipeOverlay = document.querySelector('.op-swipe-overlay');
+                if (swipeOverlay) swipeOverlay.style.transform = 'scaleY(0)';
+                const invSwipeOverlay = document.querySelector('.inv-swipe-overlay');
+                if (invSwipeOverlay) invSwipeOverlay.style.transform = 'scaleY(0)';
+                return;
+            }
+
             // Operating Track
             const opTrack = document.getElementById('operating-track');
             if (opTrack) {
@@ -661,7 +712,10 @@
                     }
                 }
             }
-        });
+        }
+        window.addEventListener('scroll', updateCapabilitiesTracks);
+        window.addEventListener('resize', updateCapabilitiesTracks);
+        window.addEventListener('load', updateCapabilitiesTracks);
     </script>
 </body>
 </html>
