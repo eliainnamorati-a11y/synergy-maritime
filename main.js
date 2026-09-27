@@ -6,43 +6,7 @@ window.addEventListener('scroll', () => {
     } else {
         navbar.classList.remove('scrolled');
     }
-    // Sticky Accordion Scroll Logic
-    const track = document.querySelector('.sticky-accordion-track');
-    if (track) {
-        const item1 = document.getElementById('acc-item-1');
-        const item2 = document.getElementById('acc-item-2');
-        const item3 = document.getElementById('acc-item-3');
 
-        if (window.innerWidth <= 768) {
-            if (item1 && item2 && item3) {
-                item1.classList.add('active');
-                item2.classList.add('active');
-                item3.classList.add('active');
-            }
-        } else {
-            const trackRect = track.getBoundingClientRect();
-            const scrollDistance = trackRect.height - window.innerHeight;
-            
-            if (scrollDistance > 0) {
-                let progress = -trackRect.top / scrollDistance;
-                progress = Math.max(0, Math.min(1, progress));
-
-                if (item1 && item2 && item3) {
-                    item1.classList.remove('active');
-                    item2.classList.remove('active');
-                    item3.classList.remove('active');
-
-                    if (progress < 0.33) {
-                        item1.classList.add('active');
-                    } else if (progress < 0.66) {
-                        item2.classList.add('active');
-                    } else {
-                        item3.classList.add('active');
-                    }
-                }
-            }
-        }
-    }
 
     // Animated Hero Ship Scroll Logic
     const heroTrack = document.getElementById('hero-scroll-track');
@@ -265,30 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
     textBlocks.forEach(block => trackObserver.observe(block));
 });
 
-// Click-to-navigate for Accordion Stats
-document.addEventListener("DOMContentLoaded", () => {
-    const accTrack = document.querySelector('.sticky-accordion-track');
-    if (!accTrack) return;
-    const items = [
-        { el: document.getElementById('acc-item-1'), progress: 0.05 },
-        { el: document.getElementById('acc-item-2'), progress: 0.45 },
-        { el: document.getElementById('acc-item-3'), progress: 0.85 }
-    ];
-    items.forEach(item => {
-        if (item.el) {
-            item.el.addEventListener('click', () => {
-                if (window.innerWidth > 768 && !item.el.classList.contains('active')) {
-                    const trackTop = accTrack.offsetTop;
-                    const scrollDist = accTrack.offsetHeight - window.innerHeight;
-                    window.scrollTo({
-                        top: trackTop + scrollDist * item.progress,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        }
-    });
-});
+
 
 // Universal Scroll Highlight Text Engine
 function initScrollHighlightTexts() {

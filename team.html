@@ -105,38 +105,53 @@
             opacity: 0.1;
         }
 
-        .plus-btn {
+        .profile-cta-btn {
             position: absolute;
             bottom: 20px;
             right: 20px;
-            width: 45px;
-            height: 45px;
-            background: white;
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             color: var(--primary);
             opacity: 0;
-            transform: scale(0.7) rotate(-45deg);
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
-                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
+            transform: scale(0.8) translate(0, 0);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s,
+                        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                         background 0.3s ease,
-                        color 0.3s ease;
+                        color 0.3s ease,
+                        border-color 0.3s ease,
+                        box-shadow 0.3s ease;
             z-index: 2;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
 
-        .member-card.active .plus-btn,
-        body.loaded .member-card.reveal.active .plus-btn {
+        .profile-cta-btn svg {
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .member-card.active .profile-cta-btn,
+        body.loaded .member-card.reveal.active .profile-cta-btn {
             opacity: 1;
-            transform: scale(1) rotate(0deg);
+            transform: scale(1) translate(0, 0);
         }
 
-        .member-card:hover .plus-btn {
+        .member-card:hover .profile-cta-btn {
             background: var(--primary);
-            color: white;
-            transform: scale(1.08) rotate(90deg);
+            border-color: var(--primary);
+            color: #FFFFFF;
+            transform: scale(1.08) translate(-2px, -2px);
+            box-shadow: 0 12px 25px rgba(13, 51, 92, 0.28);
+        }
+
+        .member-card:hover .profile-cta-btn svg {
+            transform: translate(1px, -1px);
         }
 
         .member-info h2 {
@@ -238,7 +253,12 @@
             <a href="team/andreas-papathomas.html" class="member-card reveal">
                 <div class="member-img-wrapper">
                     <img src="team pictures/Andreas Papathomas.jpg?v=2" alt="Andreas Papathomas">
-                    <div class="plus-btn">+</div>
+                    <div class="profile-cta-btn" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
                 </div>
                 <div class="member-info">
                     <h2>Andreas Papathomas</h2>
@@ -250,7 +270,12 @@
             <a href="team/savvas-georghiades.html" class="member-card reveal">
                 <div class="member-img-wrapper">
                     <img src="team pictures/Savvas Georghiades.jpg?v=2" alt="Savvas Georghiades">
-                    <div class="plus-btn">+</div>
+                    <div class="profile-cta-btn" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
                 </div>
                 <div class="member-info">
                     <h2>Savvas Georghiades</h2>
@@ -262,7 +287,12 @@
             <a href="team/panos-evangelou.html" class="member-card reveal">
                 <div class="member-img-wrapper">
                     <img src="team pictures/Panos Evangelou.jpg?v=2" alt="Panos Evangelou">
-                    <div class="plus-btn">+</div>
+                    <div class="profile-cta-btn" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
                 </div>
                 <div class="member-info">
                     <h2>Panos Evangelou</h2>
@@ -274,7 +304,12 @@
             <a href="team/ioannis-vafeiadis.html" class="member-card reveal">
                 <div class="member-img-wrapper">
                     <img src="team pictures/Ioannis Vafeiadis.png?v=2" alt="Ioannis Vafeiadis">
-                    <div class="plus-btn">+</div>
+                    <div class="profile-cta-btn" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
                 </div>
                 <div class="member-info">
                     <h2>Ioannis Vafeiadis</h2>
@@ -286,7 +321,12 @@
             <a href="team/symeon-boreos.html" class="member-card reveal">
                 <div class="member-img-wrapper">
                     <img src="team pictures/Symeon Boreos.jpg?v=2" alt="Symeon Boreos">
-                    <div class="plus-btn">+</div>
+                    <div class="profile-cta-btn" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
                 </div>
                 <div class="member-info">
                     <h2>Symeon Boreos</h2>
