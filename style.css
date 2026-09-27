@@ -302,10 +302,10 @@ nav.scrolled .logo {
     align-items: center;
     color: var(--text-light);
     text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
+    font-weight: 400;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 2.2px;
     transition: var(--transition);
 }
 
