@@ -557,16 +557,16 @@ footer {
 /* Custom Homepage Navigation */
 nav.home-nav {
     background: transparent;
-    border-bottom: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     backdrop-filter: none;
-    padding: 2.5rem 5% !important;
+    padding: 0 5% !important;
 }
 
 nav.home-nav.scrolled {
     background: rgba(13, 51, 92, 0.98) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(10px) !important;
-    padding: 1rem 5% !important;
+    padding: 0 5% !important;
 }
 
 /* Horizontal Accordion Stats */
@@ -1203,9 +1203,7 @@ nav.home-nav.scrolled {
     box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
-nav.home-nav #menu-toggle {
-    display: flex;
-}
+/* nav.home-nav #menu-toggle removed on desktop */
 
 #nav-overlay {
     position: fixed;
