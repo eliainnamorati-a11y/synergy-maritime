@@ -6,8 +6,33 @@
 }
 
 @font-face {
-    font-family: 'RobotoLocal';
-    src: url('assets/Roboto Light.ttf') format('truetype');
+    font-family: 'Figtree';
+    src: url('assets/Figtree-Regular.ttf') format('truetype'),
+         url('Figtree/static/Figtree-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Figtree';
+    src: url('assets/Figtree-Light.ttf') format('truetype'),
+         url('Figtree/static/Figtree-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Figtree';
+    src: url('assets/Figtree-Medium.ttf') format('truetype'),
+         url('Figtree/static/Figtree-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Alias Figtree to Figtree Regular for backwards compatibility */
+@font-face {
+    font-family: 'Figtree';
+    src: url('assets/Figtree-Regular.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
 }
@@ -196,7 +221,7 @@ body.loaded .preloader-content {
 }
 
 body {
-    font-family: 'RobotoLocal', sans-serif;
+    font-family: 'Figtree', sans-serif;
     color: var(--text-dark);
     background-color: var(--bg-light);
     line-height: 1.6;
@@ -567,7 +592,7 @@ footer {
 }
 
 .stat-circle-label {
-    font-family: 'RobotoLocal', sans-serif;
+    font-family: 'Figtree', sans-serif;
     font-size: 0.95rem;
     font-weight: 400;
     color: var(--text-dark);
@@ -696,7 +721,7 @@ nav.home-nav.scrolled {
 }
 
 .scroll-cue-step {
-    font-family: 'RobotoLocal', sans-serif;
+    font-family: 'Figtree', sans-serif;
     color: var(--secondary);
     font-weight: 600;
     letter-spacing: 1px;
@@ -741,7 +766,7 @@ nav.home-nav.scrolled {
 }
 
 .accordion-content .stat-description {
-    font-family: 'RobotoLocal', sans-serif;
+    font-family: 'Figtree', sans-serif;
     font-size: 1.2rem;
     font-weight: 300;
     line-height: 1.4;
@@ -832,7 +857,7 @@ nav.home-nav.scrolled {
     position: absolute;
     bottom: 20%;
     right: 20px;
-    font-family: 'RobotoLocal', monospace;
+    font-family: 'Figtree', monospace;
     font-size: 0.8rem;
     letter-spacing: 2px;
     color: rgba(255,255,255,0.5);
@@ -1111,7 +1136,7 @@ nav.home-nav.scrolled {
 }
 
 .scroll-desc {
-    font-family: 'RobotoLocal', sans-serif;
+    font-family: 'Figtree', sans-serif;
     font-size: 1.4rem;
     line-height: 1.6;
     color: var(--text-dark);
@@ -1242,7 +1267,7 @@ nav.home-nav.scrolled {
 }
 
 .hero-badge .badge-text {
-  font-family: "RobotoLocal";
+  font-family: 'Figtree';
   font-size: 1.5rem;
   font-weight: 300;
   color: white;
@@ -2020,7 +2045,7 @@ nav.home-nav.scrolled {
 }
 
 .phil-highlight {
-    font-family: 'RobotoLocal', sans-serif;
+    font-family: 'Figtree', sans-serif;
     font-size: 1.05rem;
     color: var(--primary);
     font-weight: 500;
@@ -2029,7 +2054,7 @@ nav.home-nav.scrolled {
 }
 
 .phil-desc {
-    font-family: 'RobotoLocal', sans-serif;
+    font-family: 'Figtree', sans-serif;
     font-size: 1.05rem;
     line-height: 1.8;
     color: #444444;
