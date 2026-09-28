@@ -177,18 +177,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', (e) => {
         const toggleBtn = e.target.closest('#menu-toggle, .menu-toggle');
-        const closeBtn = e.target.closest('#menu-close, .menu-close');
+        const closeBtn = e.target.closest('#menu-close, .menu-close, .off-screen-close');
         const overlayLink = e.target.closest('#nav-overlay a');
 
         if (toggleBtn && navOverlay) {
             e.preventDefault();
             navOverlay.classList.add('active');
             navOverlay.style.opacity = '1';
+            navOverlay.style.visibility = 'visible';
             navOverlay.style.pointerEvents = 'auto';
             document.body.style.overflow = 'hidden';
         } else if ((closeBtn || overlayLink) && navOverlay) {
             navOverlay.classList.remove('active');
             navOverlay.style.opacity = '0';
+            navOverlay.style.visibility = 'hidden';
             navOverlay.style.pointerEvents = 'none';
             document.body.style.overflow = '';
         }
