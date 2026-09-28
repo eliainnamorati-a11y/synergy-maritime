@@ -406,6 +406,19 @@ function initPlatformShowcase() {
     let ticking = false;
 
     function updateShowcase() {
+        if (window.innerWidth <= 768) {
+            wordElements.forEach(el => el.classList.add('is-dark'));
+            if (cardsWrapper) cardsWrapper.classList.add('visible');
+            if (bgWhite) bgWhite.classList.add('faded');
+            if (content) content.classList.add('dark-theme');
+            if (bg1) bg1.classList.add('active');
+            if (card1) card1.classList.add('is-active');
+            if (card2) card2.classList.add('is-active');
+            if (card3) card3.classList.add('is-active');
+            ticking = false;
+            return;
+        }
+
         const rect = showcase.getBoundingClientRect();
         const total = showcase.offsetHeight - window.innerHeight;
         if (total <= 0) return;
@@ -504,6 +517,13 @@ function initPlatformShowcase() {
     }
 
     window.addEventListener('scroll', function() {
+        if (!ticking) {
+            requestAnimationFrame(updateShowcase);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    window.addEventListener('resize', function() {
         if (!ticking) {
             requestAnimationFrame(updateShowcase);
             ticking = true;
