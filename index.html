@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Synergy Marine | World-Class Ship Management</title>
     <meta name="description" content="Synergy Marine provides innovative and sustainable ship management services, crewing solutions, and maritime technology.">
-    <link rel="stylesheet" href="style.css?v=20260928_v15">
+    <link rel="stylesheet" href="style.css?v=20260928_v16">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" href="favicon.png">
@@ -151,49 +151,56 @@
 
     </header>
 
-    <!-- Platform Narrative & Numbers Showcase Section -->
-    <section id="platform-showcase" class="platform-showcase-section">
-        <!-- Subtle Background Layer -->
-        <div class="showcase-bg-layer" style="background-image: url('assets/hist_1963.png');"></div>
-        <div class="showcase-overlay-layer"></div>
-        
-        <div class="showcase-container">
-            <!-- Subtle Prestige Eyebrow -->
-            <div class="showcase-eyebrow">
-                <span class="showcase-eyebrow-line"></span>
-                <span class="showcase-eyebrow-text">Heritage &amp; Platform</span>
-                <span class="showcase-eyebrow-line"></span>
-            </div>
+    <!-- Sticky Platform Narrative & Numbers Showcase Section -->
+    <section id="platform-showcase" class="sticky-stats-section">
+        <div class="sticky-stats-viewport">
+            <!-- White Background Layer (starts pure white, fades as user scrolls) -->
+            <div id="stat-bg-white" class="sticky-stats-white-layer"></div>
 
-            <!-- Main Statement Header -->
-            <div class="showcase-statement-wrap">
-                <h2 id="showcase-main-line" class="showcase-main-headline">
-                    Synergy is an ownership-led maritime investment and operating platform with a track record spanning every major shipping cycle since 1963.
-                </h2>
-            </div>
+            <!-- Background Image Layers for Crossfade as user scrolls -->
+            <div id="stat-bg-1" class="sticky-stats-bg" style="background-image: url('assets/hist_1963.png');"></div>
+            <div id="stat-bg-2" class="sticky-stats-bg" style="background-image: url('assets/hero.png');"></div>
+            <div id="stat-bg-3" class="sticky-stats-bg" style="background-image: url('assets/building.png');"></div>
+            
+            <!-- Rich Dark Gradient Overlay -->
+            <div class="sticky-stats-overlay"></div>
 
-            <!-- 3 Prestige Metric Cards -->
-            <div id="showcase-cards-container" class="showcase-cards-wrapper">
-                <div class="showcase-cards-grid">
-                    <!-- Stat 1: Heritage -->
-                    <div id="platform-card-1" class="showcase-stat-card" data-val="60" data-suffix="+" data-decimals="0">
-                        <div class="stat-card-gold-line"></div>
-                        <div class="platform-stat-number"><span class="stat-num-val">60</span><span class="stat-accent">+</span></div>
-                        <div class="platform-stat-label">Years Heritage</div>
+            <!-- Foreground Content Pinned & Active -->
+            <div id="showcase-content" class="sticky-stats-content">
+                <!-- Main Statement Header -->
+                <div class="sticky-stats-lead-wrap">
+                    <h2 id="showcase-main-line" class="sticky-stats-main-headline">
+                        Synergy is an ownership-led maritime investment and operating platform with a track record spanning every major shipping cycle since 1963.
+                    </h2>
+                </div>
+
+                <!-- 3 Showcase Number Cards & Progress (Appear after text scroll-darkening) -->
+                <div id="showcase-cards-container" class="sticky-stats-cards-wrapper">
+                    <div class="sticky-stats-cards-grid">
+                        <!-- Stat 1: Heritage -->
+                        <div id="platform-card-1" class="platform-stat-card">
+                            <div class="platform-stat-number">60<span class="stat-accent">+</span></div>
+                            <div class="platform-stat-label">Years Heritage</div>
+                        </div>
+
+                        <!-- Stat 2: Transactions -->
+                        <div id="platform-card-2" class="platform-stat-card">
+                            <div class="platform-stat-number">70<span class="stat-accent">+</span></div>
+                            <div class="platform-stat-label">Transactions</div>
+                        </div>
+
+                        <!-- Stat 3: Capital Deployed -->
+                        <div id="platform-card-3" class="platform-stat-card">
+                            <div class="platform-stat-number"><span class="stat-accent">$</span>2.5B<span class="stat-accent">+</span></div>
+                            <div class="platform-stat-label">Capital Deployed</div>
+                        </div>
                     </div>
 
-                    <!-- Stat 2: Transactions -->
-                    <div id="platform-card-2" class="showcase-stat-card" data-val="70" data-suffix="+" data-decimals="0">
-                        <div class="stat-card-gold-line"></div>
-                        <div class="platform-stat-number"><span class="stat-num-val">70</span><span class="stat-accent">+</span></div>
-                        <div class="platform-stat-label">Transactions</div>
-                    </div>
-
-                    <!-- Stat 3: Capital Deployed -->
-                    <div id="platform-card-3" class="showcase-stat-card" data-val="2.5" data-prefix="$" data-suffix="B+" data-decimals="1">
-                        <div class="stat-card-gold-line"></div>
-                        <div class="platform-stat-number"><span class="stat-accent">$</span><span class="stat-num-val">2.5</span><span class="stat-accent">B+</span></div>
-                        <div class="platform-stat-label">Capital Deployed</div>
+                    <!-- Progress Indicators -->
+                    <div class="sticky-stats-progress-pills">
+                        <div id="pill-1" class="progress-pill"></div>
+                        <div id="pill-2" class="progress-pill"></div>
+                        <div id="pill-3" class="progress-pill"></div>
                     </div>
                 </div>
             </div>
@@ -211,7 +218,7 @@
                 top: 0; 
                 overflow: hidden;
             ">
-                <img id="legacy-img-1" src="assets/majestic_vessel.png" alt="Synergy Legacy" style="
+                <img id="legacy-img-1" src="assets/aframax tanker 3.jpg" alt="Synergy Legacy" style="
                     width: 100%; 
                     height: 100%; 
                     object-fit: cover; 
