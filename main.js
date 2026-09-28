@@ -406,7 +406,7 @@ function initPlatformShowcase() {
     let ticking = false;
 
     function updateShowcase() {
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 900) {
             wordElements.forEach(el => el.classList.add('is-dark'));
             if (cardsWrapper) cardsWrapper.classList.add('visible');
             if (bgWhite) bgWhite.classList.add('faded');

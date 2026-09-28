@@ -3048,14 +3048,15 @@ header .scroll-highlight-text .highlight-word.active,
 @media (max-width: 900px) {
     .sticky-stats-section {
         height: auto !important;
-        min-height: 100vh !important;
-        min-height: 100dvh !important;
+        min-height: auto !important;
         position: relative !important;
-        background: #081d33 !important;
+        background: linear-gradient(180deg, #07192d 0%, #0d2847 50%, #07192d 100%) !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        padding: 95px 0 85px 0 !important;
+        padding: 70px 0 65px 0 !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
         box-sizing: border-box !important;
     }
 
@@ -3071,7 +3072,7 @@ header .scroll-highlight-text .highlight-word.active,
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
-        align-items: center !important;
+        align-items: flex-start !important;
         overflow: visible !important;
     }
 
@@ -3085,13 +3086,13 @@ header .scroll-highlight-text .highlight-word.active,
 
     .sticky-stats-bg:first-of-type,
     #stat-bg-1 {
-        opacity: 0.55 !important;
+        opacity: 0.35 !important;
         transform: scale(1) !important;
     }
 
     .sticky-stats-overlay {
         opacity: 1 !important;
-        background: linear-gradient(180deg, rgba(8, 29, 51, 0.88) 0%, rgba(5, 18, 32, 0.94) 100%) !important;
+        background: linear-gradient(180deg, rgba(7, 25, 45, 0.88) 0%, rgba(5, 18, 32, 0.94) 100%) !important;
     }
 
     .sticky-stats-content {
@@ -3107,17 +3108,19 @@ header .scroll-highlight-text .highlight-word.active,
     .sticky-stats-lead-wrap {
         width: 100% !important;
         max-width: 100% !important;
-        margin: 0 0 24px 0 !important;
+        margin: 0 0 35px 0 !important;
         text-align: left !important;
     }
 
     .sticky-stats-main-headline {
-        font-size: clamp(1.22rem, 4.5vw, 1.45rem) !important;
-        line-height: 1.42 !important;
+        font-family: 'IvyMode', serif !important;
+        font-size: clamp(1.28rem, 4.8vw, 1.55rem) !important;
+        line-height: 1.45 !important;
         letter-spacing: -0.2px !important;
         color: #ffffff !important;
         margin: 0 !important;
         text-align: left !important;
+        font-weight: 300 !important;
     }
 
     .showcase-word {
@@ -3137,35 +3140,42 @@ header .scroll-highlight-text .highlight-word.active,
     }
 
     .sticky-stats-cards-grid {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 12px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 !important;
-        align-items: flex-start !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
     }
 
     .platform-stat-card {
-        display: block !important;
-        padding: 6px 0 !important;
-        text-align: left !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: baseline !important;
+        padding: 16px 0 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+        background: transparent !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        box-shadow: none !important;
+        width: 100% !important;
         opacity: 1 !important;
         transform: none !important;
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
     }
 
     .platform-stat-number {
         font-family: 'IvyMode', serif !important;
-        font-size: clamp(1.5rem, 5vw, 1.85rem) !important;
+        font-size: clamp(1.75rem, 6vw, 2.15rem) !important;
         color: #ffffff !important;
-        margin-bottom: 4px !important;
         line-height: 1 !important;
         font-weight: 300 !important;
         text-align: left !important;
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.45) !important;
+        margin: 0 !important;
+        letter-spacing: -0.5px !important;
+        flex-shrink: 0 !important;
     }
 
     .platform-stat-number .stat-accent {
@@ -3173,14 +3183,15 @@ header .scroll-highlight-text .highlight-word.active,
     }
 
     .platform-stat-label {
-        font-family: 'IvyMode', serif !important;
-        font-size: clamp(0.68rem, 2.3vw, 0.8rem) !important;
+        font-family: 'Figtree', sans-serif !important;
+        font-size: 0.82rem !important;
         color: var(--accent) !important;
-        letter-spacing: 0.8px !important;
-        line-height: 1.25 !important;
-        margin-bottom: 0 !important;
+        letter-spacing: 1.5px !important;
         text-transform: uppercase !important;
         font-weight: 500 !important;
+        text-align: right !important;
+        margin: 0 !important;
+        opacity: 0.9 !important;
     }
 
     .sticky-stats-progress-pills {
@@ -3941,13 +3952,38 @@ header .scroll-highlight-text .highlight-word.active,
     }
 
     .platform-stat-number {
-        font-size: clamp(1.35rem, 4.5vw, 1.65rem) !important;
+        font-size: clamp(1.75rem, 6vw, 2.15rem) !important;
         line-height: 1 !important;
+        margin: 0 !important;
+    }
+
+    .platform-stat-label {
+        font-size: 0.82rem !important;
+        letter-spacing: 1.5px !important;
+        text-align: right !important;
+        margin: 0 !important;
+    }
+
+    .platform-stat-card {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: baseline !important;
+        padding: 16px 0 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+        width: 100% !important;
+    }
+
+    .sticky-stats-cards-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
     }
 
     .sticky-stats-main-headline {
-        font-size: clamp(1.15rem, 4vw, 1.35rem) !important;
-        line-height: 1.42 !important;
+        font-size: clamp(1.28rem, 4.8vw, 1.55rem) !important;
+        line-height: 1.45 !important;
     }
 
     #home-contact a[href^="mailto:"] {
