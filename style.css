@@ -1969,12 +1969,12 @@ footer.active .footer-figura,
         line-height: 1.35 !important;
     }
 
-    p, .scroll-highlight-text, .phil-desc, .cap-card-desc, #legacy-scroll-narrative p, #home-contact p {
+    p, .phil-desc, .cap-card-desc {
         font-size: 0.88rem !important;
         line-height: 1.58 !important;
     }
 
-    .lead, .track-lead-desc, #about-hero p, #home-contact p, .philanthropy-intro p, .phil-hero-desc, .phil-intro-quote {
+    .lead, .track-lead-desc, #about-hero p, #home-contact p, .legacy-chapter-desc, #legacy-scroll-narrative p, .philanthropy-intro p, .phil-hero-desc, .phil-intro-quote, .history-intro-quote {
         font-size: clamp(1.02rem, 3.6vw, 1.2rem) !important;
         line-height: 1.5 !important;
     }
@@ -2174,8 +2174,9 @@ footer.active .footer-figura,
     }
     .legacy-chapter-desc,
     #legacy-scroll-narrative p {
-        font-size: 0.88rem !important;
-        line-height: 1.58 !important;
+        font-size: clamp(1.02rem, 3.6vw, 1.2rem) !important;
+        line-height: 1.5 !important;
+        font-weight: 300 !important;
         margin: 0 0 25px 0 !important;
         text-align: left !important;
     }
@@ -2838,7 +2839,8 @@ footer.active .footer-figura,
     opacity: 0.95;
 }
 
-.phil-intro-quote {
+.phil-intro-quote,
+.history-intro-quote {
     font-family: 'IvyMode', serif;
     font-size: clamp(1.8rem, 4vw, 2.4rem);
     line-height: 1.45;
@@ -3316,6 +3318,10 @@ header .scroll-highlight-text .highlight-word.active,
     align-items: stretch;
 }
 
+.mobile-stat-loader {
+    display: none;
+}
+
 .platform-stat-card {
     background: transparent;
     border: none;
@@ -3545,20 +3551,48 @@ header .scroll-highlight-text .highlight-word.active,
         letter-spacing: -0.5px !important;
     }
 
-    .platform-stat-number .stat-accent {
-        color: var(--secondary) !important;
+    .platform-stat-number .stat-accent,
+    .platform-stat-number .stat-num-val,
+    .platform-stat-number span {
+        color: #0d2238 !important;
     }
 
     .platform-stat-label {
         font-family: 'Figtree', sans-serif !important;
         font-size: 0.82rem !important;
-        color: rgba(13, 51, 92, 0.72) !important;
+        color: #0d2238 !important;
         letter-spacing: 1.5px !important;
         text-transform: uppercase !important;
         font-weight: 500 !important;
         text-align: left !important;
         margin: 0 !important;
-        opacity: 1 !important;
+        opacity: 0.75 !important;
+    }
+
+    .mobile-stat-loader {
+        display: block !important;
+        width: 100% !important;
+        height: 2px !important;
+        background: rgba(13, 51, 92, 0.08) !important;
+        margin-top: 14px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        border-radius: 2px !important;
+    }
+
+    .mobile-stat-loader-bar {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        height: 100% !important;
+        width: 0% !important;
+        background: #0d2238 !important;
+        border-radius: 2px !important;
+        transition: width 0.05s linear;
+    }
+
+    .platform-stat-card.is-loaded .mobile-stat-loader-bar {
+        background: rgba(13, 51, 92, 0.18) !important;
     }
 
     .sticky-stats-progress-pills {
@@ -4240,8 +4274,9 @@ header .scroll-highlight-text .highlight-word.active,
 
     .legacy-chapter-desc,
     #legacy-scroll-narrative p {
-        font-size: 0.88rem !important;
-        line-height: 1.58 !important;
+        font-size: clamp(1.02rem, 3.6vw, 1.2rem) !important;
+        line-height: 1.5 !important;
+        font-weight: 300 !important;
         margin: 0 0 25px 0 !important;
         text-align: left !important;
     }
@@ -4488,8 +4523,6 @@ header .scroll-highlight-text .highlight-word.active,
     p,
     .phil-desc,
     .cap-card-desc,
-    #legacy-scroll-narrative p,
-    #home-contact p,
     .scholarship-desc-1,
     .scholarship-desc-2 {
         font-size: 0.88rem !important;
@@ -4502,8 +4535,11 @@ header .scroll-highlight-text .highlight-word.active,
     .track-lead-desc,
     #about-hero p,
     #home-contact p,
+    .legacy-chapter-desc,
+    #legacy-scroll-narrative p,
     .philanthropy-intro p,
-    .phil-intro-quote {
+    .phil-intro-quote,
+    .history-intro-quote {
         font-size: clamp(1.02rem, 3.6vw, 1.2rem) !important;
         line-height: 1.5 !important;
     }
@@ -4598,8 +4634,10 @@ header .scroll-highlight-text .highlight-word.active,
         margin: 0 !important;
     }
 
-    .platform-stat-number .stat-accent {
-        color: var(--secondary) !important;
+    .platform-stat-number .stat-accent,
+    .platform-stat-number .stat-num-val,
+    .platform-stat-number span {
+        color: #0d2238 !important;
     }
 
     .platform-stat-label {

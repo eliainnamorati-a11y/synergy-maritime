@@ -404,6 +404,83 @@ function initPlatformShowcase() {
     }
 
     let ticking = false;
+    let mobileStatsAnimating = false;
+    let mobileStatsLoaded = false;
+
+    function triggerMobileStatsLoading() {
+        if (mobileStatsAnimating || mobileStatsLoaded) return;
+        mobileStatsAnimating = true;
+
+        const statConfigs = [
+            { id: 'platform-card-1', target: 60, decimals: 0, duration: 1100, delay: 0 },
+            { id: 'platform-card-2', target: 70, decimals: 0, duration: 1200, delay: 140 },
+            { id: 'platform-card-3', target: 2.5, decimals: 1, duration: 1350, delay: 280 }
+        ];
+
+        statConfigs.forEach(cfg => {
+            const card = document.getElementById(cfg.id);
+            if (!card) return;
+            const valEl = card.querySelector('.stat-num-val');
+            const barEl = card.querySelector('.mobile-stat-loader-bar');
+
+            if (valEl) valEl.textContent = (0).toFixed(cfg.decimals);
+            if (barEl) barEl.style.width = '0%';
+            card.classList.remove('is-loaded');
+
+            setTimeout(() => {
+                card.classList.add('is-active');
+                const startTime = performance.now();
+
+                function step(now) {
+                    const elapsed = now - startTime;
+                    const p = Math.min(elapsed / cfg.duration, 1);
+                    // Luxury easeOutCubic curve
+                    const ease = 1 - Math.pow(1 - p, 3);
+                    const current = (cfg.target * ease).toFixed(cfg.decimals);
+
+                    if (valEl) valEl.textContent = current;
+                    if (barEl) barEl.style.width = (ease * 100) + '%';
+
+                    if (p < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        if (valEl) valEl.textContent = cfg.target.toFixed(cfg.decimals);
+                        if (barEl) barEl.style.width = '100%';
+                        card.classList.add('is-loaded');
+                    }
+                }
+
+                requestAnimationFrame(step);
+            }, cfg.delay);
+        });
+
+        setTimeout(() => {
+            mobileStatsAnimating = false;
+            mobileStatsLoaded = true;
+        }, 1750);
+    }
+
+    function resetMobileStatsLoading() {
+        if (!mobileStatsLoaded && !mobileStatsAnimating) return;
+        mobileStatsLoaded = false;
+        mobileStatsAnimating = false;
+        if (cardsWrapper) cardsWrapper.classList.remove('visible');
+
+        const statConfigs = [
+            { id: 'platform-card-1', target: 60, decimals: 0 },
+            { id: 'platform-card-2', target: 70, decimals: 0 },
+            { id: 'platform-card-3', target: 2.5, decimals: 1 }
+        ];
+        statConfigs.forEach(cfg => {
+            const card = document.getElementById(cfg.id);
+            if (!card) return;
+            card.classList.remove('is-active', 'is-loaded');
+            const valEl = card.querySelector('.stat-num-val');
+            const barEl = card.querySelector('.mobile-stat-loader-bar');
+            if (valEl) valEl.textContent = cfg.target.toFixed(cfg.decimals);
+            if (barEl) barEl.style.width = '0%';
+        });
+    }
 
     function updateShowcase() {
         if (window.innerWidth <= 900) {
@@ -423,12 +500,12 @@ function initPlatformShowcase() {
                 }
             });
 
-            // Reveal numbers once scrolled into focus or if past halfway
-            if (progress >= 0.40 || rect.top < endY) {
+            // Reveal numbers once scrolled into focus and trigger loading animation
+            if (progress >= 0.38 || rect.top < endY) {
                 if (cardsWrapper) cardsWrapper.classList.add('visible');
-                if (card1) card1.classList.add('is-active');
-                if (card2) card2.classList.add('is-active');
-                if (card3) card3.classList.add('is-active');
+                triggerMobileStatsLoading();
+            } else if (rect.top > vh * 0.95) {
+                resetMobileStatsLoading();
             }
 
             ticking = false;
