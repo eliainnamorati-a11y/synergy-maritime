@@ -1738,17 +1738,25 @@ footer.active .footer-figura,
     position: absolute;
     bottom: 24px;
     left: 7%;
-    font-family: 'IvyMode', serif;
-    font-size: clamp(3.8rem, 15vw, 6.5rem);
-    font-weight: 300;
-    letter-spacing: 4px;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(13, 34, 56, 0.1);
     pointer-events: none;
     user-select: none;
     z-index: 1;
-    line-height: 1;
-    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+.off-screen-figura-svg {
+    width: clamp(85px, 22vw, 120px);
+    height: auto;
+    display: block;
+}
+
+.off-screen-figura-svg polygon,
+.off-screen-figura-svg path {
+    fill: transparent !important;
+    stroke: #0d2238;
+    stroke-width: 2.2px;
+    opacity: 0.16;
 }
 
 /* Base tablet/mobile breakpoint */
