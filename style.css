@@ -1811,7 +1811,7 @@ footer.active .footer-figura,
         box-sizing: border-box !important;
     }
     .hero-content h1 {
-        font-size: clamp(2.1rem, 7.5vw, 2.85rem) !important;
+        font-size: clamp(1.85rem, 6.2vw, 2.25rem) !important;
         line-height: 1.2 !important;
         text-align: left !important;
         word-break: normal !important;
@@ -1884,9 +1884,9 @@ footer.active .footer-figura,
     .accordion-content .stat-number {
         font-family: 'IvyMode', serif !important;
         font-weight: 300 !important;
-        font-size: 2.8rem !important;
+        font-size: 2.1rem !important;
         line-height: 1 !important;
-        margin-bottom: 8px !important;
+        margin-bottom: 6px !important;
         color: #FFFFFF !important;
         letter-spacing: -1px !important;
     }
@@ -1921,12 +1921,12 @@ footer.active .footer-figura,
         padding: 50px 7% 60px 7% !important;
     }
     #legacy-scroll-narrative h2 {
-        font-size: clamp(2rem, 7vw, 2.5rem) !important;
+        font-size: clamp(1.5rem, 5.2vw, 1.85rem) !important;
         margin-bottom: 20px !important;
     }
     #legacy-scroll-narrative p {
-        font-size: 1.05rem !important;
-        line-height: 1.7 !important;
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
         margin-bottom: 30px !important;
     }
 
@@ -1939,12 +1939,12 @@ footer.active .footer-figura,
         gap: 30px !important;
     }
     #home-contact h2 {
-        font-size: clamp(2.2rem, 7vw, 2.8rem) !important;
+        font-size: clamp(1.5rem, 5.2vw, 1.85rem) !important;
         margin-bottom: 15px !important;
     }
     #home-contact p {
-        font-size: 1.1rem !important;
-        line-height: 1.7 !important;
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
     }
     #home-contact .reveal[style*="align-items: flex-end"] {
         align-items: flex-start !important;
@@ -1961,11 +1961,11 @@ footer.active .footer-figura,
         padding: 120px 7% 60px 7% !important;
     }
     #about-hero h1 {
-        font-size: clamp(2.2rem, 7.5vw, 2.9rem) !important;
-        line-height: 1.15 !important;
+        font-size: clamp(1.85rem, 6.2vw, 2.25rem) !important;
+        line-height: 1.18 !important;
     }
     #about-hero p {
-        font-size: 1.15rem !important;
+        font-size: 0.98rem !important;
         margin-top: 20px !important;
         line-height: 1.6 !important;
     }
@@ -1999,25 +1999,46 @@ footer.active .footer-figura,
     }
     #operating-track h2,
     #investor-track h2 {
-        font-size: clamp(2rem, 6.5vw, 2.5rem) !important;
+        font-size: clamp(1.5rem, 5.2vw, 1.85rem) !important;
         margin-bottom: 15px !important;
+    }
+    .track-lead-desc {
+        font-size: 0.98rem !important;
+        line-height: 1.6 !important;
+    }
+    .track-sub-label {
+        font-size: 1rem !important;
+        letter-spacing: 1px !important;
     }
     .op-cap-card,
     .inv-cap-card {
         opacity: 1 !important;
         transform: none !important;
-        margin-bottom: 25px !important;
+        margin-bottom: 20px !important;
         display: flex !important;
         align-items: flex-start !important;
+        gap: 0 !important;
+    }
+    .cap-card-icon-wrap {
+        width: 36px !important;
+        margin-right: 14px !important;
+        flex-shrink: 0 !important;
+    }
+    .cap-number-text {
+        font-size: 1.5rem !important;
+        width: 36px !important;
+        line-height: 1 !important;
+        font-weight: 300 !important;
     }
     .op-cap-card .cap-card-title,
     .inv-cap-card .cap-card-title {
-        font-size: 1.15rem !important;
+        font-size: 1.05rem !important;
+        margin-bottom: 4px !important;
     }
     .op-cap-card .cap-card-desc,
     .inv-cap-card .cap-card-desc {
-        font-size: 0.95rem !important;
-        line-height: 1.55 !important;
+        font-size: 0.88rem !important;
+        line-height: 1.5 !important;
     }
 
     /* Values Section */
@@ -2038,7 +2059,7 @@ footer.active .footer-figura,
         width: 100% !important;
     }
     #values-sticky-wrapper h2 {
-        font-size: 2.5rem !important;
+        font-size: clamp(1.5rem, 5.2vw, 1.85rem) !important;
         margin-bottom: 15px !important;
     }
     #values-sticky-wrapper p {
@@ -2054,7 +2075,7 @@ footer.active .footer-figura,
         padding: 0 10px !important;
     }
     #value-title {
-        font-size: 2rem !important;
+        font-size: 1.45rem !important;
         margin-bottom: 15px !important;
     }
     #value-desc {
@@ -2077,7 +2098,7 @@ footer.active .footer-figura,
         gap: 35px !important;
     }
     #gb-title {
-        font-size: clamp(2rem, 6.5vw, 2.5rem) !important;
+        font-size: clamp(1.5rem, 5.2vw, 1.85rem) !important;
         margin-bottom: 20px !important;
         opacity: 1 !important;
         transform: none !important;
@@ -2087,8 +2108,8 @@ footer.active .footer-figura,
         transform: none !important;
     }
     #gb-p1, #gb-p2 {
-        font-size: 1.05rem !important;
-        line-height: 1.7 !important;
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
     }
     #gb-image {
         max-width: 100% !important;
@@ -2103,7 +2124,7 @@ footer.active .footer-figura,
         padding: 120px 6% 60px 6% !important;
     }
     .history-hero h1 {
-        font-size: clamp(2.2rem, 7.5vw, 2.9rem) !important;
+        font-size: clamp(1.85rem, 6.2vw, 2.25rem) !important;
     }
     .history-timeline {
         max-width: 100% !important;
@@ -2167,7 +2188,7 @@ footer.active .footer-figura,
         padding: 120px 7% 70px 7% !important;
     }
     .contact-hero h1 {
-        font-size: clamp(2.2rem, 7.5vw, 2.9rem) !important;
+        font-size: clamp(1.85rem, 6.2vw, 2.25rem) !important;
     }
     .contact-container {
         grid-template-columns: 1fr !important;
@@ -2920,8 +2941,8 @@ header .scroll-highlight-text .highlight-word.active,
         margin: 0 auto 20px auto !important;
     }
     .sticky-stats-main-headline {
-        font-size: clamp(1.3rem, 5.2vw, 1.65rem) !important;
-        line-height: 1.38 !important;
+        font-size: clamp(1.22rem, 4.6vw, 1.5rem) !important;
+        line-height: 1.4 !important;
         letter-spacing: -0.2px !important;
         margin: 0 auto !important;
         text-align: center !important;
@@ -2957,13 +2978,13 @@ header .scroll-highlight-text .highlight-word.active,
         transform: scale(1.05) !important;
     }
     .platform-stat-number {
-        font-size: clamp(1.55rem, 5.8vw, 2.1rem) !important;
-        margin-bottom: 6px !important;
+        font-size: clamp(1.45rem, 4.8vw, 1.75rem) !important;
+        margin-bottom: 4px !important;
         line-height: 1 !important;
     }
     .platform-stat-label {
-        font-size: clamp(0.68rem, 2.3vw, 0.8rem) !important;
-        letter-spacing: 0.5px !important;
+        font-size: clamp(0.65rem, 2.2vw, 0.75rem) !important;
+        letter-spacing: 0.8px !important;
         line-height: 1.25 !important;
         margin-bottom: 0 !important;
         text-transform: uppercase !important;
@@ -3173,7 +3194,7 @@ header .scroll-highlight-text .highlight-word.active,
 
 .cap-number-text {
     font-family: 'IvyMode', serif;
-    font-size: 3.3rem;
+    font-size: 2.75rem;
     color: var(--primary);
     line-height: 0.85;
     font-weight: 300;
