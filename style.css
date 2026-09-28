@@ -1932,16 +1932,43 @@ footer.active .footer-figura,
         letter-spacing: 0.5px !important;
     }
 
-    /* Section 3: Legacy Narrative */
+    /* Preloader Loading Symbol Scale on Mobile */
+    .preloader-content {
+        width: 170px !important;
+        height: 170px !important;
+    }
+
+    #preloader-logo {
+        width: 110px !important;
+        height: auto !important;
+    }
+
+    .synergy-text-logo {
+        width: 135px !important;
+        height: auto !important;
+    }
+
+    /* Section 3: Legacy Narrative Standardized 7% Margins */
+    #legacy-scroll-narrative {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
     #legacy-scroll-narrative > div {
         flex-direction: column !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
     #legacy-scroll-narrative > div > div:first-child {
         position: relative !important;
         height: 240px !important;
         width: 100% !important;
         top: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
+    .legacy-est-badge,
     #legacy-scroll-narrative > div > div:first-child div[style*="font-family: 'IvyMode'"] {
         bottom: 20px !important;
         left: 7% !important;
@@ -1949,20 +1976,47 @@ footer.active .footer-figura,
     }
     #legacy-scroll-narrative > div > div:last-child {
         width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
+    .legacy-chapter-panel,
     #legacy-scroll-narrative > div > div:last-child > div {
         height: auto !important;
         min-height: auto !important;
-        padding: 50px 7% 60px 7% !important;
+        padding: 50px 7% 55px 7% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        text-align: left !important;
     }
+    .legacy-chapter-panel .reveal {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        text-align: left !important;
+    }
+    .legacy-chapter-title,
     #legacy-scroll-narrative h2 {
         font-size: clamp(1.22rem, 4.2vw, 1.48rem) !important;
-        margin-bottom: 20px !important;
+        line-height: 1.25 !important;
+        margin: 0 0 18px 0 !important;
+        text-align: left !important;
     }
+    .legacy-chapter-desc,
     #legacy-scroll-narrative p {
-        font-size: 0.95rem !important;
-        line-height: 1.6 !important;
-        margin-bottom: 30px !important;
+        font-size: 0.88rem !important;
+        line-height: 1.58 !important;
+        margin: 0 0 25px 0 !important;
+        text-align: left !important;
+    }
+    .legacy-chapter-panel .btn {
+        margin: 0 !important;
+        text-align: left !important;
+        align-self: flex-start !important;
     }
 
     /* Section 4: Home Contact */
@@ -2538,6 +2592,37 @@ footer.active .footer-figura,
 
 .legacy-chapter-title {
     font-size: 3.5rem;
+}
+
+.legacy-chapter-panel {
+    height: 100vh;
+    padding: 0 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.legacy-chapter-1 {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.legacy-chapter-desc {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.legacy-est-badge {
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    font-family: 'IvyMode', serif;
+    font-size: 1.5rem;
+    color: var(--accent);
+    letter-spacing: 2px;
+    z-index: 10;
 }
 
 .home-contact-title {
@@ -3789,13 +3874,100 @@ header .scroll-highlight-text .highlight-word.active,
         margin-left: 0 !important;
     }
 
-    #legacy-scroll-narrative > div > div:last-child > div {
-        padding: 50px 7% 60px 7% !important;
+    /* Refined Preloader Loading Symbol on Mobile */
+    .preloader-content {
+        width: 170px !important;
+        height: 170px !important;
     }
 
+    #preloader-logo {
+        width: 110px !important;
+        height: auto !important;
+    }
+
+    .synergy-text-logo {
+        width: 135px !important;
+        height: auto !important;
+    }
+
+    /* Standardized 7% Margins for Legacy Narrative */
+    #legacy-scroll-narrative {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    #legacy-scroll-narrative > div {
+        flex-direction: column !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    #legacy-scroll-narrative > div > div:first-child {
+        position: relative !important;
+        height: 240px !important;
+        width: 100% !important;
+        top: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .legacy-est-badge,
     #legacy-scroll-narrative > div > div:first-child div[style*="font-family: 'IvyMode'"] {
         left: 7% !important;
         bottom: 20px !important;
+        font-size: 1.1rem !important;
+    }
+
+    #legacy-scroll-narrative > div > div:last-child {
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .legacy-chapter-panel,
+    #legacy-scroll-narrative > div > div:last-child > div {
+        height: auto !important;
+        min-height: auto !important;
+        padding: 50px 7% 55px 7% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        text-align: left !important;
+    }
+
+    .legacy-chapter-panel .reveal {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        text-align: left !important;
+    }
+
+    .legacy-chapter-title,
+    #legacy-scroll-narrative h2 {
+        font-size: clamp(1.22rem, 4.2vw, 1.48rem) !important;
+        line-height: 1.25 !important;
+        margin: 0 0 18px 0 !important;
+        text-align: left !important;
+    }
+
+    .legacy-chapter-desc,
+    #legacy-scroll-narrative p {
+        font-size: 0.88rem !important;
+        line-height: 1.58 !important;
+        margin: 0 0 25px 0 !important;
+        text-align: left !important;
+    }
+
+    .legacy-chapter-panel .btn {
+        margin: 0 !important;
+        text-align: left !important;
+        align-self: flex-start !important;
     }
 
     #home-contact {
