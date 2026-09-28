@@ -2722,19 +2722,20 @@ header .scroll-highlight-text .highlight-word.active,
 }
 
 .platform-stat-card.is-spotlight {
-    border-top: 2px solid var(--accent);
-    background: rgba(13, 51, 92, 0.6);
-    border-color: rgba(212, 175, 55, 0.45);
+    border-top: 2px solid var(--secondary);
+    background: rgba(13, 51, 92, 0.65);
+    border-color: rgba(27, 160, 152, 0.4);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
 }
 
 .platform-stat-card-step {
-    font-family: 'IvyMode', serif;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    color: var(--accent);
-    margin-bottom: 12px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 2.5px;
+    color: var(--secondary);
+    margin-bottom: 14px;
     text-transform: uppercase;
-    opacity: 0.9;
+    font-weight: 600;
 }
 
 .platform-stat-number {
@@ -2748,15 +2749,15 @@ header .scroll-highlight-text .highlight-word.active,
 }
 
 .platform-stat-number .stat-accent {
-    color: var(--accent);
+    color: var(--secondary);
 }
 
 .platform-stat-label {
     font-family: 'IvyMode', serif;
-    font-size: 1.15rem;
-    color: var(--accent);
+    font-size: 1.25rem;
+    color: #ffffff;
     margin-bottom: 12px;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.5px;
 }
 
@@ -2786,7 +2787,7 @@ header .scroll-highlight-text .highlight-word.active,
 
 .progress-pill.active {
     width: 60px;
-    background: var(--accent);
+    background: var(--secondary);
 }
 
 @media (max-width: 900px) {
@@ -2801,10 +2802,11 @@ header .scroll-highlight-text .highlight-word.active,
         display: none;
     }
     .platform-stat-card.is-spotlight {
-        display: block;
-        opacity: 1;
-        transform: none;
-    }
+    border-top: 2px solid var(--secondary);
+    background: rgba(13, 51, 92, 0.65);
+    border-color: rgba(27, 160, 152, 0.4);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+}
     .sticky-stats-lead-text {
         font-size: 1.4rem;
         margin-bottom: 15px;
