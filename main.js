@@ -407,14 +407,30 @@ function initPlatformShowcase() {
 
     function updateShowcase() {
         if (window.innerWidth <= 900) {
-            wordElements.forEach(el => el.classList.add('is-dark'));
-            if (cardsWrapper) cardsWrapper.classList.add('visible');
-            if (bgWhite) bgWhite.classList.add('faded');
-            if (content) content.classList.add('dark-theme');
-            if (bg1) bg1.classList.add('active');
-            if (card1) card1.classList.add('is-active');
-            if (card2) card2.classList.add('is-active');
-            if (card3) card3.classList.add('is-active');
+            const rect = showcase.getBoundingClientRect();
+            const vh = window.innerHeight;
+            // Scroll progress across the mobile showcase section
+            const startY = vh * 0.82;
+            const endY = vh * 0.22;
+            const progress = Math.min(Math.max((startY - rect.top) / (startY - endY), 0), 1);
+
+            const darkWordCount = Math.floor(progress * (wordElements.length + 1));
+            wordElements.forEach((el, idx) => {
+                if (idx < darkWordCount) {
+                    el.classList.add('is-dark');
+                } else {
+                    el.classList.remove('is-dark');
+                }
+            });
+
+            // Reveal numbers once scrolled into focus or if past halfway
+            if (progress >= 0.40 || rect.top < endY) {
+                if (cardsWrapper) cardsWrapper.classList.add('visible');
+                if (card1) card1.classList.add('is-active');
+                if (card2) card2.classList.add('is-active');
+                if (card3) card3.classList.add('is-active');
+            }
+
             ticking = false;
             return;
         }
