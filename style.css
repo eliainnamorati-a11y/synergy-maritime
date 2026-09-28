@@ -2217,7 +2217,7 @@ footer.active .footer-figura,
         padding: 120px 7% 60px 7% !important;
     }
     #about-hero h1 {
-        font-size: clamp(1.85rem, 6.2vw, 2.25rem) !important;
+        font-size: clamp(1.72rem, 5.8vw, 2.2rem) !important;
         line-height: 1.18 !important;
     }
     #about-hero p {
@@ -2466,32 +2466,75 @@ footer.active .footer-figura,
         display: none !important;
     }
 
+    #operating-track,
+    #investor-track,
+    #operating-track > div,
+    #investor-track > div,
+    #capabilities,
+    .capabilities-track-section {
+        min-height: auto !important;
+        height: auto !important;
+    }
+
+    #operating-track > div > div:first-child,
+    #investor-track > div > div:first-child {
+        min-height: 0 !important;
+        height: 220px !important;
+    }
+
+    #investor-track {
+        padding: 0 0 10px 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    #investor-track > div > div:last-child {
+        padding: 30px 7% 10px 7% !important;
+    }
+
     .about-summary-statement {
-        margin: 50px auto 40px auto !important;
+        margin: 20px auto 35px auto !important;
         padding: 0 7% !important;
+        text-align: center !important;
     }
 
     .about-summary-divider-top {
-        height: 30px !important;
-        margin-bottom: 20px !important;
+        width: 1px !important;
+        height: 25px !important;
+        background-color: var(--secondary) !important;
+        margin: 0 auto 16px auto !important;
     }
 
     .about-summary-divider-bottom {
-        margin: 25px auto 20px auto !important;
+        width: 35px !important;
+        height: 1px !important;
+        background-color: var(--secondary) !important;
+        margin: 20px auto 16px auto !important;
     }
 
     .about-summary-text {
+        font-family: 'IvyMode', serif !important;
         font-size: clamp(1.05rem, 3.8vw, 1.25rem) !important;
         line-height: 1.55 !important;
         letter-spacing: -0.2px !important;
-        text-align: left !important;
+        text-align: center !important;
+        color: var(--primary) !important;
     }
 
     .about-summary-subtext {
+        font-family: 'Figtree', sans-serif !important;
         font-size: 0.8rem !important;
         letter-spacing: 1.2px !important;
         line-height: 1.5 !important;
-        text-align: left !important;
+        text-align: center !important;
+        color: var(--primary) !important;
+    }
+
+    /* Contact Page Follow Our Journey Gap Fix */
+    .follow-journey-title {
+        margin-bottom: 10px !important;
+    }
+    .social-links {
+        margin-top: 10px !important;
     }
 
     /* Core Values Mobile Polish */
@@ -3515,11 +3558,13 @@ header .scroll-highlight-text .highlight-word.active,
     .sticky-stats-cards-grid {
         display: flex !important;
         flex-direction: column !important;
-        gap: 0 !important;
+        gap: 26px !important;
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 !important;
-        border-top: 1px solid rgba(13, 51, 92, 0.12) !important;
+        border: none !important;
+        border-top: none !important;
+        border-bottom: none !important;
     }
 
     .platform-stat-card {
@@ -3527,16 +3572,18 @@ header .scroll-highlight-text .highlight-word.active,
         flex-direction: column !important;
         align-items: flex-start !important;
         justify-content: center !important;
-        padding: 16px 0 !important;
-        border-bottom: 1px solid rgba(13, 51, 92, 0.12) !important;
-        background: transparent !important;
+        padding: 0 !important;
+        border: none !important;
         border-top: none !important;
+        border-bottom: none !important;
         border-left: none !important;
         border-right: none !important;
+        background: transparent !important;
         box-shadow: none !important;
         width: 100% !important;
-        opacity: 1 !important;
-        transform: none !important;
+        opacity: 0.25 !important;
+        transform: translateY(10px) !important;
+        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
         gap: 4px !important;
     }
 
@@ -3570,7 +3617,7 @@ header .scroll-highlight-text .highlight-word.active,
     }
 
     .mobile-stat-loader {
-        display: block !important;
+        display: none !important;
         width: 100% !important;
         height: 2px !important;
         background: rgba(13, 51, 92, 0.08) !important;
@@ -4365,32 +4412,75 @@ header .scroll-highlight-text .highlight-word.active,
         display: none !important;
     }
 
+    #operating-track,
+    #investor-track,
+    #operating-track > div,
+    #investor-track > div,
+    #capabilities,
+    .capabilities-track-section {
+        min-height: auto !important;
+        height: auto !important;
+    }
+
+    #operating-track > div > div:first-child,
+    #investor-track > div > div:first-child {
+        min-height: 0 !important;
+        height: 220px !important;
+    }
+
+    #investor-track {
+        padding: 0 0 10px 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    #investor-track > div > div:last-child {
+        padding: 30px 7% 10px 7% !important;
+    }
+
     .about-summary-statement {
-        margin: 50px auto 40px auto !important;
+        margin: 20px auto 35px auto !important;
         padding: 0 7% !important;
+        text-align: center !important;
     }
 
     .about-summary-divider-top {
-        height: 30px !important;
-        margin-bottom: 20px !important;
+        width: 1px !important;
+        height: 25px !important;
+        background-color: var(--secondary) !important;
+        margin: 0 auto 16px auto !important;
     }
 
     .about-summary-divider-bottom {
-        margin: 25px auto 20px auto !important;
+        width: 35px !important;
+        height: 1px !important;
+        background-color: var(--secondary) !important;
+        margin: 20px auto 16px auto !important;
     }
 
     .about-summary-text {
+        font-family: 'IvyMode', serif !important;
         font-size: clamp(1.05rem, 3.8vw, 1.25rem) !important;
         line-height: 1.55 !important;
         letter-spacing: -0.2px !important;
-        text-align: left !important;
+        text-align: center !important;
+        color: var(--primary) !important;
     }
 
     .about-summary-subtext {
+        font-family: 'Figtree', sans-serif !important;
         font-size: 0.8rem !important;
         letter-spacing: 1.2px !important;
         line-height: 1.5 !important;
-        text-align: left !important;
+        text-align: center !important;
+        color: var(--primary) !important;
+    }
+
+    /* Contact Page Follow Our Journey Gap Fix */
+    .follow-journey-title {
+        margin-bottom: 10px !important;
+    }
+    .social-links {
+        margin-top: 10px !important;
     }
 
     /* Core Values Mobile Polish */
@@ -4617,10 +4707,8 @@ header .scroll-highlight-text .highlight-word.active,
     .sticky-stats-cards-grid {
         display: flex !important;
         flex-direction: column !important;
-        gap: 0 !important;
-        border-top: 1px solid rgba(13, 51, 92, 0.12) !important;
-        border-left: none !important;
-        border-right: none !important;
+        gap: 26px !important;
+        border: none !important;
         width: 100% !important;
     }
 
