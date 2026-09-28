@@ -206,18 +206,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Footer Reveal Observer
+// Luxury Footer Reveal Observer
 document.addEventListener("DOMContentLoaded", () => {
     const footerObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add("active");
+                entry.target.classList.add("active", "footer-visible");
+                const footer = entry.target.closest("footer") || entry.target;
+                if (footer) footer.classList.add("active", "footer-visible");
                 footerObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05, rootMargin: "0px 0px -20px 0px" });
     
-    document.querySelectorAll(".footer-container").forEach(el => footerObserver.observe(el));
+    document.querySelectorAll("footer, .footer-container").forEach(el => footerObserver.observe(el));
 });
 
 // Scroll-interactive Operator Track Logic

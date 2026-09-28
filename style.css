@@ -55,7 +55,7 @@
 
 :root {
     --primary: #0d335c;
-    --secondary: #1BA098;
+    --secondary: #7695b2;
     --accent: #FFFFFF;
     --text-light: #F0F4F8;
     --text-dark: #111111;
@@ -1237,22 +1237,66 @@ nav.home-nav.scrolled {
   color: #ffffff;
 }
 
-/* Staggered Reveal Animation */
-.footer-container.reveal {
-  opacity: 1 !important;
-  transform: none !important;
-  transition: none !important;
+/* Luxury Footer Staggered Reveal Animation */
+.footer-container {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.footer-container.active,
+footer.active .footer-container,
+footer.footer-visible .footer-container {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .footer-reveal-col {
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
-.footer-container.active .footer-reveal-col {
+.footer-container.active .footer-reveal-col:nth-child(1),
+footer.active .footer-reveal-col:nth-child(1) {
   opacity: 1;
-  transform: none;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.footer-container.active .footer-reveal-col:nth-child(2),
+footer.active .footer-reveal-col:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.22s;
+}
+
+.footer-container.active .footer-reveal-col:nth-child(3),
+footer.active .footer-reveal-col:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.34s;
+}
+
+.footer-container.active .footer-bottom,
+footer.active .footer-bottom {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.46s;
+}
+
+.footer-figura {
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+footer.active .footer-figura,
+.footer-container.active ~ .footer-figura {
+  opacity: 0.035;
+  transform: scale(1);
 }
 
 /* Modern Scroll Track Layout */
