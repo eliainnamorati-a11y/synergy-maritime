@@ -200,27 +200,136 @@ body.loaded .preloader-content {
     pointer-events: none;
 }
 
+/* ========================================================
+   Standardized Luxury Reveal & Loading System
+   ======================================================== */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+    transform: translateY(28px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
 }
 
-.reveal.active {
+.reveal.active,
+.reveal.track-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
+.reveal-fade {
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity;
+}
+
+.reveal-fade.active,
+.reveal-fade.track-visible {
+    opacity: 1;
+}
 
 .reveal-slide-down {
     opacity: 0;
-    transform: translateY(-80px);
-    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(-40px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
 }
 
-.reveal-slide-down.active {
+.reveal-slide-down.active,
+.reveal-slide-down.track-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Staggered Children Animations */
+.reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-stagger.active > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.active > *:nth-child(2) { transition-delay: 0.22s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.active > *:nth-child(3) { transition-delay: 0.34s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.active > *:nth-child(4) { transition-delay: 0.46s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.active > *:nth-child(5) { transition-delay: 0.58s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.active > *:nth-child(6) { transition-delay: 0.70s; opacity: 1; transform: translateY(0); }
+
+/* Operating Track Editorial Styles & Animations */
+#operating-track .track-title {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+#operating-track.track-visible .track-title,
+#operating-track.active .track-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#operating-track .track-accent-line {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--secondary) 0%, #2dd4bf 100%);
+    margin-bottom: 24px;
+    border-radius: 2px;
+    transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.32s;
+}
+
+#operating-track.track-visible .track-accent-line,
+#operating-track.active .track-accent-line {
+    width: 64px;
+}
+
+#operating-track .track-lead-desc {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.4s,
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+}
+
+#operating-track.track-visible .track-lead-desc,
+#operating-track.active .track-lead-desc {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#operating-track .track-body-narrative {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.52s,
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.52s;
+}
+
+#operating-track.track-visible .track-body-narrative,
+#operating-track.active .track-body-narrative {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#operating-track .track-media-img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1.14);
+    filter: brightness(0.9);
+    transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 1.8s ease;
+    will-change: transform, filter;
+}
+
+#operating-track.track-visible .track-media-img,
+#operating-track.active .track-media-img {
+    transform: scale(1.02);
+    filter: brightness(1);
+    animation: gentleKenBurns 18s ease-in-out infinite alternate 2.2s;
 }
 
 * {
@@ -1281,7 +1390,7 @@ nav.home-nav.scrolled {
 .curtain-right {
   left: 0;
   width: 100%;
-  clip-path: polygon(63% 0, 100% 0, 100% 100%, 80% 100%);
+  clip-path: polygon(47% 0, 100% 0, 100% 100%, 70% 100%);
   transform: translateX(100%);
 }
 
@@ -2709,20 +2818,33 @@ header .scroll-highlight-text .highlight-word.active,
    Capabilities Track Loading Animations (about.html)
    ======================================================== */
 .track-media-img {
-    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s ease;
-    transform: scale(1.05);
-    filter: brightness(0.9);
+    transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1), filter 1.6s ease;
+    transform: scale(1.12);
+    filter: brightness(0.92) contrast(1.05);
 }
 
 .track-visible .track-media-img {
-    transform: scale(1);
-    filter: brightness(1);
+    transform: scale(1.0);
+    filter: brightness(1) contrast(1);
+}
+
+.track-media-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(13, 51, 92, 0.25) 0%, transparent 60%);
+    pointer-events: none;
+    opacity: 0.7;
+    transition: opacity 1.5s ease;
+}
+
+.track-visible .track-media-overlay {
+    opacity: 0.3;
 }
 
 .track-content-col {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(24px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .track-visible .track-content-col {
@@ -2730,43 +2852,576 @@ header .scroll-highlight-text .highlight-word.active,
     transform: translateY(0);
 }
 
-.cap-item-stagger {
+/* Eyebrow & Title Entrance */
+.track-eyebrow {
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--secondary);
+    text-transform: uppercase;
+    margin-bottom: 12px;
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-left-color 0.3s ease;
-    border-left: 2px solid transparent;
-    padding-left: 8px !important;
+    transform: translateY(-10px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
 }
 
-.cap-item-stagger:hover {
-    transform: translateX(6px) !important;
-    border-left-color: var(--accent);
+.track-visible .track-eyebrow {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.cap-item-stagger:hover .cap-card-title {
-    color: var(--accent) !important;
+.track-title {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.22s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.22s;
+}
+
+.track-visible .track-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.track-accent-line {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--secondary) 0%, #2dd4bf 100%);
+    margin-bottom: 24px;
+    border-radius: 2px;
+    transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.32s;
+}
+
+.track-visible .track-accent-line {
+    width: 52px;
+}
+
+.track-lead-desc {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.38s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.38s;
+}
+
+.track-visible .track-lead-desc {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.track-sub-line {
+    width: 0;
+    transition: width 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s;
+}
+
+.track-visible .track-sub-line {
+    width: 100%;
+}
+
+/* ========================================================
+   Enhanced Animated Capabilities Track (Integrated Operator)
+   ======================================================== */
+.capabilities-track-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.track-media-img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1.14);
+    filter: brightness(0.9);
+    transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 1.8s ease;
+    will-change: transform, filter;
+}
+
+.track-visible .track-media-img {
+    transform: scale(1.02);
+    filter: brightness(1);
+    animation: gentleKenBurns 18s ease-in-out infinite alternate 2.2s;
+}
+
+@keyframes gentleKenBurns {
+    0% { transform: scale(1.02) translate(0, 0); }
+    100% { transform: scale(1.06) translate(-1.2%, -0.8%); }
+}
+
+.track-media-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(13, 51, 92, 0.22) 0%, rgba(13, 51, 92, 0.08) 40%, rgba(13, 51, 92, 0.35) 100%);
+    pointer-events: none;
+    transition: opacity 1.5s ease;
+}
+
+.track-image-badge {
+    position: absolute;
+    bottom: 35px;
+    left: 35px;
+    z-index: 10;
+    background: rgba(13, 51, 92, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 40px;
+    padding: 9px 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #FFFFFF;
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s,
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+}
+
+.track-visible .track-image-badge {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.beacon-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2dd4bf;
+    box-shadow: 0 0 10px #2dd4bf;
+    position: relative;
+    display: inline-block;
+}
+
+.beacon-pulse::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #2dd4bf;
+    animation: beaconRipple 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes beaconRipple {
+    0% { transform: scale(0.6); opacity: 0.9; }
+    100% { transform: scale(2.2); opacity: 0; }
+}
+
+.op-cap-card,
+.inv-cap-card {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 16px 22px !important;
+    background: #FFFFFF;
+    border: 1px solid rgba(13, 51, 92, 0.08);
+    border-left: 3px solid transparent;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(13, 51, 92, 0.02);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(32px) translateX(15px);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.4s ease,
+                opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.op-cap-card::before,
+.inv-cap-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(27, 160, 152, 0.08), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.9s ease;
+    pointer-events: none;
+}
+
+.track-visible .op-cap-card::before,
+.track-visible .inv-cap-card::before {
+    left: 140%;
 }
 
 .track-visible .cap-item-stagger:nth-child(1) {
     opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.15s;
+    transform: translateY(0) translateX(0);
+    transition-delay: 0.32s;
+    border-left-color: rgba(27, 160, 152, 0.4);
 }
 
 .track-visible .cap-item-stagger:nth-child(2) {
     opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.3s;
+    transform: translateY(0) translateX(0);
+    transition-delay: 0.48s;
+    border-left-color: rgba(27, 160, 152, 0.4);
 }
 
 .track-visible .cap-item-stagger:nth-child(3) {
     opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.45s;
+    transform: translateY(0) translateX(0);
+    transition-delay: 0.64s;
+    border-left-color: rgba(27, 160, 152, 0.4);
 }
 
 .track-visible .cap-item-stagger:nth-child(4) {
     opacity: 1;
+    transform: translateY(0) translateX(0);
+    transition-delay: 0.80s;
+    border-left-color: rgba(27, 160, 152, 0.4);
+}
+
+.cap-number-text {
+    font-family: 'IvyMode', serif;
+    font-size: 2.7rem;
+    color: var(--primary);
+    line-height: 1;
+    font-weight: 300;
+    transition: color 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 55px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.op-cap-card:hover,
+.inv-cap-card:hover {
+    background: #fbfdfe !important;
+    border-left-color: var(--secondary) !important;
+    border-color: rgba(27, 160, 152, 0.3) !important;
+    transform: translateX(10px) translateY(-2px) !important;
+    box-shadow: 0 14px 34px rgba(13, 51, 92, 0.08) !important;
+}
+
+.op-cap-card:hover .cap-number-text,
+.inv-cap-card:hover .cap-number-text {
+    color: var(--secondary) !important;
+    transform: scale(1.08) translateX(2px);
+}
+
+/* ========================================================
+   Cambridge Scholarship Enhanced Animations & Presentation
+   ======================================================== */
+.phil-scholarship-card {
+    position: relative;
+    transition: var(--transition);
+}
+
+.scholarship-img-wrap {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(13, 51, 92, 0.16);
+    aspect-ratio: 16/11;
+}
+
+.scholarship-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.12);
+    filter: brightness(0.95);
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), filter 1.5s ease;
+}
+
+.phil-scholarship-card.active .scholarship-img-wrap img {
+    transform: scale(1.0);
+    filter: brightness(1);
+}
+
+.scholarship-crest-badge {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(13, 51, 92, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 8px 16px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #FFFFFF;
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.phil-scholarship-card.active .scholarship-crest-badge {
+    opacity: 1;
     transform: translateY(0);
-    transition-delay: 0.6s;
+}
+
+.crest-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--secondary);
+    box-shadow: 0 0 10px var(--secondary);
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.4); opacity: 0.5; }
+}
+
+.scholarship-eyebrow {
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--secondary);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.phil-scholarship-card.active .scholarship-eyebrow {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scholarship-title {
+    font-family: 'IvyMode', serif;
+    font-size: clamp(2.2rem, 3.8vw, 3rem);
+    color: var(--primary);
+    line-height: 1.15;
+    margin-bottom: 22px;
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.28s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.28s;
+}
+
+.phil-scholarship-card.active .scholarship-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scholarship-sub-institution {
+    display: block;
+    font-size: 0.65em;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #4a637d;
+    margin-top: 6px;
+}
+
+/* Scholarship Stats Banner (4 Annual Scholars · 2 Humanities & 2 Science) */
+.scholarship-stats-card {
+    background: linear-gradient(135deg, rgba(13, 51, 92, 0.035) 0%, rgba(27, 160, 152, 0.055) 100%);
+    border: 1px solid rgba(13, 51, 92, 0.1);
+    border-left: 3px solid var(--secondary);
+    padding: 18px 24px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.38s,
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.38s,
+                box-shadow 0.4s ease;
+    box-shadow: 0 8px 30px rgba(13, 51, 92, 0.04);
+}
+
+.phil-scholarship-card.active .scholarship-stats-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.scholarship-stat-primary {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.stat-number {
+    font-family: 'IvyMode', serif;
+    font-size: 3.2rem;
+    font-weight: 300;
+    color: var(--primary);
+    line-height: 0.9;
+    display: inline-block;
+    min-width: 32px;
+}
+
+.stat-label-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-title {
+    font-family: 'IvyMode', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: 0.3px;
+    line-height: 1.25;
+}
+
+.stat-subtitle {
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.85rem;
+    color: #556980;
+    margin-top: 3px;
+    font-weight: 400;
+}
+
+.scholarship-stat-divider {
+    width: 1px;
+    height: 48px;
+    background: rgba(13, 51, 92, 0.12);
+}
+
+.scholarship-stat-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.breakdown-pill {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.92rem;
+    color: var(--primary);
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(13, 51, 92, 0.09);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.breakdown-pill:hover {
+    transform: translateX(4px);
+    border-color: var(--secondary);
+}
+
+.pill-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+
+.humanities-dot {
+    background: #d97706; /* Elegant amber for Humanities */
+}
+
+.science-dot {
+    background: var(--secondary); /* Teal for Sciences */
+}
+
+.pill-count {
+    font-weight: 700;
+    color: var(--primary);
+    min-width: 10px;
+}
+
+.pill-name {
+    color: #334155;
+    font-size: 0.88rem;
+}
+
+.scholarship-desc-1 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.48s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.48s;
+}
+
+.scholarship-desc-2 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.58s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.58s;
+}
+
+.phil-scholarship-card.active .scholarship-desc-1,
+.phil-scholarship-card.active .scholarship-desc-2 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scholarship-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.68s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.68s;
+}
+
+.phil-scholarship-card.active .scholarship-badge-row {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sch-badge {
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--primary);
+    background: rgba(13, 51, 92, 0.04);
+    border: 1px solid rgba(13, 51, 92, 0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.sch-badge:hover {
+    background: rgba(27, 160, 152, 0.1);
+    border-color: var(--secondary);
+    color: var(--secondary);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 850px) {
+    .scholarship-stats-card {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 14px !important;
+        padding: 16px !important;
+    }
+    .scholarship-stat-divider {
+        display: none !important;
+    }
+    .scholarship-stat-breakdown {
+        width: 100% !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+    }
+    .breakdown-pill {
+        flex: 1 !important;
+        justify-content: center !important;
+    }
 }

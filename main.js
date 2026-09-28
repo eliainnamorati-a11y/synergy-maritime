@@ -40,27 +40,44 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Reveal animations on scroll
+// Standardized reveal & loading animations across the site
 function reveal() {
-    var reveals = document.querySelectorAll(".reveal, .reveal-slide-down");
-    for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 100;
-        if (elementTop < windowHeight - elementVisible) {
-            reveals[i].classList.add("active");
+    const reveals = document.querySelectorAll('.reveal, .reveal-slide-down, .reveal-fade, .reveal-stagger, .capabilities-track-section');
+    const windowHeight = window.innerHeight;
+    reveals.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < windowHeight * 0.92 && rect.bottom > 0) {
+            el.classList.add('active');
+            el.classList.add('track-visible');
             
-            // Trigger counter if element contains count-up
-            const counters = reveals[i].querySelectorAll('.count-up');
+            const counters = el.querySelectorAll('.count-up');
             counters.forEach(counter => {
                 if (!counter.classList.contains('counted')) {
                     animateCounter(counter);
                 }
             });
         }
+    });
+}
+
+function initStandardizedObserver() {
+    const reveals = document.querySelectorAll('.reveal, .reveal-slide-down, .reveal-fade, .reveal-stagger, .capabilities-track-section');
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    entry.target.classList.add('track-visible');
+                    const counters = entry.target.querySelectorAll('.count-up:not(.counted)');
+                    counters.forEach(animateCounter);
+                }
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '50px 0px -30px 0px'
+        });
+        reveals.forEach(el => observer.observe(el));
     }
-
-
 }
 
 function animateCounter(el) {
@@ -91,7 +108,8 @@ function animateCounter(el) {
 }
 
 window.addEventListener('scroll', reveal);
-window.addEventListener('load', reveal);
+window.addEventListener('load', () => { reveal(); initStandardizedObserver(); });
+window.addEventListener('DOMContentLoaded', () => { reveal(); initStandardizedObserver(); });
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -144,7 +162,12 @@ window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => { heroContainer.classList.add('active'); }, 200);
         }
 
-        setTimeout(reveal, 500);
+        setTimeout(() => {
+            reveal();
+            if (typeof initCapabilitiesLoading === 'function') {
+                initCapabilitiesLoading();
+            }
+        }, 400);
     }, delay);
 });
 
@@ -428,16 +451,29 @@ function initCapabilitiesLoading() {
     const invTrack = document.getElementById('investor-track');
     if (!opTrack && !invTrack) return;
 
+    function checkVisibility() {
+        const tracks = [opTrack, invTrack].filter(Boolean);
+        tracks.forEach(track => {
+            const rect = track.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
+                track.classList.add('track-visible');
+            }
+        });
+    }
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('track-visible');
             }
         });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
 
     if (opTrack) observer.observe(opTrack);
     if (invTrack) observer.observe(invTrack);
+
+    checkVisibility();
+    window.addEventListener('scroll', checkVisibility, { passive: true });
 }
 
 
