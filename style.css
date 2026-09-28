@@ -1953,7 +1953,7 @@ footer.active .footer-figura,
         letter-spacing: -0.3px !important;
     }
 
-    h2, #legacy-scroll-narrative h2, #home-contact h2, #operating-track h2, #investor-track h2, #values-sticky-wrapper h2, #gb-title, .track-title, .phil-title, .scholarship-title, .phil-cta-title, .legacy-chapter-title, .home-contact-title, .values-main-title {
+    h2, #legacy-scroll-narrative h2, #home-contact h2, #operating-track h2, #investor-track h2, #gb-title, .track-title, .phil-title, .scholarship-title, .phil-cta-title, .legacy-chapter-title, .home-contact-title, .values-main-title {
         font-size: clamp(1.22rem, 4.2vw, 1.48rem) !important;
         line-height: 1.25 !important;
         letter-spacing: -0.2px !important;
@@ -2314,9 +2314,14 @@ footer.active .footer-figura,
         gap: 35px !important;
         width: 100% !important;
     }
-    #values-sticky-wrapper h2 {
-        font-size: clamp(1.22rem, 4.2vw, 1.48rem) !important;
-        margin-bottom: 15px !important;
+    #values-sticky-wrapper h2,
+    .values-main-title {
+        font-size: clamp(1.85rem, 6.2vw, 2.35rem) !important;
+        line-height: 1.15 !important;
+        letter-spacing: -0.2px !important;
+        white-space: nowrap !important;
+        text-align: left !important;
+        margin-bottom: 24px !important;
     }
     #values-sticky-wrapper p {
         font-size: 1rem !important;
@@ -2492,7 +2497,7 @@ footer.active .footer-figura,
     }
 
     .about-summary-statement {
-        margin: 20px auto 35px auto !important;
+        margin: 25px auto 75px auto !important;
         padding: 0 7% !important;
         text-align: center !important;
     }
@@ -2538,6 +2543,14 @@ footer.active .footer-figura,
     }
 
     /* Core Values Mobile Polish */
+    .values-main-title {
+        font-size: clamp(1.85rem, 6.2vw, 2.35rem) !important;
+        line-height: 1.15 !important;
+        letter-spacing: -0.2px !important;
+        white-space: nowrap !important;
+        text-align: left !important;
+        margin-bottom: 24px !important;
+    }
     .values-desktop-compass,
     #values-compass,
     #value-content {
@@ -3541,10 +3554,9 @@ header .scroll-highlight-text .highlight-word.active,
     }
 
     .sticky-stats-cards-wrapper {
-        opacity: 0;
+        opacity: 1 !important;
         visibility: visible !important;
-        transform: translateY(16px);
-        transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: none !important;
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 !important;
@@ -3552,7 +3564,7 @@ header .scroll-highlight-text .highlight-word.active,
 
     .sticky-stats-cards-wrapper.visible {
         opacity: 1 !important;
-        transform: translateY(0) !important;
+        transform: none !important;
     }
 
     .sticky-stats-cards-grid {
@@ -3581,39 +3593,41 @@ header .scroll-highlight-text .highlight-word.active,
         background: transparent !important;
         box-shadow: none !important;
         width: 100% !important;
-        opacity: 0.25 !important;
-        transform: translateY(10px) !important;
-        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
-        gap: 4px !important;
+        opacity: 1 !important;
+        transform: none !important;
+        gap: 6px !important;
     }
 
     .platform-stat-number {
         font-family: 'IvyMode', serif !important;
-        font-size: clamp(2rem, 6.5vw, 2.45rem) !important;
+        font-size: clamp(2.4rem, 8vw, 3rem) !important;
         color: #0d2238 !important;
         line-height: 1 !important;
-        font-weight: 300 !important;
+        font-weight: 500 !important;
         text-align: left !important;
         margin: 0 !important;
         letter-spacing: -0.5px !important;
+        text-shadow: none !important;
     }
 
     .platform-stat-number .stat-accent,
     .platform-stat-number .stat-num-val,
     .platform-stat-number span {
         color: #0d2238 !important;
+        font-weight: 500 !important;
+        opacity: 1 !important;
     }
 
     .platform-stat-label {
         font-family: 'Figtree', sans-serif !important;
-        font-size: 0.82rem !important;
+        font-size: 0.88rem !important;
         color: #0d2238 !important;
-        letter-spacing: 1.5px !important;
+        letter-spacing: 1.8px !important;
         text-transform: uppercase !important;
-        font-weight: 500 !important;
+        font-weight: 600 !important;
         text-align: left !important;
         margin: 0 !important;
-        opacity: 0.75 !important;
+        opacity: 0.88 !important;
     }
 
     .mobile-stat-loader {
@@ -4438,7 +4452,7 @@ header .scroll-highlight-text .highlight-word.active,
     }
 
     .about-summary-statement {
-        margin: 20px auto 35px auto !important;
+        margin: 25px auto 75px auto !important;
         padding: 0 7% !important;
         text-align: center !important;
     }
@@ -4484,6 +4498,14 @@ header .scroll-highlight-text .highlight-word.active,
     }
 
     /* Core Values Mobile Polish */
+    .values-main-title {
+        font-size: clamp(1.85rem, 6.2vw, 2.35rem) !important;
+        line-height: 1.15 !important;
+        letter-spacing: -0.2px !important;
+        white-space: nowrap !important;
+        text-align: left !important;
+        margin-bottom: 24px !important;
+    }
     .values-desktop-compass,
     #values-compass,
     #value-content {
@@ -4580,12 +4602,10 @@ header .scroll-highlight-text .highlight-word.active,
     .phil-cta-title,
     .legacy-chapter-title,
     .home-contact-title,
-    .values-main-title,
     #legacy-scroll-narrative h2,
     #home-contact h2,
     #operating-track h2,
     #investor-track h2,
-    #values-sticky-wrapper h2,
     #gb-title,
     .track-title {
         font-size: clamp(1.22rem, 4.2vw, 1.48rem) !important;
@@ -4714,10 +4734,10 @@ header .scroll-highlight-text .highlight-word.active,
 
     .platform-stat-number {
         font-family: 'IvyMode', serif !important;
-        font-size: clamp(2rem, 6.5vw, 2.45rem) !important;
+        font-size: clamp(2.4rem, 8vw, 3rem) !important;
         color: #0d2238 !important;
         line-height: 1 !important;
-        font-weight: 300 !important;
+        font-weight: 500 !important;
         text-align: left !important;
         margin: 0 !important;
     }
