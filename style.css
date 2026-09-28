@@ -1410,41 +1410,20 @@ footer.active .footer-figura,
   z-index: 1;
 }
 
-/* Base Curtain Styles */
-.hero-curtain {
+/* Hero Blue Overlay */
+.hero-overlay {
   position: absolute;
   top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  background: rgba(13, 51, 92, 0.65);
+  background: linear-gradient(180deg, rgba(8, 29, 51, 0.45) 0%, rgba(13, 51, 92, 0.65) 100%);
   z-index: 2;
-  transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  pointer-events: none;
 }
 
-/* Left Curtain: angled top-left to bottom-right */
-.curtain-left {
-  left: 0;
-  width: 100%;
-  clip-path: polygon(0 0, 22% 0, 39% 100%, 0 100%);
-  transform: translateX(-100%);
-}
-
-/* Right Curtain: parallel to left edge */
-.curtain-right {
-  left: 0;
-  width: 100%;
-  clip-path: polygon(47% 0, 100% 0, 100% 100%, 70% 100%);
-  transform: translateX(100%);
-}
-
-/* When active, slide them in */
-.hero-container.active .curtain-left {
-  transform: translateX(0);
-}
-
-.hero-container.active .curtain-right {
-  transform: translateX(0);
+.hero-curtain, .curtain-left, .curtain-right {
+  display: none !important;
 }
 
 /* Hero Content */
@@ -1750,7 +1729,7 @@ footer.active .footer-figura,
     nav.scrolled,
     nav.home-nav,
     nav.home-nav.scrolled {
-        padding: 1rem 5% !important;
+        padding: 1rem 7% !important;
     }
     .logo {
         padding: 0 !important;
@@ -1794,14 +1773,16 @@ footer.active .footer-figura,
         clip-path: polygon(85% 0, 100% 0, 100% 100%, 95% 100%) !important;
     }
     .hero-content {
-        padding: 0 20px !important;
-        text-align: center !important;
+        padding: 0 7% !important;
+        margin-left: 0 !important;
+        text-align: left !important;
         width: 100% !important;
+        box-sizing: border-box !important;
     }
     .hero-content h1 {
         font-size: clamp(2.1rem, 7.5vw, 2.85rem) !important;
         line-height: 1.2 !important;
-        text-align: center !important;
+        text-align: left !important;
         word-break: normal !important;
     }
     .hero-badge {
@@ -2152,7 +2133,7 @@ footer.active .footer-figura,
     /* Contact Page */
     .contact-hero {
         height: auto !important;
-        padding: 120px 6% 70px 6% !important;
+        padding: 120px 7% 70px 7% !important;
     }
     .contact-hero h1 {
         font-size: clamp(2.2rem, 7.5vw, 2.9rem) !important;
@@ -2251,7 +2232,7 @@ footer.active .footer-figura,
 
     /* Footer Responsive Overrides */
     .site-footer {
-        padding: 3.5rem 6% 2rem !important;
+        padding: 3.5rem 7% 2rem !important;
         overflow: hidden !important;
     }
     .footer-grid {
@@ -2260,11 +2241,11 @@ footer.active .footer-figura,
         padding-bottom: 3rem !important;
     }
     .footer-figura {
-        width: 260px !important;
-        height: 260px !important;
-        right: -40px !important;
-        bottom: -40px !important;
-        opacity: 0.04 !important;
+        width: 160px !important;
+        height: 160px !important;
+        right: -25px !important;
+        bottom: -25px !important;
+        opacity: 0.035 !important;
     }
     .footer-bottom {
         flex-direction: column !important;
@@ -2418,13 +2399,13 @@ footer.active .footer-figura,
 
 @media (max-width: 850px) {
     .philanthropy-hero {
-        padding: 120px 6% 60px !important;
+        padding: 120px 7% 60px !important;
     }
     .philanthropy-intro {
-        padding: 60px 6% 30px !important;
+        padding: 60px 7% 30px !important;
     }
     .philanthropy-section {
-        padding: 20px 6% 60px !important;
+        padding: 20px 7% 60px !important;
     }
     .phil-pillar-card {
         grid-template-columns: 1fr !important;
@@ -2889,27 +2870,83 @@ header .scroll-highlight-text .highlight-word.active,
 }
 
 @media (max-width: 900px) {
-    .sticky-stats-cards-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        max-width: 480px;
-        margin: 20px auto 0 auto;
+    .sticky-stats-section {
+        height: 420vh;
     }
-    .platform-stat-card {
-        padding: 24px 20px;
-        display: none;
+    .sticky-stats-viewport {
+        padding: 0 7% !important;
+        box-sizing: border-box !important;
     }
-    .platform-stat-card.is-spotlight {
-        display: block;
-        opacity: 1;
-        transform: none;
-    }
-    .sticky-stats-main-headline {
-        font-size: 1.45rem;
-        margin-bottom: 18px;
+    .sticky-stats-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
     }
     .sticky-stats-lead-wrap {
-        margin-bottom: 25px;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto 20px auto !important;
+    }
+    .sticky-stats-main-headline {
+        font-size: clamp(1.3rem, 5.2vw, 1.65rem) !important;
+        line-height: 1.38 !important;
+        letter-spacing: -0.2px !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+    }
+    .sticky-stats-cards-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+    }
+    .sticky-stats-cards-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 10px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 18px auto 0 auto !important;
+        align-items: center !important;
+    }
+    .platform-stat-card {
+        display: block !important;
+        padding: 6px 2px !important;
+        text-align: center !important;
+        opacity: 0.35 !important;
+        transform: none !important;
+        transition: opacity 0.4s ease, transform 0.4s ease !important;
+    }
+    .platform-stat-card.is-active {
+        opacity: 0.75 !important;
+    }
+    .platform-stat-card.is-spotlight {
+        display: block !important;
+        opacity: 1 !important;
+        transform: scale(1.05) !important;
+    }
+    .platform-stat-number {
+        font-size: clamp(1.55rem, 5.8vw, 2.1rem) !important;
+        margin-bottom: 6px !important;
+        line-height: 1 !important;
+    }
+    .platform-stat-label {
+        font-size: clamp(0.68rem, 2.3vw, 0.8rem) !important;
+        letter-spacing: 0.5px !important;
+        line-height: 1.25 !important;
+        margin-bottom: 0 !important;
+        text-transform: uppercase !important;
+    }
+    .sticky-stats-progress-pills {
+        margin-top: 20px !important;
+        gap: 8px !important;
+    }
+    .progress-pill {
+        width: 24px !important;
+        height: 2.5px !important;
+    }
+    .progress-pill.active {
+        width: 42px !important;
     }
 }
 
