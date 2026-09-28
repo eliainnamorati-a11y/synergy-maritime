@@ -373,164 +373,65 @@ if (document.readyState === 'loading') {
 
 
 
-// Sticky Platform Narrative & Showcase Numbers Controller (Homepage)
+// Platform Narrative & Showcase Numbers Controller (Homepage)
 function initPlatformShowcase() {
     const showcase = document.getElementById('platform-showcase');
     if (!showcase) return;
 
-    const bgWhite = document.getElementById('stat-bg-white');
-    const bg1 = document.getElementById('stat-bg-1');
-    const bg2 = document.getElementById('stat-bg-2');
-    const bg3 = document.getElementById('stat-bg-3');
-    const content = document.getElementById('showcase-content');
-    const mainLine = document.getElementById('showcase-main-line');
-    const cardsWrapper = document.getElementById('showcase-cards-container');
+    const cards = showcase.querySelectorAll('.showcase-stat-card, .platform-stat-card');
+    let animated = false;
 
-    const card1 = document.getElementById('platform-card-1');
-    const card2 = document.getElementById('platform-card-2');
-    const card3 = document.getElementById('platform-card-3');
+    function runCounterAnimation() {
+        if (animated) return;
+        animated = true;
+        showcase.classList.add('is-visible');
 
-    const pill1 = document.getElementById('pill-1');
-    const pill2 = document.getElementById('pill-2');
-    const pill3 = document.getElementById('pill-3');
+        cards.forEach((card, idx) => {
+            card.classList.add('is-active');
+            const numEl = card.querySelector('.stat-num-val') || card.querySelector('.stat-count');
+            if (!numEl) return;
+            const targetVal = parseFloat(card.dataset.val || numEl.textContent.trim());
+            if (isNaN(targetVal)) return;
 
-    // Split main sentence into spans for word-by-word scroll-darkening
-    let wordElements = [];
-    if (mainLine) {
-        const rawText = mainLine.textContent.trim();
-        const words = rawText.split(/\s+/);
-        mainLine.innerHTML = words.map((w, idx) => `<span class="showcase-word" data-idx="${idx}">${w} </span>`).join('');
-        wordElements = Array.from(mainLine.querySelectorAll('.showcase-word'));
+            const decimals = parseInt(card.dataset.decimals || (card.dataset.val && card.dataset.val.includes('.') ? '1' : '0'), 10);
+            const duration = 1200; // ms
+            const startTime = performance.now();
+
+            function updateCounter(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // Ease out cubic
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const currentVal = easeOut * targetVal;
+                numEl.textContent = decimals > 0 ? currentVal.toFixed(decimals) : Math.floor(currentVal);
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    numEl.textContent = decimals > 0 ? targetVal.toFixed(decimals) : targetVal;
+                }
+            }
+
+            setTimeout(() => {
+                requestAnimationFrame(updateCounter);
+            }, idx * 130);
+        });
     }
 
-    let ticking = false;
-
-    function updateShowcase() {
-        if (window.innerWidth <= 900) {
-            wordElements.forEach(el => el.classList.add('is-dark'));
-            if (cardsWrapper) cardsWrapper.classList.add('visible');
-            if (bgWhite) bgWhite.classList.add('faded');
-            if (content) content.classList.add('dark-theme');
-            if (bg1) bg1.classList.add('active');
-            if (card1) card1.classList.add('is-active');
-            if (card2) card2.classList.add('is-active');
-            if (card3) card3.classList.add('is-active');
-            ticking = false;
-            return;
-        }
-
-        const rect = showcase.getBoundingClientRect();
-        const total = showcase.offsetHeight - window.innerHeight;
-        if (total <= 0) return;
-        
-        const progress = Math.min(Math.max(-rect.top / total, 0), 1);
-
-        // Phase 1: Scroll text darkening on pure white background (0.00 to 0.32)
-        if (progress < 0.32) {
-            // Background is pure white
-            if (bgWhite) bgWhite.classList.remove('faded');
-            if (content) content.classList.remove('dark-theme');
-
-            // Hide background images
-            if (bg1) bg1.classList.remove('active');
-            if (bg2) bg2.classList.remove('active');
-            if (bg3) bg3.classList.remove('active');
-
-            // Numbers are completely hidden until text darkening completes
-            if (cardsWrapper) cardsWrapper.classList.remove('visible');
-
-            if (card1) card1.classList.remove('is-active', 'is-spotlight');
-            if (card2) card2.classList.remove('is-active', 'is-spotlight');
-            if (card3) card3.classList.remove('is-active', 'is-spotlight');
-
-            if (pill1) pill1.classList.remove('active');
-            if (pill2) pill2.classList.remove('active');
-            if (pill3) pill3.classList.remove('active');
-
-            // Word-by-word darkening calculation
-            const textRatio = Math.min(progress / 0.28, 1);
-            const darkWordCount = Math.floor(textRatio * (wordElements.length + 1));
-            wordElements.forEach((el, idx) => {
-                if (idx < darkWordCount) {
-                    el.classList.add('is-dark');
-                } else {
-                    el.classList.remove('is-dark');
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    runCounterAnimation();
+                    observer.unobserve(showcase);
                 }
             });
-        } 
-        // Phase 2: First sentence darkened -> Background changes & Numbers appear!
-        else {
-            // All words remain darkened/luminous
-            wordElements.forEach(el => el.classList.add('is-dark'));
+        }, { threshold: 0.12 });
 
-            // Fade out white layer & activate dark theme for content
-            if (bgWhite) bgWhite.classList.add('faded');
-            if (content) content.classList.add('dark-theme');
-
-            // Numbers container appears
-            if (cardsWrapper) cardsWrapper.classList.add('visible');
-
-            // Stat 1: 60+ Years Heritage + Image 1 (0.32 to 0.54)
-            if (progress < 0.54) {
-                if (bg1) bg1.classList.add('active');
-                if (bg2) bg2.classList.remove('active');
-                if (bg3) bg3.classList.remove('active');
-
-                if (card1) card1.classList.add('is-active', 'is-spotlight');
-                if (card2) card2.classList.remove('is-active', 'is-spotlight');
-                if (card3) card3.classList.remove('is-active', 'is-spotlight');
-
-                if (pill1) pill1.classList.add('active');
-                if (pill2) pill2.classList.remove('active');
-                if (pill3) pill3.classList.remove('active');
-            } 
-            // Stat 2: 70+ Transactions + Image 2 (0.54 to 0.77)
-            else if (progress < 0.77) {
-                if (bg1) bg1.classList.remove('active');
-                if (bg2) bg2.classList.add('active');
-                if (bg3) bg3.classList.remove('active');
-
-                if (card1) { card1.classList.add('is-active'); card1.classList.remove('is-spotlight'); }
-                if (card2) { card2.classList.add('is-active', 'is-spotlight'); }
-                if (card3) { card3.classList.remove('is-active', 'is-spotlight'); }
-
-                if (pill1) pill1.classList.remove('active');
-                if (pill2) pill2.classList.add('active');
-                if (pill3) pill3.classList.remove('active');
-            } 
-            // Stat 3: .5B+ Capital Deployed + Image 3 (0.77 to 1.0)
-            else {
-                if (bg1) bg1.classList.remove('active');
-                if (bg2) bg2.classList.remove('active');
-                if (bg3) bg3.classList.add('active');
-
-                if (card1) { card1.classList.add('is-active'); card1.classList.remove('is-spotlight'); }
-                if (card2) { card2.classList.add('is-active', 'is-spotlight'); }
-                if (card3) { card3.classList.add('is-active', 'is-spotlight'); }
-
-                if (pill1) pill1.classList.remove('active');
-                if (pill2) pill2.classList.remove('active');
-                if (pill3) pill3.classList.add('active');
-            }
-        }
-        ticking = false;
+        observer.observe(showcase);
+    } else {
+        runCounterAnimation();
     }
-
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            requestAnimationFrame(updateShowcase);
-            ticking = true;
-        }
-    }, { passive: true });
-
-    window.addEventListener('resize', function() {
-        if (!ticking) {
-            requestAnimationFrame(updateShowcase);
-            ticking = true;
-        }
-    }, { passive: true });
-
-    updateShowcase();
 }
 
 // Integrated Operator & Institutional Investor Loading Effect (About Page)
