@@ -2149,7 +2149,7 @@ footer.active .footer-figura,
     #legacy-scroll-narrative > div > div:last-child > div {
         height: auto !important;
         min-height: auto !important;
-        padding: 50px 7% 55px 7% !important;
+        padding: 70px 7% 70px 7% !important;
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
@@ -2177,7 +2177,7 @@ footer.active .footer-figura,
         font-size: clamp(1.02rem, 3.6vw, 1.2rem) !important;
         line-height: 1.5 !important;
         font-weight: 300 !important;
-        margin: 0 0 25px 0 !important;
+        margin: 0 0 35px 0 !important;
         text-align: left !important;
     }
     .legacy-chapter-panel .btn {
@@ -2929,7 +2929,7 @@ footer.active .footer-figura,
 }
 
 .legacy-chapter-1 {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .legacy-chapter-desc {
@@ -4293,7 +4293,7 @@ header .scroll-highlight-text .highlight-word.active,
     #legacy-scroll-narrative > div > div:last-child > div {
         height: auto !important;
         min-height: auto !important;
-        padding: 50px 7% 55px 7% !important;
+        padding: 70px 7% 70px 7% !important;
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
@@ -4324,7 +4324,7 @@ header .scroll-highlight-text .highlight-word.active,
         font-size: clamp(1.02rem, 3.6vw, 1.2rem) !important;
         line-height: 1.5 !important;
         font-weight: 300 !important;
-        margin: 0 0 25px 0 !important;
+        margin: 0 0 35px 0 !important;
         text-align: left !important;
     }
 
