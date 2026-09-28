@@ -104,8 +104,11 @@
     <!-- Sticky Platform Narrative & Numbers Showcase Section -->
     <section id="platform-showcase" class="sticky-stats-section">
         <div class="sticky-stats-viewport">
+            <!-- White Background Layer (starts pure white, fades as user scrolls) -->
+            <div id="stat-bg-white" class="sticky-stats-white-layer"></div>
+
             <!-- Background Image Layers for Crossfade as user scrolls -->
-            <div id="stat-bg-1" class="sticky-stats-bg active" style="background-image: url('assets/hist_1963.png');"></div>
+            <div id="stat-bg-1" class="sticky-stats-bg" style="background-image: url('assets/hist_1963.png');"></div>
             <div id="stat-bg-2" class="sticky-stats-bg" style="background-image: url('assets/hero.png');"></div>
             <div id="stat-bg-3" class="sticky-stats-bg" style="background-image: url('assets/building.png');"></div>
             
@@ -113,15 +116,13 @@
             <div class="sticky-stats-overlay"></div>
 
             <!-- Foreground Content Pinned & Active -->
-            <div class="sticky-stats-content">
-                <!-- Unified Header Combining Value Creation & Ownership Platform Statement -->
-                <div class="sticky-stats-lead-wrap" style="margin-bottom: 30px; max-width: 950px; margin-left: auto; margin-right: auto;">
-                    <h2 style="font-family: 'IvyMode', serif; font-size: clamp(2.2rem, 3.8vw, 3.2rem); color: #ffffff; font-weight: 300; line-height: 1.15; margin: 0 auto 16px auto; letter-spacing: -0.5px;">
-                        Six Decades of Maritime Value Creation
-                    </h2>
-                    <p style="font-family: 'Figtree', sans-serif; font-size: clamp(1.05rem, 1.5vw, 1.22rem); color: rgba(255, 255, 255, 0.88); line-height: 1.6; font-weight: 300; max-width: 840px; margin: 0 auto 22px auto;">
+            <div id="showcase-content" class="sticky-stats-content">
+                <!-- Main Statement Header -->
+                <div class="sticky-stats-lead-wrap">
+                    <div class="sticky-stats-lead-bar"></div>
+                    <h2 id="showcase-main-line" class="sticky-stats-main-headline">
                         Synergy is an ownership-led maritime investment and operating platform with a track record spanning every major shipping cycle since 1963.
-                    </p>
+                    </h2>
                     <div class="sticky-stats-lead-divider"></div>
                 </div>
 

@@ -2648,7 +2648,7 @@ header .scroll-highlight-text .highlight-word.active,
    ======================================================== */
 .sticky-stats-section {
     position: relative;
-    height: 320vh;
+    height: 420vh;
     background: #081d33;
     color: #ffffff;
 }
@@ -2666,6 +2666,23 @@ header .scroll-highlight-text .highlight-word.active,
     padding: 0 6%;
 }
 
+.sticky-stats-white-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 0.85s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
+}
+
+.sticky-stats-white-layer.faded {
+    opacity: 0;
+}
+
 .sticky-stats-bg {
     position: absolute;
     top: 0;
@@ -2678,6 +2695,7 @@ header .scroll-highlight-text .highlight-word.active,
     transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
     transform: scale(1.04);
     will-change: opacity, transform;
+    z-index: 0;
 }
 
 .sticky-stats-bg.active {
@@ -2693,11 +2711,12 @@ header .scroll-highlight-text .highlight-word.active,
     height: 100%;
     background: linear-gradient(180deg, rgba(8, 29, 51, 0.82) 0%, rgba(5, 18, 32, 0.90) 100%);
     z-index: 1;
+    opacity: 1;
 }
 
 .sticky-stats-content {
     position: relative;
-    z-index: 2;
+    z-index: 4;
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
@@ -2705,26 +2724,32 @@ header .scroll-highlight-text .highlight-word.active,
 }
 
 .sticky-stats-lead-wrap {
-    max-width: 1000px;
-    margin: 0 auto 50px auto;
+    max-width: 1050px;
+    margin: 0 auto 35px auto;
 }
 
 .sticky-stats-lead-bar {
     width: 1px;
-    height: 36px;
+    height: 40px;
     background-color: var(--secondary);
-    margin: 0 auto 24px auto;
+    margin: 0 auto 28px auto;
     opacity: 0.6;
 }
 
-.sticky-stats-lead-text {
+.sticky-stats-main-headline {
     font-family: 'IvyMode', serif;
-    font-size: clamp(1.8rem, 3.4vw, 2.5rem);
+    font-size: clamp(2rem, 3.8vw, 2.75rem);
     line-height: 1.35;
+    color: var(--primary);
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    margin: 0 auto 30px auto;
+    transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1), font-weight 0.8s ease;
+}
+
+.sticky-stats-content.dark-theme .sticky-stats-main-headline {
     color: #ffffff;
     font-weight: 300;
-    letter-spacing: -0.2px;
-    margin-bottom: 24px;
 }
 
 .sticky-stats-lead-divider {
@@ -2732,7 +2757,7 @@ header .scroll-highlight-text .highlight-word.active,
     height: 1px;
     background-color: var(--secondary);
     margin: 0 auto;
-    opacity: 0.4;
+    opacity: 0.5;
 }
 
 .sticky-stats-cards-grid {
@@ -2752,10 +2777,29 @@ header .scroll-highlight-text .highlight-word.active,
     text-align: left;
     border-radius: 2px;
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    opacity: 0.3;
-    transform: translateY(16px);
+    opacity: 0.2;
+    transform: translateY(20px);
     position: relative;
     overflow: hidden;
+}
+
+.sticky-stats-content:not(.dark-theme) .platform-stat-card {
+    background: rgba(13, 51, 92, 0.03);
+    border-color: rgba(13, 51, 92, 0.08);
+    box-shadow: none;
+}
+
+.sticky-stats-content:not(.dark-theme) .platform-stat-number {
+    color: var(--primary);
+}
+
+.sticky-stats-content:not(.dark-theme) .platform-stat-desc {
+    color: var(--text-dark);
+    opacity: 0.7;
+}
+
+.sticky-stats-content:not(.dark-theme) .platform-stat-card-step {
+    color: var(--primary);
 }
 
 .platform-stat-card.is-active {
@@ -2766,20 +2810,19 @@ header .scroll-highlight-text .highlight-word.active,
 }
 
 .platform-stat-card.is-spotlight {
-    border-top: 2px solid var(--secondary);
-    background: rgba(13, 51, 92, 0.65);
-    border-color: rgba(27, 160, 152, 0.4);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+    border-top: 2px solid var(--accent);
+    background: rgba(13, 51, 92, 0.6);
+    border-color: rgba(212, 175, 55, 0.45);
 }
 
 .platform-stat-card-step {
-    font-family: 'Figtree', sans-serif;
-    font-size: 0.78rem;
-    letter-spacing: 2.5px;
-    color: var(--secondary);
-    margin-bottom: 14px;
+    font-family: 'IvyMode', serif;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 12px;
     text-transform: uppercase;
-    font-weight: 600;
+    opacity: 0.9;
 }
 
 .platform-stat-number {
@@ -2790,18 +2833,19 @@ header .scroll-highlight-text .highlight-word.active,
     line-height: 1;
     margin-bottom: 10px;
     letter-spacing: -0.5px;
+    transition: color 0.6s ease;
 }
 
 .platform-stat-number .stat-accent {
-    color: var(--secondary);
+    color: var(--accent);
 }
 
 .platform-stat-label {
     font-family: 'IvyMode', serif;
-    font-size: 1.25rem;
-    color: #ffffff;
+    font-size: 1.15rem;
+    color: var(--accent);
     margin-bottom: 12px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.5px;
 }
 
@@ -2812,6 +2856,7 @@ header .scroll-highlight-text .highlight-word.active,
     line-height: 1.55;
     font-weight: 300;
     margin: 0;
+    transition: color 0.6s ease;
 }
 
 .sticky-stats-progress-pills {
@@ -2829,9 +2874,13 @@ header .scroll-highlight-text .highlight-word.active,
     transition: all 0.4s ease;
 }
 
+.sticky-stats-content:not(.dark-theme) .progress-pill {
+    background: rgba(13, 51, 92, 0.15);
+}
+
 .progress-pill.active {
     width: 60px;
-    background: var(--secondary);
+    background: var(--accent);
 }
 
 @media (max-width: 900px) {
@@ -2846,14 +2895,13 @@ header .scroll-highlight-text .highlight-word.active,
         display: none;
     }
     .platform-stat-card.is-spotlight {
-    border-top: 2px solid var(--secondary);
-    background: rgba(13, 51, 92, 0.65);
-    border-color: rgba(27, 160, 152, 0.4);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
-}
-    .sticky-stats-lead-text {
-        font-size: 1.4rem;
-        margin-bottom: 15px;
+        display: block;
+        opacity: 1;
+        transform: none;
+    }
+    .sticky-stats-main-headline {
+        font-size: 1.45rem;
+        margin-bottom: 18px;
     }
     .sticky-stats-lead-wrap {
         margin-bottom: 25px;

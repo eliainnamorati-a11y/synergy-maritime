@@ -376,9 +376,11 @@ function initPlatformShowcase() {
     const showcase = document.getElementById('platform-showcase');
     if (!showcase) return;
 
+    const bgWhite = document.getElementById('stat-bg-white');
     const bg1 = document.getElementById('stat-bg-1');
     const bg2 = document.getElementById('stat-bg-2');
     const bg3 = document.getElementById('stat-bg-3');
+    const content = document.getElementById('showcase-content');
 
     const card1 = document.getElementById('platform-card-1');
     const card2 = document.getElementById('platform-card-2');
@@ -397,7 +399,28 @@ function initPlatformShowcase() {
         
         const progress = Math.min(Math.max(-rect.top / total, 0), 1);
 
-        if (progress < 0.33) {
+        // Phase 0: White background (0.00 to 0.22)
+        if (progress < 0.22) {
+            if (bgWhite) bgWhite.classList.remove('faded');
+            if (content) content.classList.remove('dark-theme');
+
+            if (bg1) bg1.classList.remove('active');
+            if (bg2) bg2.classList.remove('active');
+            if (bg3) bg3.classList.remove('active');
+
+            if (card1) card1.classList.remove('is-active', 'is-spotlight');
+            if (card2) card2.classList.remove('is-active', 'is-spotlight');
+            if (card3) card3.classList.remove('is-active', 'is-spotlight');
+
+            if (pill1) pill1.classList.remove('active');
+            if (pill2) pill2.classList.remove('active');
+            if (pill3) pill3.classList.remove('active');
+        } 
+        // Phase 1: Background changes to Image 1 + 60+ Heritage (0.22 to 0.48)
+        else if (progress < 0.48) {
+            if (bgWhite) bgWhite.classList.add('faded');
+            if (content) content.classList.add('dark-theme');
+
             if (bg1) bg1.classList.add('active');
             if (bg2) bg2.classList.remove('active');
             if (bg3) bg3.classList.remove('active');
@@ -409,7 +432,12 @@ function initPlatformShowcase() {
             if (pill1) pill1.classList.add('active');
             if (pill2) pill2.classList.remove('active');
             if (pill3) pill3.classList.remove('active');
-        } else if (progress < 0.66) {
+        } 
+        // Phase 2: Background changes to Image 2 + 70+ Transactions (0.48 to 0.74)
+        else if (progress < 0.74) {
+            if (bgWhite) bgWhite.classList.add('faded');
+            if (content) content.classList.add('dark-theme');
+
             if (bg1) bg1.classList.remove('active');
             if (bg2) bg2.classList.add('active');
             if (bg3) bg3.classList.remove('active');
@@ -421,7 +449,12 @@ function initPlatformShowcase() {
             if (pill1) pill1.classList.remove('active');
             if (pill2) pill2.classList.add('active');
             if (pill3) pill3.classList.remove('active');
-        } else {
+        } 
+        // Phase 3: Background changes to Image 3 + .5B+ Capital Deployed (0.74 to 1.0)
+        else {
+            if (bgWhite) bgWhite.classList.add('faded');
+            if (content) content.classList.add('dark-theme');
+
             if (bg1) bg1.classList.remove('active');
             if (bg2) bg2.classList.remove('active');
             if (bg3) bg3.classList.add('active');
