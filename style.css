@@ -3016,9 +3016,6 @@ footer.active .footer-figura,
         line-height: 1.25 !important;
         margin-bottom: 12px !important;
     }
-    .scholarship-sub-institution {
-        font-size: 0.35em !important;
-    }
     .phil-desc {
         font-size: 0.92rem !important;
         line-height: 1.6 !important;
@@ -4001,15 +3998,6 @@ header .scroll-highlight-text .highlight-word.active,
     transform: translateY(0);
 }
 
-.scholarship-sub-institution {
-    display: block;
-    font-size: 0.45em;
-    font-family: 'Figtree', sans-serif;
-    font-weight: 400;
-    letter-spacing: 1px;
-    color: #4a637d;
-    margin-top: 6px;
-}
 
 /* Scholarship Stats Banner (4 Annual Scholars · 2 Humanities & 2 Science) */
 .scholarship-stats-card {
