@@ -3017,7 +3017,7 @@ footer.active .footer-figura,
         margin-bottom: 12px !important;
     }
     .scholarship-sub-institution {
-        font-size: 0.5em !important;
+        font-size: 0.35em !important;
     }
     .phil-desc {
         font-size: 0.92rem !important;
@@ -4003,7 +4003,7 @@ header .scroll-highlight-text .highlight-word.active,
 
 .scholarship-sub-institution {
     display: block;
-    font-size: 0.65em;
+    font-size: 0.45em;
     font-family: 'Figtree', sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
